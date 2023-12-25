@@ -16,5 +16,12 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             InitializeComponent();
         }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new Menu();
+            temp.Show();
+        }
     }
 }

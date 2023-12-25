@@ -28,13 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            btnMenu = new Button();
             SuspendLayout();
+            // 
+            // btnMenu
+            // 
+            btnMenu.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btnMenu.ForeColor = SystemColors.ControlText;
+            btnMenu.Location = new Point(12, 502);
+            btnMenu.Name = "btnMenu";
+            btnMenu.Size = new Size(111, 47);
+            btnMenu.TabIndex = 2;
+            btnMenu.Text = "Menu";
+            btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
             // 
             // TaskDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(255, 224, 192);
             ClientSize = new Size(984, 561);
+            Controls.Add(btnMenu);
             Name = "TaskDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaskDashboard";
@@ -42,5 +57,7 @@
         }
 
         #endregion
+
+        private Button btnMenu;
     }
 }
