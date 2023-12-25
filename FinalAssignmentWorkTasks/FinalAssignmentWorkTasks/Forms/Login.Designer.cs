@@ -1,6 +1,6 @@
 ﻿namespace FinalAssignmentWorkTasks
 {
-    partial class EntryForm
+    partial class Login
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntryForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             label1 = new Label();
             tbxUsername = new TextBox();
             btnLogin = new Button();
@@ -68,6 +68,7 @@
             btnLogin.TabIndex = 3;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // cbxRememberMe
             // 
@@ -111,14 +112,14 @@
             tbxPassword.TabIndex = 8;
             tbxPassword.UseSystemPasswordChar = true;
             // 
-            // EntryForm
+            // Login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
             BackColor = Color.FromArgb(255, 224, 192);
-            ClientSize = new Size(984, 561);
+            ClientSize = new Size(980, 557);
             Controls.Add(tbxPassword);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -130,7 +131,7 @@
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "EntryForm";
+            Name = "Login";
             Padding = new Padding(1);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
