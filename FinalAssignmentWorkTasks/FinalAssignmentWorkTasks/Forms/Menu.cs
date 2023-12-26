@@ -17,6 +17,10 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             InitializeComponent();
         }
+        public Menu(Employee employee)
+        {
+            InitializeComponent();
+        }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
