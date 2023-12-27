@@ -18,11 +18,11 @@ namespace FinalAssignmentWorkTasks
         public string LastName { get; private set; }
         public Department Department { get; private set; }
 
-        public Employee() 
+        public Employee()
         {
-            
+
         }
-        public Employee(string email, string id, string firstName, string lastName, Department department) 
+        public Employee(string email, string id, string firstName, string lastName, Department department)
         {
             Email = email;
             Id = id;
@@ -54,8 +54,8 @@ namespace FinalAssignmentWorkTasks
                     {
                         if (Enum.TryParse(fields[10], out Department department))
                         {
-                            Employee newEmployee = new Employee() 
-                            {                            
+                            Employee newEmployee = new Employee()
+                            {
                                 Email = fields[9],
                                 Id = fields[0],
                                 FirstName = fields[2],
@@ -64,15 +64,13 @@ namespace FinalAssignmentWorkTasks
                             };
                             employees.Add(newEmployee);
                         }
-                        else
-                        {
-                            MessageBox.Show("Error retrieving user from file.");
-                        }
                     }
                 }
             }
+
             return employees;
         }
+
         public static Employee GetUserFromCredentials(List<Employee> employees, string email, string id)
         {
             return employees.FirstOrDefault(user =>
