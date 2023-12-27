@@ -31,6 +31,13 @@ namespace FinalAssignmentWorkTasks
             Department = department;
         }
 
+        /*
+        public static Employee CreateEmployee(string email, string id, string firstName, string lastName, Department department)
+        {
+            return new Employee(email, id, firstName, lastName, department);
+        }
+        */
+
         public static List<Employee> LoadUserFromCsv(string filePath)
         {
             List<Employee> employees = new List<Employee>();
@@ -45,21 +52,23 @@ namespace FinalAssignmentWorkTasks
                     string[] fields = parser.ReadFields();
                     if (fields.Length == 11)
                     {
-                        if (Enum.TryParse(fields[10].Replace(" ", "_"), true, out Department department))
+                        if (Enum.TryParse(fields[10], out Department department))
                         {
-                            employees.Add(new Employee()
-                            {
+                            Employee newEmployee = new Employee() 
+                            {                            
                                 Email = fields[9],
                                 Id = fields[0],
                                 FirstName = fields[2],
                                 LastName = fields[3],
                                 Department = department
-                            });
+                            };
+                            employees.Add(newEmployee);
                         }
                         else
                         {
                             //MessageBox.Show("Error retrieving user from file.");
-                            MessageBox.Show($"Email {fields[9]}, ID {fields[0]}, Firstname {fields[2]}, Lastname {fields[3]}, Department {department}");
+                            //MessageBox.Show($"Email {fields[9]}, ID {fields[0]}, Firstname {fields[2]}, Lastname {fields[3]}, Department {department}");
+                            //MessageBox.Show(fields[10]);
                         }
                     }
                 }

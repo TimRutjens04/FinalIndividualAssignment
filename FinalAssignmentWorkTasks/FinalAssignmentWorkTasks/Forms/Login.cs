@@ -29,7 +29,8 @@ namespace FinalAssignmentWorkTasks
 
             bool rememberMe = cbxRememberMe.Checked; //doesnt work yet
 
-            SavedUser user = new SavedUser("..\\MOCK_EMPLOYEE_DATA.csv");
+            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+            SavedUser user = new SavedUser(relativePath);
             List<Employee> employees = user.employees;
 
             if (user.EmployeeLogin(username, password, out department))
@@ -42,7 +43,7 @@ namespace FinalAssignmentWorkTasks
                 var temp = new Menu(savedEmployee);
                 temp.Show();
             }
-            else { MessageBox.Show("Error logging in");}
+            else { MessageBox.Show($"Error logging in {username}, {password}, {department}");}
 
             
         }
