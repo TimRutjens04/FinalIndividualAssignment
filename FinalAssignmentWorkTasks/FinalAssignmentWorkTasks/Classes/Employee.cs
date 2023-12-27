@@ -43,9 +43,9 @@ namespace FinalAssignmentWorkTasks
                 while (!parser.EndOfData)
                 {
                     string[] fields = parser.ReadFields();
-                    if (fields.Length == 10)
+                    if (fields.Length == 11)
                     {
-                        if (Enum.TryParse(fields[10], out Department department))
+                        if (Enum.TryParse(fields[10].Replace(" ", "_"), true, out Department department))
                         {
                             employees.Add(new Employee()
                             {
@@ -58,7 +58,8 @@ namespace FinalAssignmentWorkTasks
                         }
                         else
                         {
-                            MessageBox.Show("Error retrieving user from file.");
+                            //MessageBox.Show("Error retrieving user from file.");
+                            MessageBox.Show($"Email {fields[9]}, ID {fields[0]}, Firstname {fields[2]}, Lastname {fields[3]}, Department {department}");
                         }
                     }
                 }

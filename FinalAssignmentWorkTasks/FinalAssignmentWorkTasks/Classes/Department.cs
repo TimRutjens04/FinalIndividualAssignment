@@ -8,12 +8,13 @@ namespace FinalAssignmentWorkTasks.Classes
 {
     public enum Department
     {
-        Default = 0,
+        //Default = 0,
+        Unassigned,
         Human_Resources,
         Marketing,
         Sales,
         Support,
-        Research_Development,
+        Research_and_Development,
         Admin
     }
 }

@@ -33,8 +33,8 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         public bool EmployeeLogin(string username, string userpassword, out Department userDepartment)
         {
-            userDepartment = Department.Default;
-            string filePath = "..\\Resources\\MOCK_EMPLOYEE_DATA.csv";
+            userDepartment = Department.Unassigned;
+            string filePath = "..//MOCK_EMPLOYEE_DATA.csv";
 
             List<Employee> employees = Employee.LoadUserFromCsv(filePath);
 
