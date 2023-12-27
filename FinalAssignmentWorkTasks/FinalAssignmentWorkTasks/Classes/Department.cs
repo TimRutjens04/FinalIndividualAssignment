@@ -13,6 +13,7 @@ namespace FinalAssignmentWorkTasks.Classes
         Marketing,
         Sales,
         Support,
-        Research_Development
+        Research_Development,
+        Admin
     }
 }
