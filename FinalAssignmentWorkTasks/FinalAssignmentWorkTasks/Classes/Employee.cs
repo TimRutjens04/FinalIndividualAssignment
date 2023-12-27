@@ -66,14 +66,11 @@ namespace FinalAssignmentWorkTasks
                         }
                         else
                         {
-                            //MessageBox.Show("Error retrieving user from file.");
-                            //MessageBox.Show($"Email {fields[9]}, ID {fields[0]}, Firstname {fields[2]}, Lastname {fields[3]}, Department {department}");
-                            //MessageBox.Show(fields[10]);
+                            MessageBox.Show("Error retrieving user from file.");
                         }
                     }
                 }
             }
-
             return employees;
         }
         public static Employee GetUserFromCredentials(List<Employee> employees, string email, string id)
