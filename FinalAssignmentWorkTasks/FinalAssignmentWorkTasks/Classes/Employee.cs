@@ -70,24 +70,5 @@ namespace FinalAssignmentWorkTasks
                 user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
                 user.Id == id);
         }
-        public static Department ParseDepartment(string departmentString)
-        { 
-            switch (departmentString.Trim())
-            {
-                case "Human Resources":
-                    return Department.Human_Resources;
-                case "Sales":
-                    return Department.Sales;
-                case "Marketing":
-                    return Department.Marketing;
-                case "Support":
-                    return Department.Support;
-                case "Research and Development":
-                    return Department.Research_and_Development;
-                default:
-                    throw new ArgumentException($"Invalid department: {departmentString}");
-            }
-        }
-
     }
 }

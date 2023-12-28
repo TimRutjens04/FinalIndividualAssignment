@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalAssignmentWorkTasks.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,12 +17,14 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
-        private List<Employee> selectedEmployeeList = new List<Employee>();
+        private List<Employee> selectedEmployeeList;
         public CreateTask()
         {
             InitializeComponent();
             monthCalendarDueTime.MinDate = DateTime.Today;
             monthCalendarDueTime.MaxSelectionCount = 1;
+            InitializeCheckboxes();
+            LoadEmployeeDataFromCsv();
         }
 
         public CreateTask(Employee employee) : this()
@@ -48,8 +51,50 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
             MessageBox.Show($"Task succesfully created.\nDue date: {date}\nAssigned employees: blabla");
-
         }
-        
+
+        private void InitializeCheckboxes()
+        {
+            cbxHR.CheckedChanged += CheckBox_CheckedChanged;
+            cbxMarketing.CheckedChanged += CheckBox_CheckedChanged;
+            cbxSales.CheckedChanged += CheckBox_CheckedChanged;
+            cbxSupport.CheckedChanged += CheckBox_CheckedChanged;
+            cbxRD.CheckedChanged += CheckBox_CheckedChanged;
+        }
+
+        private void LoadEmployeeDataFromCsv()
+        {
+            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+            selectedEmployeeList = Employee.LoadUserFromCsv(relativePath);
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            var checkedDepartments = GetCheckedDepartments();
+
+            var filteredEmployees = selectedEmployeeList.Where(employee => checkedDepartments.Contains(employee.Department)).ToList();
+            UpdateCheckedListBox(filteredEmployees);
+        }
+
+        private List<Department> GetCheckedDepartments()
+        {
+            var checkedDepartments = new List<Department>();
+
+            if (cbxHR.Checked) checkedDepartments.Add(Department.Human_Resources);
+            if (cbxMarketing.Checked) checkedDepartments.Add(Department.Marketing);
+            if (cbxSales.Checked) checkedDepartments.Add(Department.Sales);
+            if (cbxSupport.Checked) checkedDepartments.Add(Department.Support);
+            if (cbxRD.Checked) checkedDepartments.Add(Department.Research_and_Development);
+
+            return checkedDepartments;
+        }
+
+        private void UpdateCheckedListBox(List<Employee> employees)
+        {
+            // Clear and update the CheckedListBox with the filtered employees
+            clbxAssignedEmployees.Items.Clear();
+            clbxAssignedEmployees.Items.AddRange(employees.Select(employee => employee.DisplayData).ToArray());
+        }
+
     }
 }
