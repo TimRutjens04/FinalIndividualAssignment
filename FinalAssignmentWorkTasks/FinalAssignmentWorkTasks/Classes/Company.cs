@@ -8,5 +8,8 @@ namespace FinalAssignmentWorkTasks
 {
     internal class Company
     {
+        public List<Employee> Employees;
+        public List<Task> Tasks;
+        public Company() { }
     }
 }

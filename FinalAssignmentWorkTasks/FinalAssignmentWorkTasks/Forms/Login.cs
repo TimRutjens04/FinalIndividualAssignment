@@ -40,7 +40,7 @@ namespace FinalAssignmentWorkTasks
 
                 user.SetSavedEmployee(savedEmployee);
 
-                MessageBox.Show(username);
+                //MessageBox.Show(username);
                 this.Hide();
                 var temp = new Menu(savedEmployee);
                 temp.Show();
