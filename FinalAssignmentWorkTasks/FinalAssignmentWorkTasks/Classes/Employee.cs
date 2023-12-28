@@ -12,11 +12,12 @@ namespace FinalAssignmentWorkTasks
 {
     public class Employee
     {
-        public string Id { get; private set; } // will be "password" for login
-        public string Email { get; private set; } // will be "username" for login
-        public string FirstName { get; private set; }
-        public string LastName { get; private set; }
-        public Department Department { get; private set; }
+        public string Id { get; set; } // will be "password" for login
+        public string Email { get; set; } // will be "username" for login
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public Department Department { get; set; }
+        public string DisplayData => $"{FirstName} {LastName}\nDepartment: {Department}";
 
         public Employee()
         {
@@ -30,7 +31,6 @@ namespace FinalAssignmentWorkTasks
             LastName = lastName;
             Department = department;
         }
-
         public static List<Employee> LoadUserFromCsv(string filePath)
         {
             List<Employee> employees = new List<Employee>();
@@ -70,7 +70,24 @@ namespace FinalAssignmentWorkTasks
                 user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
                 user.Id == id);
         }
-
+        public static Department ParseDepartment(string departmentString)
+        { 
+            switch (departmentString.Trim())
+            {
+                case "Human Resources":
+                    return Department.Human_Resources;
+                case "Sales":
+                    return Department.Sales;
+                case "Marketing":
+                    return Department.Marketing;
+                case "Support":
+                    return Department.Support;
+                case "Research and Development":
+                    return Department.Research_and_Development;
+                default:
+                    throw new ArgumentException($"Invalid department: {departmentString}");
+            }
+        }
 
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace FinalAssignmentWorkTasks.Forms
 {
@@ -14,6 +16,7 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
+        private List<Employee> selectedEmployeeList = new List<Employee>();
         public CreateTask()
         {
             InitializeComponent();
@@ -43,8 +46,10 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            string test = monthCalendarDueTime.SelectionStart.ToString();
-            MessageBox.Show(test);
+            string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
+            MessageBox.Show($"Task succesfully created.\nDue date: {date}\nAssigned employees: blabla");
+
         }
+        
     }
 }

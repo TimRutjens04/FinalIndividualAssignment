@@ -35,11 +35,11 @@
             tbxTaskDescription = new TextBox();
             gbxTaskInfo = new GroupBox();
             clbxAssignedEmployees = new CheckedListBox();
-            checkBox5 = new CheckBox();
-            checkBox4 = new CheckBox();
-            checkBox3 = new CheckBox();
-            checkBox2 = new CheckBox();
-            checkBox1 = new CheckBox();
+            cbxRD = new CheckBox();
+            cbxSupport = new CheckBox();
+            cbxSales = new CheckBox();
+            cbxMarketing = new CheckBox();
+            cbxHR = new CheckBox();
             lblDepartment = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -92,11 +92,11 @@
             // gbxTaskInfo
             // 
             gbxTaskInfo.Controls.Add(clbxAssignedEmployees);
-            gbxTaskInfo.Controls.Add(checkBox5);
-            gbxTaskInfo.Controls.Add(checkBox4);
-            gbxTaskInfo.Controls.Add(checkBox3);
-            gbxTaskInfo.Controls.Add(checkBox2);
-            gbxTaskInfo.Controls.Add(checkBox1);
+            gbxTaskInfo.Controls.Add(cbxRD);
+            gbxTaskInfo.Controls.Add(cbxSupport);
+            gbxTaskInfo.Controls.Add(cbxSales);
+            gbxTaskInfo.Controls.Add(cbxMarketing);
+            gbxTaskInfo.Controls.Add(cbxHR);
             gbxTaskInfo.Controls.Add(lblDepartment);
             gbxTaskInfo.Controls.Add(label4);
             gbxTaskInfo.Controls.Add(label3);
@@ -125,55 +125,55 @@
             clbxAssignedEmployees.Size = new Size(245, 268);
             clbxAssignedEmployees.TabIndex = 20;
             // 
-            // checkBox5
+            // cbxRD
             // 
-            checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(496, 136);
-            checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(172, 23);
-            checkBox5.TabIndex = 19;
-            checkBox5.Text = "Research and Development";
-            checkBox5.UseVisualStyleBackColor = true;
+            cbxRD.AutoSize = true;
+            cbxRD.Location = new Point(496, 136);
+            cbxRD.Name = "cbxRD";
+            cbxRD.Size = new Size(172, 23);
+            cbxRD.TabIndex = 19;
+            cbxRD.Text = "Research and Development";
+            cbxRD.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // cbxSupport
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(639, 109);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(69, 23);
-            checkBox4.TabIndex = 18;
-            checkBox4.Text = "Support";
-            checkBox4.UseVisualStyleBackColor = true;
+            cbxSupport.AutoSize = true;
+            cbxSupport.Location = new Point(639, 109);
+            cbxSupport.Name = "cbxSupport";
+            cbxSupport.Size = new Size(69, 23);
+            cbxSupport.TabIndex = 18;
+            cbxSupport.Text = "Support";
+            cbxSupport.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // cbxSales
             // 
-            checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(496, 107);
-            checkBox3.Name = "checkBox3";
-            checkBox3.Size = new Size(58, 23);
-            checkBox3.TabIndex = 17;
-            checkBox3.Text = "Sales";
-            checkBox3.UseVisualStyleBackColor = true;
+            cbxSales.AutoSize = true;
+            cbxSales.Location = new Point(496, 107);
+            cbxSales.Name = "cbxSales";
+            cbxSales.Size = new Size(58, 23);
+            cbxSales.TabIndex = 17;
+            cbxSales.Text = "Sales";
+            cbxSales.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // cbxMarketing
             // 
-            checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(640, 80);
-            checkBox2.Name = "checkBox2";
-            checkBox2.Size = new Size(81, 23);
-            checkBox2.TabIndex = 16;
-            checkBox2.Text = "Marketing";
-            checkBox2.UseVisualStyleBackColor = true;
+            cbxMarketing.AutoSize = true;
+            cbxMarketing.Location = new Point(640, 80);
+            cbxMarketing.Name = "cbxMarketing";
+            cbxMarketing.Size = new Size(81, 23);
+            cbxMarketing.TabIndex = 16;
+            cbxMarketing.Text = "Marketing";
+            cbxMarketing.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // cbxHR
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(496, 78);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(42, 23);
-            checkBox1.TabIndex = 15;
-            checkBox1.Text = "HR";
-            checkBox1.UseVisualStyleBackColor = true;
+            cbxHR.AutoSize = true;
+            cbxHR.Location = new Point(496, 78);
+            cbxHR.Name = "cbxHR";
+            cbxHR.Size = new Size(42, 23);
+            cbxHR.TabIndex = 15;
+            cbxHR.Text = "HR";
+            cbxHR.UseVisualStyleBackColor = true;
             // 
             // lblDepartment
             // 
@@ -259,11 +259,11 @@
         private Label label4;
         private Label label3;
         private Label label2;
-        private CheckBox checkBox5;
-        private CheckBox checkBox4;
-        private CheckBox checkBox3;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
+        private CheckBox cbxRD;
+        private CheckBox cbxSupport;
+        private CheckBox cbxSales;
+        private CheckBox cbxMarketing;
+        private CheckBox cbxHR;
         private CheckedListBox clbxAssignedEmployees;
     }
 }
