@@ -51,11 +51,12 @@
             // tbxUsername
             // 
             tbxUsername.BackColor = SystemColors.Info;
+            tbxUsername.BorderStyle = BorderStyle.None;
             tbxUsername.Cursor = Cursors.IBeam;
             tbxUsername.Font = new Font("Bahnschrift Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point);
             tbxUsername.Location = new Point(418, 166);
             tbxUsername.Name = "tbxUsername";
-            tbxUsername.Size = new Size(200, 22);
+            tbxUsername.Size = new Size(200, 15);
             tbxUsername.TabIndex = 2;
             // 
             // btnLogin
@@ -118,7 +119,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
-            BackColor = Color.FromArgb(255, 224, 192);
+            BackColor = Color.Silver;
             ClientSize = new Size(980, 557);
             Controls.Add(tbxPassword);
             Controls.Add(label2);

@@ -101,6 +101,7 @@
             // 
             // gbxLoggedInUser
             // 
+            gbxLoggedInUser.BackColor = Color.White;
             gbxLoggedInUser.Controls.Add(lblUserFirstname);
             gbxLoggedInUser.Controls.Add(lblUserDepartment);
             gbxLoggedInUser.Controls.Add(lblUserLastname);
@@ -152,7 +153,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 224, 192);
+            BackColor = Color.Silver;
             ClientSize = new Size(984, 561);
             Controls.Add(gbxLoggedInUser);
             Controls.Add(btnSettings);
