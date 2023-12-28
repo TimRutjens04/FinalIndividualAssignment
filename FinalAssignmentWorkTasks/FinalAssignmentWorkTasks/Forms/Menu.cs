@@ -42,19 +42,19 @@ namespace FinalAssignmentWorkTasks.Forms
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var temp = new TaskDashboard();
+            var temp = new TaskDashboard(_loggedInEmployee);
             temp.Show();
         }
         private void btnNewTask_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var temp = new CreateTask();
+            var temp = new CreateTask(_loggedInEmployee);
             temp.Show();
         }
         private void btnSettings_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var temp = new Settings();
+            var temp = new Settings(_loggedInEmployee);
             temp.Show();
         }
 
@@ -64,21 +64,5 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
-        /*
-        private void UpdateLoggedInUserLabel()
-        {
-            if (savedUser.LoggedInUser != null)
-            {
-                string loggedInUserText = savedUser.LoggedInUser.Name.ToString();
-                lblUserEmail.Text = $"Logged in as: {loggedInUserText}";
-            }
-            else
-            {
-                lblUserEmail.Text = "Not logged in";
-            }
-        }
-        */
-
-
     }
 }

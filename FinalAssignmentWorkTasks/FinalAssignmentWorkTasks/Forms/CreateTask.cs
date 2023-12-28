@@ -12,15 +12,22 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class CreateTask : Form
     {
+        SavedUser savedUser = SavedUser.Instance;
+        Employee _loggedInEmployee;
         public CreateTask()
         {
             InitializeComponent();
         }
 
+        public CreateTask(Employee employee) : this()
+        {
+            _loggedInEmployee = employee;
+        }
+
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var temp = new Menu();
+            var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
     }

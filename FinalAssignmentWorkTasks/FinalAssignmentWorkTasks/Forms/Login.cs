@@ -38,7 +38,6 @@ namespace FinalAssignmentWorkTasks
             {
                 Employee savedEmployee = Employee.GetUserFromCredentials(SavedUser.Employees, username, password);
 
-                // Update the SavedUser instance
                 user.SetSavedEmployee(savedEmployee);
 
                 MessageBox.Show(username);

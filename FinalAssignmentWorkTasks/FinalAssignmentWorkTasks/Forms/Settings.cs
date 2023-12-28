@@ -12,15 +12,21 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class Settings : Form
     {
+        SavedUser savedUser = SavedUser.Instance;
+        Employee _loggedInEmployee;
         public Settings()
         {
             InitializeComponent();
+        }
+        public Settings(Employee employee) : this()
+        {
+            _loggedInEmployee = employee;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var temp = new Menu();
+            var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
     }
