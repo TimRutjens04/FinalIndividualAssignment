@@ -29,5 +29,12 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
+
+        private void Settings_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Hide();
+            var temp = new Login();
+            temp.Show();
+        }
     }
 }

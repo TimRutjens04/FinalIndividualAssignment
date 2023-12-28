@@ -53,6 +53,7 @@
             Name = "TaskDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaskDashboard";
+            FormClosed += TaskDashboard_FormClosed;
             ResumeLayout(false);
         }
 

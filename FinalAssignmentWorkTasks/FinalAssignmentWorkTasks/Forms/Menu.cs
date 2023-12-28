@@ -30,7 +30,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 lblUserLastname.Text = $"Last name: {_loggedInEmployee.LastName}";
                 lblUserDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
             }
-            else 
+            else
             {
                 lblUserEmail.Text = "Email: Not logged in";
                 lblUserFirstname.Text = "First name: Not logged in";
@@ -59,6 +59,13 @@ namespace FinalAssignmentWorkTasks.Forms
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new Login();
+            temp.Show();
+        }
+
+        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
             var temp = new Login();

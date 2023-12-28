@@ -136,6 +136,7 @@
             Padding = new Padding(1);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
+            FormClosed += Login_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }

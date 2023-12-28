@@ -53,6 +53,7 @@
             Name = "CreateTask";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CreateTask";
+            FormClosed += CreateTask_FormClosed;
             ResumeLayout(false);
         }
 

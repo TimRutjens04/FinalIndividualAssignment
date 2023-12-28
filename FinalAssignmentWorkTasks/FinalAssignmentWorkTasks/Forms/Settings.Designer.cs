@@ -53,6 +53,7 @@
             Name = "Settings";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Settings";
+            FormClosed += Settings_FormClosed;
             ResumeLayout(false);
         }
 

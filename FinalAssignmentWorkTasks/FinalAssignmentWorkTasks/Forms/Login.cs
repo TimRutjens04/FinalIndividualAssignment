@@ -18,7 +18,7 @@ namespace FinalAssignmentWorkTasks
             string password = tbxPassword.Text.Trim();
             Department department;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password)) 
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Please enter both username and password.");
                 return;
@@ -49,6 +49,11 @@ namespace FinalAssignmentWorkTasks
             {
                 MessageBox.Show($"Error logging in {username}, {password}, {department}");
             }
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
         }
     }
 }

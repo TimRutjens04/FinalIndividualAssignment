@@ -164,6 +164,7 @@
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            FormClosed += Menu_FormClosed;
             gbxLoggedInUser.ResumeLayout(false);
             gbxLoggedInUser.PerformLayout();
             ResumeLayout(false);
