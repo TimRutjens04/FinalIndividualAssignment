@@ -11,7 +11,7 @@ namespace FinalAssignmentWorkTasks.Forms
     public class SavedUser
     {
         private static SavedUser instance;
-        public List<Employee> employees = new List<Employee>();
+        public static List<Employee> Employees = new List<Employee>();
 
         public static SavedUser Instance 
         {
@@ -27,19 +27,18 @@ namespace FinalAssignmentWorkTasks.Forms
         public SavedUser() { }
         public SavedUser(string csvData) { }
         public Employee savedEmployee { get; private set; }
-        public void SetSavedInEmployee(Employee employee) 
+        public void SetSavedEmployee(Employee employee) 
         {
             savedEmployee = employee;
         }
         public bool EmployeeLogin(string username, string userpassword, out Department userDepartment)
         {
             userDepartment = Department.Unassigned;
-            // string filePath = "..//MOCK_EMPLOYEE_DATA.csv";
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
 
-            List<Employee> employees = Employee.LoadUserFromCsv(relativePath);
+            //List<Employee> employees = Employee.LoadUserFromCsv(relativePath);
 
-            foreach (Employee employee in employees)
+            foreach (Employee employee in Employees)
             {
                 if (employee.Email == username && employee.Id == userpassword)
                 {

@@ -33,6 +33,12 @@
             btnDashboard = new Button();
             btnNewTask = new Button();
             btnSettings = new Button();
+            gbxLoggedInUser = new GroupBox();
+            lblUserFirstname = new Label();
+            lblUserDepartment = new Label();
+            lblUserLastname = new Label();
+            lblUserEmail = new Label();
+            gbxLoggedInUser.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -93,12 +99,62 @@
             btnSettings.UseVisualStyleBackColor = true;
             btnSettings.Click += btnSettings_Click;
             // 
+            // gbxLoggedInUser
+            // 
+            gbxLoggedInUser.Controls.Add(lblUserFirstname);
+            gbxLoggedInUser.Controls.Add(lblUserDepartment);
+            gbxLoggedInUser.Controls.Add(lblUserLastname);
+            gbxLoggedInUser.Controls.Add(lblUserEmail);
+            gbxLoggedInUser.Location = new Point(695, 12);
+            gbxLoggedInUser.Name = "gbxLoggedInUser";
+            gbxLoggedInUser.Size = new Size(277, 165);
+            gbxLoggedInUser.TabIndex = 6;
+            gbxLoggedInUser.TabStop = false;
+            gbxLoggedInUser.Text = "Logged in user details:";
+            // 
+            // lblUserFirstname
+            // 
+            lblUserFirstname.AutoSize = true;
+            lblUserFirstname.Location = new Point(6, 65);
+            lblUserFirstname.Name = "lblUserFirstname";
+            lblUserFirstname.Size = new Size(65, 15);
+            lblUserFirstname.TabIndex = 3;
+            lblUserFirstname.Text = "First name:";
+            // 
+            // lblUserDepartment
+            // 
+            lblUserDepartment.AutoSize = true;
+            lblUserDepartment.Location = new Point(6, 128);
+            lblUserDepartment.Name = "lblUserDepartment";
+            lblUserDepartment.Size = new Size(73, 15);
+            lblUserDepartment.TabIndex = 2;
+            lblUserDepartment.Text = "Department:";
+            // 
+            // lblUserLastname
+            // 
+            lblUserLastname.AutoSize = true;
+            lblUserLastname.Location = new Point(6, 96);
+            lblUserLastname.Name = "lblUserLastname";
+            lblUserLastname.Size = new Size(64, 15);
+            lblUserLastname.TabIndex = 1;
+            lblUserLastname.Text = "Last name:";
+            // 
+            // lblUserEmail
+            // 
+            lblUserEmail.AutoSize = true;
+            lblUserEmail.Location = new Point(6, 33);
+            lblUserEmail.Name = "lblUserEmail";
+            lblUserEmail.Size = new Size(39, 15);
+            lblUserEmail.TabIndex = 0;
+            lblUserEmail.Text = "Email:";
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 192);
             ClientSize = new Size(984, 561);
+            Controls.Add(gbxLoggedInUser);
             Controls.Add(btnSettings);
             Controls.Add(btnNewTask);
             Controls.Add(btnDashboard);
@@ -107,6 +163,8 @@
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
+            gbxLoggedInUser.ResumeLayout(false);
+            gbxLoggedInUser.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -118,5 +176,10 @@
         private Button btnDashboard;
         private Button btnNewTask;
         private Button btnSettings;
+        private GroupBox gbxLoggedInUser;
+        private Label lblUserFirstname;
+        private Label lblUserDepartment;
+        private Label lblUserLastname;
+        private Label lblUserEmail;
     }
 }

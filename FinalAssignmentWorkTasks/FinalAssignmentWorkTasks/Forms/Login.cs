@@ -14,9 +14,6 @@ namespace FinalAssignmentWorkTasks
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            ///
-            /// Add login logic later
-            ///
             string username = tbxUsername.Text.Trim();
             string password = tbxPassword.Text.Trim();
             Department department;
@@ -29,23 +26,30 @@ namespace FinalAssignmentWorkTasks
 
             bool rememberMe = cbxRememberMe.Checked; //doesnt work yet
 
-            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            SavedUser user = new SavedUser(relativePath);
-            List<Employee> employees = user.employees;
+            SavedUser user = SavedUser.Instance;
+
+            if (SavedUser.Employees.Count == 0)
+            {
+                string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+                SavedUser.Employees = Employee.LoadUserFromCsv(relativePath);
+            }
 
             if (user.EmployeeLogin(username, password, out department))
             {
-                Employee savedEmployee = Employee.GetUserFromCredentials(employees, username, password);
+                Employee savedEmployee = Employee.GetUserFromCredentials(SavedUser.Employees, username, password);
+
+                // Update the SavedUser instance
+                user.SetSavedEmployee(savedEmployee);
+
                 MessageBox.Show(username);
-                employees.Add(savedEmployee);
-                
                 this.Hide();
                 var temp = new Menu(savedEmployee);
                 temp.Show();
             }
-            else { MessageBox.Show($"Error logging in {username}, {password}, {department}");}
-
-            
+            else
+            {
+                MessageBox.Show($"Error logging in {username}, {password}, {department}");
+            }
         }
     }
 }

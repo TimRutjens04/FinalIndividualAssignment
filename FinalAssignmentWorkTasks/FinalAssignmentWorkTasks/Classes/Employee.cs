@@ -31,13 +31,6 @@ namespace FinalAssignmentWorkTasks
             Department = department;
         }
 
-        /*
-        public static Employee CreateEmployee(string email, string id, string firstName, string lastName, Department department)
-        {
-            return new Employee(email, id, firstName, lastName, department);
-        }
-        */
-
         public static List<Employee> LoadUserFromCsv(string filePath)
         {
             List<Employee> employees = new List<Employee>();

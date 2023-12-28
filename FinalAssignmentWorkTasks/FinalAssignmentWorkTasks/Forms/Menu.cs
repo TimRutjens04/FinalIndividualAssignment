@@ -13,13 +13,30 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class Menu : Form
     {
+        SavedUser savedUser = SavedUser.Instance;
+        Employee _loggedInEmployee;
+        Employee _employee = new Employee();
         public Menu()
         {
             InitializeComponent();
         }
-        public Menu(Employee employee)
+        public Menu(Employee employee) : this()
         {
-            InitializeComponent();
+            _loggedInEmployee = employee;
+            if (_loggedInEmployee != null)
+            {
+                lblUserEmail.Text = $"Email: {_loggedInEmployee.Email}";
+                lblUserFirstname.Text = $"First name: {_loggedInEmployee.FirstName}";
+                lblUserLastname.Text = $"Last name: {_loggedInEmployee.LastName}";
+                lblUserDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
+            }
+            else 
+            {
+                lblUserEmail.Text = "Email: Not logged in";
+                lblUserFirstname.Text = "First name: Not logged in";
+                lblUserLastname.Text = "Last name: Not logged in";
+                lblUserDepartment.Text = "Department: Not logged in";
+            }
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -39,7 +56,6 @@ namespace FinalAssignmentWorkTasks.Forms
             this.Hide();
             var temp = new Settings();
             temp.Show();
-
         }
 
         private void btnLogOut_Click(object sender, EventArgs e)
@@ -48,7 +64,21 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
+        /*
+        private void UpdateLoggedInUserLabel()
+        {
+            if (savedUser.LoggedInUser != null)
+            {
+                string loggedInUserText = savedUser.LoggedInUser.Name.ToString();
+                lblUserEmail.Text = $"Logged in as: {loggedInUserText}";
+            }
+            else
+            {
+                lblUserEmail.Text = "Not logged in";
+            }
+        }
+        */
 
-        
+
     }
 }
