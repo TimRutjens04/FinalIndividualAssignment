@@ -45,7 +45,8 @@ namespace FinalAssignmentWorkTasks
                     string[] fields = parser.ReadFields();
                     if (fields.Length == 11)
                     {
-                        if (Enum.TryParse(fields[10], out Department department))
+                        string departmentString = fields[10].Replace(" ", "_");
+                        if (Enum.TryParse(departmentString, out Department department))
                         {
                             Employee newEmployee = new Employee()
                             {
