@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskDashboard));
             btnMenu = new Button();
             SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             BackColor = Color.Silver;
             ClientSize = new Size(984, 561);
             Controls.Add(btnMenu);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TaskDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaskDashboard";

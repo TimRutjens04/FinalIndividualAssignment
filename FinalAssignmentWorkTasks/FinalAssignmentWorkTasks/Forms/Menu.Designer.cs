@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             label1 = new Label();
             btnLogOut = new Button();
             btnDashboard = new Button();
@@ -161,6 +162,7 @@
             Controls.Add(btnDashboard);
             Controls.Add(btnLogOut);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Menu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";

@@ -17,11 +17,14 @@ namespace FinalAssignmentWorkTasks.Forms
         public CreateTask()
         {
             InitializeComponent();
+            monthCalendarDueTime.MinDate = DateTime.Today;
+            monthCalendarDueTime.MaxSelectionCount = 1;
         }
 
         public CreateTask(Employee employee) : this()
         {
             _loggedInEmployee = employee;
+            //lblDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -36,6 +39,12 @@ namespace FinalAssignmentWorkTasks.Forms
             this.Hide();
             var temp = new Login();
             temp.Show();
+        }
+
+        private void btnCreateTask_Click(object sender, EventArgs e)
+        {
+            string test = monthCalendarDueTime.SelectionStart.ToString();
+            MessageBox.Show(test);
         }
     }
 }
