@@ -17,7 +17,7 @@ namespace FinalAssignmentWorkTasks
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public Department Department { get; set; }
-        public string DisplayData => $"{FirstName} {LastName}\nDepartment: {Department}";
+        public string DisplayData => $"{FirstName} {LastName} (Department: {Department})\n";
 
         public Employee()
         {

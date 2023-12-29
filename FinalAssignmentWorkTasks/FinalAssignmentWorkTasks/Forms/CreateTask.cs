@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -49,8 +50,17 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
+            string taskTitle = tbxTaskName.Text;
+            string taskDescription = tbxTaskDescription.Text;
             string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
-            MessageBox.Show($"Task succesfully created.\nDue date: {date}\nAssigned employees: blabla");
+            string assignedEmployees = "";
+
+            foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
+            {
+                assignedEmployees += checkedItem.ToString();                
+            }
+
+            MessageBox.Show($"Task succesfully created.\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
         }
 
         private void InitializeCheckboxes()
@@ -95,6 +105,5 @@ namespace FinalAssignmentWorkTasks.Forms
             clbxAssignedEmployees.Items.Clear();
             clbxAssignedEmployees.Items.AddRange(employees.Select(employee => employee.DisplayData).ToArray());
         }
-
     }
 }
