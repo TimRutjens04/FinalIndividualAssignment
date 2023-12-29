@@ -20,7 +20,7 @@ namespace FinalAssignmentWorkTasks
 
         public Task() { }
 
-        public Task(int taskId, string taskName, string taskDescription, DateTime timeDue, List<Task> tasks, List<Employee> assignedEmployees, Department department, FinalAssignmentWorkTasks.Classes.TaskStatus status)
+        public Task(int taskId, string taskName, string taskDescription, DateTime timeDue, List<Task> tasks, List<Employee> assignedEmployees, FinalAssignmentWorkTasks.Classes.TaskStatus status)
         {
             TaskId = taskId;
             TaskName = taskName;
@@ -28,7 +28,6 @@ namespace FinalAssignmentWorkTasks
             TimeDue = timeDue;
             Tasks = tasks ?? new List<Task>();
             AssignedEmployees = assignedEmployees ?? new List<Employee>();
-            Department = department;
             Status = status;
         }
 

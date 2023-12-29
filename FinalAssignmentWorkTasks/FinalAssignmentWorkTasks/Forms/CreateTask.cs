@@ -19,6 +19,8 @@ namespace FinalAssignmentWorkTasks.Forms
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         private List<Employee> selectedEmployeeList;
+        private List<Task> tasks = new List<Task>();
+        private int initialTask = 1;
         public CreateTask()
         {
             InitializeComponent();
@@ -53,14 +55,18 @@ namespace FinalAssignmentWorkTasks.Forms
             string taskTitle = tbxTaskName.Text;
             string taskDescription = tbxTaskDescription.Text;
             string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
+            DateTime taskDate = monthCalendarDueTime.SelectionStart;
             string assignedEmployees = "";
+            FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
 
             foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
             {
                 assignedEmployees += checkedItem.ToString();                
             }
-
-            MessageBox.Show($"Task succesfully created.\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
+            int taskId = initialTask++;
+            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, tasks, selectedEmployeeList, statusOnCreate);
+            MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
+            tasks.Add(createdTask);
         }
 
         private void InitializeCheckboxes()
