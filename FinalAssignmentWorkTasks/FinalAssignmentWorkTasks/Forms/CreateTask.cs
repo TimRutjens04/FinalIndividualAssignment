@@ -21,6 +21,7 @@ namespace FinalAssignmentWorkTasks.Forms
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         private List<Employee> selectedEmployeeList;
+        private List<Department> selectedDepartmentList;
         private List<Task> tasks = new List<Task>();
         private int initialTask = 1;
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
@@ -52,6 +53,12 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
+        private void LoadEmployeeDataFromCsv()
+        {
+            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+            selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
+            selectedDepartmentList = departments;
+        }
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
@@ -63,12 +70,23 @@ namespace FinalAssignmentWorkTasks.Forms
             FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
 
             foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
-            {
-                assignedEmployees += checkedItem.ToString();                
+            {  
+                if (checkedItem is string employeeDisplayData) //need fix this
+                {
+                    Employee correctEmployee = selectedEmployeeList
+                                               .FirstOrDefault(emp => emp.DisplayData == employeeDisplayData);
+                    if (correctEmployee != null)
+                    {
+                        selectedEmployeeList.Add(correctEmployee);
+                        assignedEmployees += checkedItem.ToString();
+                    }
+                }
             }
+
             int taskId = initialTask++;
-            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, tasks, selectedEmployeeList, statusOnCreate);
+            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, tasks, selectedEmployeeList,selectedDepartmentList, statusOnCreate);
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
+
             tasks.Add(createdTask);
 
             string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
@@ -80,7 +98,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 try 
                 {
-                    serializer.Serialize(fs, task);
+                    serializer.Serialize(fs, createdTask);
                     MessageBox.Show($"Task succesfully saved at {fullPath}");
                 }
                 catch (Exception ex) 
@@ -97,13 +115,7 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxSales.CheckedChanged += CheckBox_CheckedChanged;
             cbxSupport.CheckedChanged += CheckBox_CheckedChanged;
             cbxRD.CheckedChanged += CheckBox_CheckedChanged;
-        }
-
-        private void LoadEmployeeDataFromCsv()
-        {
-            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            selectedEmployeeList = Employee.LoadUserFromCsv(relativePath);
-        }
+        }        
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {

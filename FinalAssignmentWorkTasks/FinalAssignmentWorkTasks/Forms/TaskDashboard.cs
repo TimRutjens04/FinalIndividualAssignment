@@ -22,7 +22,21 @@ namespace FinalAssignmentWorkTasks.Forms
         public TaskDashboard(Employee employee) : this()
         {
             _loggedInEmployee = employee;
-        }
+            if (_loggedInEmployee != null)
+            {
+                lblUserEmail.Text = $"Email: {_loggedInEmployee.Email}";
+                lblUserFirstname.Text = $"First name: {_loggedInEmployee.FirstName}";
+                lblUserLastname.Text = $"Last name: {_loggedInEmployee.LastName}";
+                lblUserDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
+            }
+            else
+            {
+                lblUserEmail.Text = "Email: Not logged in";
+                lblUserFirstname.Text = "First name: Not logged in";
+                lblUserLastname.Text = "Last name: Not logged in";
+                lblUserDepartment.Text = "Department: Not logged in";
+            }
+        }        
 
         private void btnMenu_Click(object sender, EventArgs e)
         {

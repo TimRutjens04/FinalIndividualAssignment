@@ -107,19 +107,20 @@
             gbxLoggedInUser.Controls.Add(lblUserDepartment);
             gbxLoggedInUser.Controls.Add(lblUserLastname);
             gbxLoggedInUser.Controls.Add(lblUserEmail);
+            gbxLoggedInUser.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
             gbxLoggedInUser.Location = new Point(695, 12);
             gbxLoggedInUser.Name = "gbxLoggedInUser";
             gbxLoggedInUser.Size = new Size(277, 165);
             gbxLoggedInUser.TabIndex = 6;
             gbxLoggedInUser.TabStop = false;
-            gbxLoggedInUser.Text = "Logged in user details:";
+            gbxLoggedInUser.Text = "User info:";
             // 
             // lblUserFirstname
             // 
             lblUserFirstname.AutoSize = true;
             lblUserFirstname.Location = new Point(6, 65);
             lblUserFirstname.Name = "lblUserFirstname";
-            lblUserFirstname.Size = new Size(65, 15);
+            lblUserFirstname.Size = new Size(64, 18);
             lblUserFirstname.TabIndex = 3;
             lblUserFirstname.Text = "First name:";
             // 
@@ -128,7 +129,7 @@
             lblUserDepartment.AutoSize = true;
             lblUserDepartment.Location = new Point(6, 128);
             lblUserDepartment.Name = "lblUserDepartment";
-            lblUserDepartment.Size = new Size(73, 15);
+            lblUserDepartment.Size = new Size(69, 18);
             lblUserDepartment.TabIndex = 2;
             lblUserDepartment.Text = "Department:";
             // 
@@ -137,7 +138,7 @@
             lblUserLastname.AutoSize = true;
             lblUserLastname.Location = new Point(6, 96);
             lblUserLastname.Name = "lblUserLastname";
-            lblUserLastname.Size = new Size(64, 15);
+            lblUserLastname.Size = new Size(62, 18);
             lblUserLastname.TabIndex = 1;
             lblUserLastname.Text = "Last name:";
             // 
@@ -146,7 +147,7 @@
             lblUserEmail.AutoSize = true;
             lblUserEmail.Location = new Point(6, 33);
             lblUserEmail.Name = "lblUserEmail";
-            lblUserEmail.Size = new Size(39, 15);
+            lblUserEmail.Size = new Size(38, 18);
             lblUserEmail.TabIndex = 0;
             lblUserEmail.Text = "Email:";
             // 

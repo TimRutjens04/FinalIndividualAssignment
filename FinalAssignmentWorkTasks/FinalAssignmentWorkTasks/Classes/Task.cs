@@ -26,13 +26,15 @@ namespace FinalAssignmentWorkTasks
         [DataMember]
         public List<Employee> AssignedEmployees { get; set; } = new List<Employee>();
         [DataMember]
+        public List<Department> AssignedDepartments { get; set; } = new List<Department>();
+        [DataMember]
         public Department Department { get; set; }
         [DataMember]
         public FinalAssignmentWorkTasks.Classes.TaskStatus Status { get; set; }
 
         public Task() { }
 
-        public Task(int taskId, string taskName, string taskDescription, DateTime timeDue, List<Task> tasks, List<Employee> assignedEmployees, FinalAssignmentWorkTasks.Classes.TaskStatus status)
+        public Task(int taskId, string taskName, string taskDescription, DateTime timeDue, List<Task> tasks, List<Employee> assignedEmployees,List<Department> assignedDepartments, FinalAssignmentWorkTasks.Classes.TaskStatus status)
         {
             TaskId = taskId;
             TaskName = taskName;
@@ -40,6 +42,7 @@ namespace FinalAssignmentWorkTasks
             TimeDue = timeDue;
             Tasks = tasks ?? new List<Task>();
             AssignedEmployees = assignedEmployees ?? new List<Employee>();
+            AssignedDepartments = assignedDepartments ?? new List<Department>();
             Status = status;
         }
 
