@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
@@ -16,11 +17,13 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class CreateTask : Form
     {
+        private Task task;
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         private List<Employee> selectedEmployeeList;
         private List<Task> tasks = new List<Task>();
         private int initialTask = 1;
+        private XmlSerializer serializer = new XmlSerializer(typeof(Task));
         public CreateTask()
         {
             InitializeComponent();
@@ -67,6 +70,24 @@ namespace FinalAssignmentWorkTasks.Forms
             Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, tasks, selectedEmployeeList, statusOnCreate);
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
             tasks.Add(createdTask);
+
+            string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
+            string directoryPath = Path.Combine(projectRoot, "Tasks");
+            string fileName = $"{taskTitle}_{taskId.ToString()}.xml";
+            string fullPath = Path.Combine(directoryPath, fileName);
+
+            using (FileStream fs = new(fullPath, FileMode.Create, FileAccess.Write))
+            {
+                try 
+                {
+                    serializer.Serialize(fs, task);
+                    MessageBox.Show($"Task succesfully saved at {fullPath}");
+                }
+                catch (Exception ex) 
+                {
+                    MessageBox.Show("Error saving data \n" + ex.Message);
+                }
+            }
         }
 
         private void InitializeCheckboxes()

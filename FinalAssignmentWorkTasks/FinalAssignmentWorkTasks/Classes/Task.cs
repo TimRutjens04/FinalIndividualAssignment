@@ -4,19 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace FinalAssignmentWorkTasks
 {
+    [DataContract]
     public class Task
     {
-        public int TaskId { get; private set; }
-        public string TaskName { get; private set; }
-        public string TaskDescription { get; private set; }
-        public DateTime TimeDue { get; private set; }
-        public List<Task> Tasks { get; private set; } = new List<Task>();
-        public List<Employee> AssignedEmployees { get; private set; } = new List<Employee>();
-        public Department Department { get; private set; }
-        public FinalAssignmentWorkTasks.Classes.TaskStatus Status { get; private set; }
+        [DataMember]
+        public int TaskId { get; set; }
+        [DataMember]
+        public string TaskName { get; set; }
+        [DataMember]
+        public string TaskDescription { get; set; }
+        [DataMember]
+        public DateTime TimeDue { get; set; }
+        [DataMember]
+        public List<Task> Tasks { get; set; } = new List<Task>();
+        [DataMember]
+        public List<Employee> AssignedEmployees { get; set; } = new List<Employee>();
+        [DataMember]
+        public Department Department { get; set; }
+        [DataMember]
+        public FinalAssignmentWorkTasks.Classes.TaskStatus Status { get; set; }
 
         public Task() { }
 
