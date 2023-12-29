@@ -84,7 +84,7 @@ namespace FinalAssignmentWorkTasks.Forms
             }
 
             int taskId = initialTask++;
-            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, tasks, selectedEmployeeList,selectedDepartmentList, statusOnCreate);
+            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList,selectedDepartmentList, statusOnCreate);
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 
             tasks.Add(createdTask);
