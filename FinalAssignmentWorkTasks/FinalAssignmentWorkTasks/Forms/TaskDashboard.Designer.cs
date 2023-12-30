@@ -30,14 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskDashboard));
             btnMenu = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewTasks = new DataGridView();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             lblUserDepartment = new Label();
             lblUserLastname = new Label();
             lblUserFirstname = new Label();
             lblUserEmail = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTasks).BeginInit();
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,14 +53,14 @@
             btnMenu.UseVisualStyleBackColor = true;
             btnMenu.Click += btnMenu_Click;
             // 
-            // dataGridView1
+            // dataGridViewTasks
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 12);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(727, 484);
-            dataGridView1.TabIndex = 3;
+            dataGridViewTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTasks.Location = new Point(12, 12);
+            dataGridViewTasks.Name = "dataGridViewTasks";
+            dataGridViewTasks.RowTemplate.Height = 25;
+            dataGridViewTasks.Size = new Size(727, 484);
+            dataGridViewTasks.TabIndex = 3;
             // 
             // groupBox1
             // 
@@ -132,14 +132,15 @@
             ClientSize = new Size(984, 561);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewTasks);
             Controls.Add(btnMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "TaskDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaskDashboard";
             FormClosed += TaskDashboard_FormClosed;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += TaskDashboard_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTasks).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
@@ -148,7 +149,7 @@
         #endregion
 
         private Button btnMenu;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewTasks;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private Label lblUserDepartment;

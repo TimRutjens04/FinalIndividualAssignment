@@ -22,7 +22,11 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         private List<Employee> selectedEmployeeList;
         private List<Department> selectedDepartmentList;
-        private List<Task> tasks = new List<Task>();
+        private static List<Task> tasks = new List<Task>(); 
+        public static List<Task> GetTasks
+        { 
+            get { return tasks; }
+        }
         private int initialTask = 1;
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private Dictionary<string, Employee> displayDataToEmployeeObject = new Dictionary<string, Employee>();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalAssignmentWorkTasks.Classes
 {
-    internal class TaskID
+    public class TaskID
     {
         public const string TaskIDFileName = "TaskID.txt";
         public static readonly string TaskIDFilePath = Path.Combine("Resources", TaskIDFileName);
