@@ -25,6 +25,7 @@ namespace FinalAssignmentWorkTasks.Forms
         private List<Task> tasks = new List<Task>();
         private int initialTask = 1;
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
+        private Dictionary<string, Employee> displayDataToEmployeeObject = new Dictionary<string, Employee>();
         public CreateTask()
         {
             InitializeComponent();
@@ -58,10 +59,17 @@ namespace FinalAssignmentWorkTasks.Forms
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
             selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
             selectedDepartmentList = departments;
+
+            foreach (var employee in selectedEmployeeList) 
+            {
+                displayDataToEmployeeObject.Add(employee.DisplayData, employee);
+            }
         }
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
+            selectedEmployeeList.Clear();
+            selectedDepartmentList.Clear();
             string taskTitle = tbxTaskName.Text;
             string taskDescription = tbxTaskDescription.Text;
             string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
@@ -71,15 +79,10 @@ namespace FinalAssignmentWorkTasks.Forms
 
             foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
             {  
-                if (checkedItem is string employeeDisplayData) //need fix this
+                if (checkedItem is string employeeDisplayData && displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
                 {
-                    Employee correctEmployee = selectedEmployeeList
-                                               .FirstOrDefault(emp => emp.DisplayData == employeeDisplayData);
-                    if (correctEmployee != null)
-                    {
-                        selectedEmployeeList.Add(correctEmployee);
-                        assignedEmployees += checkedItem.ToString();
-                    }
+                    selectedEmployeeList.Add(employee);
+                    assignedEmployees += employee.DisplayData + "\n";
                 }
             }
 
