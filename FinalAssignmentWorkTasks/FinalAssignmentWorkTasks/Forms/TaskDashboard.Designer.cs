@@ -55,9 +55,12 @@
             // 
             // dataGridViewTasks
             // 
+            dataGridViewTasks.AllowUserToAddRows = false;
+            dataGridViewTasks.AllowUserToDeleteRows = false;
             dataGridViewTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewTasks.Location = new Point(12, 12);
             dataGridViewTasks.Name = "dataGridViewTasks";
+            dataGridViewTasks.ReadOnly = true;
             dataGridViewTasks.RowTemplate.Height = 25;
             dataGridViewTasks.Size = new Size(727, 484);
             dataGridViewTasks.TabIndex = 3;

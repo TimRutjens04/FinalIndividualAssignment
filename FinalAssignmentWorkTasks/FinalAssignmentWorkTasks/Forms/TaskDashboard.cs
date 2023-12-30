@@ -15,7 +15,7 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
-        private List<Task> Tasks = new List<Task>();
+        private static List<Task> Tasks = new List<Task>();
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
 
         public TaskDashboard()
@@ -63,6 +63,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void TaskDashboard_Load(object sender, EventArgs e)
         {
+            Tasks.Clear();
             Tasks.AddRange(LoadTasksFromXmlFiles());
             dataGridViewTasks.DataSource = Tasks;
         }

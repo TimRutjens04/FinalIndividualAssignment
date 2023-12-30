@@ -29,6 +29,11 @@ namespace FinalAssignmentWorkTasks.Forms
                 lblUserFirstname.Text = $"First name: {_loggedInEmployee.FirstName}";
                 lblUserLastname.Text = $"Last name: {_loggedInEmployee.LastName}";
                 lblUserDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
+                if (_loggedInEmployee.Department == Classes.Department.Admin)
+                {
+                    btnAdminSettings.Visible = true;
+                }
+                else { btnAdminSettings.Visible = false; }
             }
             else
             {
@@ -69,6 +74,13 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             this.Hide();
             var temp = new Login();
+            temp.Show();
+        }
+
+        private void btnAdminSettings_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new SettingsAdmin(_loggedInEmployee);
             temp.Show();
         }
     }
