@@ -66,6 +66,19 @@ namespace FinalAssignmentWorkTasks.Forms
             }
         }
 
+        private List<Department> GetCheckedDepartments()
+        {
+            var checkedDepartments = new List<Department>();
+
+            if (cbxHR.Checked) checkedDepartments.Add(Department.Human_Resources);
+            if (cbxMarketing.Checked) checkedDepartments.Add(Department.Marketing);
+            if (cbxSales.Checked) checkedDepartments.Add(Department.Sales);
+            if (cbxSupport.Checked) checkedDepartments.Add(Department.Support);
+            if (cbxRD.Checked) checkedDepartments.Add(Department.Research_and_Development);
+
+            return checkedDepartments;
+        }
+
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
             selectedEmployeeList.Clear();
@@ -73,6 +86,7 @@ namespace FinalAssignmentWorkTasks.Forms
             string taskTitle = tbxTaskName.Text;
             string taskDescription = tbxTaskDescription.Text;
             string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
+            List<Department> checkedDepartments = GetCheckedDepartments();
             DateTime taskDate = monthCalendarDueTime.SelectionStart;
             string assignedEmployees = "";
             FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
@@ -87,7 +101,7 @@ namespace FinalAssignmentWorkTasks.Forms
             }
 
             int taskId = initialTask++;
-            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList,selectedDepartmentList, statusOnCreate);
+            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 
             tasks.Add(createdTask);
@@ -128,18 +142,7 @@ namespace FinalAssignmentWorkTasks.Forms
             UpdateCheckedListBox(filteredEmployees);
         }
 
-        private List<Department> GetCheckedDepartments()
-        {
-            var checkedDepartments = new List<Department>();
-
-            if (cbxHR.Checked) checkedDepartments.Add(Department.Human_Resources);
-            if (cbxMarketing.Checked) checkedDepartments.Add(Department.Marketing);
-            if (cbxSales.Checked) checkedDepartments.Add(Department.Sales);
-            if (cbxSupport.Checked) checkedDepartments.Add(Department.Support);
-            if (cbxRD.Checked) checkedDepartments.Add(Department.Research_and_Development);
-
-            return checkedDepartments;
-        }
+        
 
         private void UpdateCheckedListBox(List<Employee> employees)
         {
