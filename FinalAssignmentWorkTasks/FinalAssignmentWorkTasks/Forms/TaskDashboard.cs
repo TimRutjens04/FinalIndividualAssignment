@@ -26,6 +26,10 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 Tasks = CreateTask.GetTasks;
             }
+            if (dataGridViewTasks.SelectedRows == null) 
+            {
+                btnChangeSelectedTask.Enabled = false;
+            }
         }
 
         public TaskDashboard(Employee employee) : this()
@@ -118,11 +122,6 @@ namespace FinalAssignmentWorkTasks.Forms
                 }
                 else { MessageBox.Show($"There is an error with the task selection.\nPlease try again."); }
             }
-        }
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

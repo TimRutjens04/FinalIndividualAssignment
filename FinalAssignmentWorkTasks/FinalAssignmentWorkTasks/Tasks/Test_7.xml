@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TaskId>7</TaskId>
+  <TaskName>Test</TaskName>
+  <TaskDescription>Test for departments</TaskDescription>
+  <TimeDue>2024-01-24T00:00:00</TimeDue>
+  <Tasks />
+  <AssignedEmployees />
+  <AssignedDepartments>
+    <Department>Marketing</Department>
+    <Department>Research_and_Development</Department>
+  </AssignedDepartments>
+  <Department>Unassigned</Department>
+  <Status>Open</Status>
+</Task>

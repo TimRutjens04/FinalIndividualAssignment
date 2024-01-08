@@ -156,7 +156,7 @@
             // 
             btnAdminSettings.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btnAdminSettings.ForeColor = SystemColors.ControlText;
-            btnAdminSettings.Location = new Point(546, 262);
+            btnAdminSettings.Location = new Point(759, 183);
             btnAdminSettings.Name = "btnAdminSettings";
             btnAdminSettings.RightToLeft = RightToLeft.No;
             btnAdminSettings.Size = new Size(150, 47);
