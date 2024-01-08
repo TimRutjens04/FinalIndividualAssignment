@@ -116,6 +116,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
                     MessageBox.Show($"Selected task:\nID: {taskId}\nTitle: {taskTitle}\nDescription: {taskDescription}\nTime due: {taskTimeDue}\nStatus: {taskStatus}\nAssigned employees: {taskAssignedEmployees}\nAssigned departments: {taskAssignedDepartments}");
                 }
+                else { MessageBox.Show($"There is an error with the task selection.\nPlease try again.");}
             }
         }
     }
