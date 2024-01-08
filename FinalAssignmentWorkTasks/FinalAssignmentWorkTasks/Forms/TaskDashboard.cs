@@ -63,9 +63,13 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void btnChangeSelectedTask_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            var temp = new ChangeTask(_loggedInEmployee, _selectedTask);
-            temp.Show();
+            if (_selectedTask != null)
+            {
+                this.Hide();
+                var temp = new CreateTask(_loggedInEmployee, _selectedTask);
+                temp.Show();
+            }
+            else { MessageBox.Show("Please select a task"); }
         }
 
         private void TaskDashboard_FormClosed(object sender, FormClosedEventArgs e)

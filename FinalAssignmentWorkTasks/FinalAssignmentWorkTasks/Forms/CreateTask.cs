@@ -17,7 +17,7 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class CreateTask : Form
     {
-        private Task task;
+        Task _task;
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         private List<Employee> selectedEmployeeList;
@@ -42,6 +42,11 @@ namespace FinalAssignmentWorkTasks.Forms
         public CreateTask(Employee employee) : this()
         {
             _loggedInEmployee = employee;
+        }
+        public CreateTask(Employee employee, Task task) : this()
+        {
+            _loggedInEmployee = employee;
+            _task = task;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
