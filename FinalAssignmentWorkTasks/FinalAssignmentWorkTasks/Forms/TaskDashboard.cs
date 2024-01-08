@@ -17,6 +17,7 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         private static List<Task> Tasks = new List<Task>();
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
+        private DataTable tasksDataTable = new DataTable();
 
         public TaskDashboard()
         {
@@ -26,7 +27,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 Tasks = CreateTask.GetTasks;
             }
-            if (dataGridViewTasks.SelectedRows == null) 
+            if (dataGridViewTasks.SelectedRows == null)
             {
                 btnChangeSelectedTask.Enabled = false;
             }
@@ -69,7 +70,8 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             Tasks.Clear();
             Tasks.AddRange(LoadTasksFromXmlFiles());
-            dataGridViewTasks.DataSource = Tasks;
+            tasksDataTable = ConvertToDataTable(Tasks);
+            dataGridViewTasks.DataSource = tasksDataTable;
         }
 
         private List<Task> LoadTasksFromXmlFiles()
@@ -105,23 +107,65 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             if (e.RowIndex >= 0)
             {
-                Task selectedTask = dataGridViewTasks.Rows[e.RowIndex].DataBoundItem as Task;
+                DataRowView selectedDataRowView = dataGridViewTasks.Rows[e.RowIndex].DataBoundItem as DataRowView;
 
-                if (selectedTask != null)
+                if (selectedDataRowView != null)
                 {
-                    string taskId = selectedTask.TaskId.ToString();
-                    string taskTitle = selectedTask.TaskName;
-                    string taskDescription = selectedTask.TaskDescription;
-                    string taskTimeDue = selectedTask.TimeDue.ToString();
-                    string taskStatus = selectedTask.Status.ToString();
+                    DataRow selectedDataRow = selectedDataRowView.Row;
 
-                    string taskAssignedEmployees = string.Join(", ", selectedTask.AssignedEmployees.Select(employee => employee.FullName));
-                    string taskAssignedDepartments = string.Join(", ", selectedTask.AssignedDepartments);
+                    int taskId = Convert.ToInt32(selectedDataRow["TaskId"]);
+                    Task selectedTask = Tasks.FirstOrDefault(task => task.TaskId == taskId);
 
-                    MessageBox.Show($"Selected task:\nID: {taskId}\nTitle: {taskTitle}\nDescription: {taskDescription}\nTime due: {taskTimeDue}\nStatus: {taskStatus}\nAssigned employees: {taskAssignedEmployees}\nAssigned departments: {taskAssignedDepartments}");
+                    if (selectedTask != null)
+                    {
+                        string taskTitle = selectedTask.TaskName;
+                        string taskDescription = selectedTask.TaskDescription;
+                        string taskTimeDue = selectedTask.TimeDue.ToString();
+                        string taskStatus = selectedTask.Status.ToString();
+
+                        string taskAssignedEmployees = string.Join(", ", selectedTask.AssignedEmployees.Select(employee => employee.FullName));
+                        string taskAssignedDepartments = string.Join(", ", selectedTask.AssignedDepartments);
+
+                        MessageBox.Show($"Selected task:\nID: {taskId}\nTitle: {taskTitle}\nDescription: {taskDescription}\nTime due: {taskTimeDue}\nStatus: {taskStatus}\nAssigned employees: {taskAssignedEmployees}\nAssigned departments: {taskAssignedDepartments}");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Task not found.");
+                    }
                 }
-                else { MessageBox.Show($"There is an error with the task selection.\nPlease try again."); }
+                else
+                {
+                    MessageBox.Show($"There is an error with the task selection.\nPlease try again.");
+                }
             }
+        }
+
+        private DataTable ConvertToDataTable(List<Task> tasks)
+        {
+            DataTable dataTable = new DataTable();
+
+            dataTable.Columns.Add("TaskId", typeof(int));
+            dataTable.Columns.Add("TaskName", typeof(string));
+            dataTable.Columns.Add("TaskDescription", typeof(string));
+            dataTable.Columns.Add("TimeDue", typeof(DateTime));
+            dataTable.Columns.Add("Status", typeof(FinalAssignmentWorkTasks.Classes.TaskStatus));
+
+            foreach (var task in tasks)
+            {
+                dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, task.Status);
+            }
+
+            return dataTable;
+        }
+
+        private void tbxTitle_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tbxId_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

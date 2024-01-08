@@ -116,6 +116,7 @@
             tbxId.Name = "tbxId";
             tbxId.Size = new Size(168, 25);
             tbxId.TabIndex = 17;
+            tbxId.TextChanged += tbxId_TextChanged;
             // 
             // tbxTitle
             // 
@@ -125,6 +126,7 @@
             tbxTitle.Name = "tbxTitle";
             tbxTitle.Size = new Size(168, 25);
             tbxTitle.TabIndex = 16;
+            tbxTitle.TextChanged += tbxTitle_TextChanged;
             // 
             // cbxStatusInProgress
             // 
