@@ -16,6 +16,7 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
+        Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
@@ -58,6 +59,12 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             this.Hide();
             var temp = new Menu(_loggedInEmployee);
+            temp.Show();
+        }
+        private void btnChangeSelectedTask_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new ChangeTask(_loggedInEmployee, _selectedTask);
             temp.Show();
         }
 
@@ -235,6 +242,5 @@ namespace FinalAssignmentWorkTasks.Forms
 
             return checkedStatuses;
         }
-
     }
 }

@@ -319,6 +319,7 @@
             btnChangeSelectedTask.TabIndex = 6;
             btnChangeSelectedTask.Text = "Edit selected task";
             btnChangeSelectedTask.UseVisualStyleBackColor = true;
+            btnChangeSelectedTask.Click += btnChangeSelectedTask_Click;
             // 
             // TaskDashboard
             // 
