@@ -18,6 +18,7 @@ namespace FinalAssignmentWorkTasks
         public string LastName { get; set; }
         public Department Department { get; set; }
         public string DisplayData => $"{FirstName} {LastName} (Department: {Department})\n";
+        public string FullName => $"{FirstName} {LastName}";
 
         public Employee()
         {
@@ -30,6 +31,10 @@ namespace FinalAssignmentWorkTasks
             FirstName = firstName;
             LastName = lastName;
             Department = department;
+        }
+        public override string ToString()
+        {
+            return FullName;
         }
         public static List<Employee> LoadUserFromCsv(string filePath, out List<Department> departments)
         {

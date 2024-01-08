@@ -45,9 +45,10 @@
             // 
             btnMenu.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenu.ForeColor = SystemColors.ControlText;
-            btnMenu.Location = new Point(12, 502);
+            btnMenu.Location = new Point(17, 837);
+            btnMenu.Margin = new Padding(4, 5, 4, 5);
             btnMenu.Name = "btnMenu";
-            btnMenu.Size = new Size(111, 47);
+            btnMenu.Size = new Size(159, 78);
             btnMenu.TabIndex = 2;
             btnMenu.Text = "Menu";
             btnMenu.UseVisualStyleBackColor = true;
@@ -58,20 +59,25 @@
             dataGridViewTasks.AllowUserToAddRows = false;
             dataGridViewTasks.AllowUserToDeleteRows = false;
             dataGridViewTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTasks.Location = new Point(12, 12);
+            dataGridViewTasks.Location = new Point(17, 20);
+            dataGridViewTasks.Margin = new Padding(4, 5, 4, 5);
             dataGridViewTasks.Name = "dataGridViewTasks";
             dataGridViewTasks.ReadOnly = true;
+            dataGridViewTasks.RowHeadersWidth = 62;
             dataGridViewTasks.RowTemplate.Height = 25;
-            dataGridViewTasks.Size = new Size(727, 484);
+            dataGridViewTasks.Size = new Size(1039, 807);
             dataGridViewTasks.TabIndex = 3;
+            dataGridViewTasks.CellClick += dataGridViewTasks_CellClick;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.White;
             groupBox1.Font = new Font("Bahnschrift Condensed", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(745, 12);
+            groupBox1.Location = new Point(1064, 20);
+            groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(227, 318);
+            groupBox1.Padding = new Padding(4, 5, 4, 5);
+            groupBox1.Size = new Size(324, 530);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Controls";
@@ -84,9 +90,11 @@
             groupBox2.Controls.Add(lblUserFirstname);
             groupBox2.Controls.Add(lblUserEmail);
             groupBox2.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox2.Location = new Point(745, 336);
+            groupBox2.Location = new Point(1064, 560);
+            groupBox2.Margin = new Padding(4, 5, 4, 5);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(227, 160);
+            groupBox2.Padding = new Padding(4, 5, 4, 5);
+            groupBox2.Size = new Size(324, 267);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             groupBox2.Text = "User info";
@@ -94,50 +102,55 @@
             // lblUserDepartment
             // 
             lblUserDepartment.AutoSize = true;
-            lblUserDepartment.Location = new Point(6, 120);
+            lblUserDepartment.Location = new Point(9, 200);
+            lblUserDepartment.Margin = new Padding(4, 0, 4, 0);
             lblUserDepartment.Name = "lblUserDepartment";
-            lblUserDepartment.Size = new Size(69, 18);
+            lblUserDepartment.Size = new Size(105, 28);
             lblUserDepartment.TabIndex = 3;
             lblUserDepartment.Text = "Department:";
             // 
             // lblUserLastname
             // 
             lblUserLastname.AutoSize = true;
-            lblUserLastname.Location = new Point(6, 89);
+            lblUserLastname.Location = new Point(9, 148);
+            lblUserLastname.Margin = new Padding(4, 0, 4, 0);
             lblUserLastname.Name = "lblUserLastname";
-            lblUserLastname.Size = new Size(62, 18);
+            lblUserLastname.Size = new Size(94, 28);
             lblUserLastname.TabIndex = 2;
             lblUserLastname.Text = "Last name:";
             // 
             // lblUserFirstname
             // 
             lblUserFirstname.AutoSize = true;
-            lblUserFirstname.Location = new Point(6, 56);
+            lblUserFirstname.Location = new Point(9, 93);
+            lblUserFirstname.Margin = new Padding(4, 0, 4, 0);
             lblUserFirstname.Name = "lblUserFirstname";
-            lblUserFirstname.Size = new Size(64, 18);
+            lblUserFirstname.Size = new Size(97, 28);
             lblUserFirstname.TabIndex = 1;
             lblUserFirstname.Text = "First name:";
             // 
             // lblUserEmail
             // 
             lblUserEmail.AutoSize = true;
-            lblUserEmail.Location = new Point(6, 26);
+            lblUserEmail.Location = new Point(9, 43);
+            lblUserEmail.Margin = new Padding(4, 0, 4, 0);
             lblUserEmail.Name = "lblUserEmail";
-            lblUserEmail.Size = new Size(38, 18);
+            lblUserEmail.Size = new Size(58, 28);
             lblUserEmail.TabIndex = 0;
             lblUserEmail.Text = "Email:";
             // 
             // TaskDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(984, 561);
+            ClientSize = new Size(1406, 935);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(dataGridViewTasks);
             Controls.Add(btnMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
             Name = "TaskDashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaskDashboard";

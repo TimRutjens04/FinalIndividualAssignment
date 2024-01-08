@@ -28,8 +28,6 @@ namespace FinalAssignmentWorkTasks
         [DataMember]
         public List<Department> AssignedDepartments { get; set; } = new List<Department>();
         [DataMember]
-        public Department Department { get; set; }
-        [DataMember]
         public FinalAssignmentWorkTasks.Classes.TaskStatus Status { get; set; }
 
         public Task() { }

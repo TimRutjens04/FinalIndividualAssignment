@@ -22,7 +22,7 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             InitializeComponent();
             CreateTask createTaskForm = new CreateTask();
-            if (createTaskForm != null) 
+            if (createTaskForm != null)
             {
                 Tasks = CreateTask.GetTasks;
             }
@@ -95,6 +95,28 @@ namespace FinalAssignmentWorkTasks.Forms
                 }
             }
             return tasks;
+        }
+
+        private void dataGridViewTasks_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) 
+            {
+                Task selectedTask = dataGridViewTasks.Rows[e.RowIndex].DataBoundItem as Task;
+
+                if (selectedTask != null)
+                {
+                    string taskId = selectedTask.TaskId.ToString();
+                    string taskTitle = selectedTask.TaskName;
+                    string taskDescription = selectedTask.TaskDescription;
+                    string taskTimeDue = selectedTask.TimeDue.ToString();
+                    string taskStatus = selectedTask.Status.ToString();
+
+                    string taskAssignedEmployees = string.Join(", ", selectedTask.AssignedEmployees.Select(employee => employee.FullName));
+                    string taskAssignedDepartments = string.Join(", ", selectedTask.AssignedDepartments);
+
+                    MessageBox.Show($"Selected task:\nID: {taskId}\nTitle: {taskTitle}\nDescription: {taskDescription}\nTime due: {taskTimeDue}\nStatus: {taskStatus}\nAssigned employees: {taskAssignedEmployees}\nAssigned departments: {taskAssignedDepartments}");
+                }
+            }
         }
     }
 }
