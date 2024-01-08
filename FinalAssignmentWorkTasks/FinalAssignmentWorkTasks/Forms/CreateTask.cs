@@ -42,7 +42,6 @@ namespace FinalAssignmentWorkTasks.Forms
         public CreateTask(Employee employee) : this()
         {
             _loggedInEmployee = employee;
-            //lblDepartment.Text = $"Department: {_loggedInEmployee.Department.ToString()}";
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -150,7 +149,6 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void UpdateCheckedListBox(List<Employee> employees)
         {
-            // Clear and update the CheckedListBox with the filtered employees
             clbxAssignedEmployees.Items.Clear();
             clbxAssignedEmployees.Items.AddRange(employees.Select(employee => employee.DisplayData).ToArray());
         }

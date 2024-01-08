@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalAssignmentWorkTasks.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -36,6 +37,7 @@ namespace FinalAssignmentWorkTasks.Forms
         public TaskDashboard(Employee employee) : this()
         {
             _loggedInEmployee = employee;
+            InitializeCheckboxes();
             if (_loggedInEmployee != null)
             {
                 lblUserEmail.Text = $"Email: {_loggedInEmployee.Email}";
@@ -149,10 +151,14 @@ namespace FinalAssignmentWorkTasks.Forms
             dataTable.Columns.Add("TaskDescription", typeof(string));
             dataTable.Columns.Add("TimeDue", typeof(DateTime));
             dataTable.Columns.Add("Status", typeof(FinalAssignmentWorkTasks.Classes.TaskStatus));
+            dataTable.Columns.Add("Department", typeof(string));
+            dataTable.Columns.Add("Assigned employees", typeof(string));
 
             foreach (var task in tasks)
             {
-                dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, task.Status);
+                string assignedDepartments = string.Join(", ", task.AssignedDepartments.Select(dep => dep.ToString()));
+                string assignedEmployees = string.Join(", ", task.AssignedEmployees.Select(emp => emp.ToString()));
+                dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, task.Status, assignedDepartments, assignedEmployees);
             }
 
             return dataTable;
@@ -169,5 +175,66 @@ namespace FinalAssignmentWorkTasks.Forms
             string filterField = "TaskId";
             tasksDataTable.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", filterField, tbxId.Text);
         }
+        private void InitializeCheckboxes()
+        {
+            cbxDepartmentHr.CheckedChanged += CheckBox_CheckedChanged;
+            cbxDepartmentMarketing.CheckedChanged += CheckBox_CheckedChanged;
+            cbxDepartmentSales.CheckedChanged += CheckBox_CheckedChanged;
+            cbxDepartmentSupport.CheckedChanged += CheckBox_CheckedChanged;
+            cbxDepartmentRd.CheckedChanged += CheckBox_CheckedChanged;
+
+            cbxStatusOpen.CheckedChanged += CheckBox_CheckedChanged;
+        }
+
+        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            /// This does not work yet, breaks when selecting any Department checkbox
+            var checkedDepartments = GetCheckedDepartments();
+            var checkedStatuses = GetCheckedStatuses();
+
+            // Assuming dtTasks is your DataTable
+            var dataTable = ConvertToDataTable(Tasks);
+            var filteredRows = dataTable.AsEnumerable()
+                .Where(row =>
+                    {
+                        var assignedDepartments = row.Field<string>("Department");
+                        var departmentsList = assignedDepartments.Split(',').Select(s => s.Trim());
+
+                        return checkedDepartments.Any(dep => departmentsList.Contains(dep.ToString())) &&
+                               checkedStatuses.Contains(row.Field<FinalAssignmentWorkTasks.Classes.TaskStatus>("Status"));
+                    })
+                .CopyToDataTable();
+
+            dataGridViewTasks.DataSource = filteredRows;
+        }
+
+
+        private List<Department> GetCheckedDepartments()
+        {
+            var checkedDepartments = new List<Department>();
+
+            if (cbxDepartmentHr.Checked) checkedDepartments.Add(Department.Human_Resources);
+            if (cbxDepartmentMarketing.Checked) checkedDepartments.Add(Department.Marketing);
+            if (cbxDepartmentSales.Checked) checkedDepartments.Add(Department.Sales);
+            if (cbxDepartmentSupport.Checked) checkedDepartments.Add(Department.Support);
+            if (cbxDepartmentRd.Checked) checkedDepartments.Add(Department.Research_and_Development);
+
+            return checkedDepartments;
+        }
+
+        // Similar method for statuses
+        private List<FinalAssignmentWorkTasks.Classes.TaskStatus> GetCheckedStatuses()
+        {
+            var checkedStatuses = new List<FinalAssignmentWorkTasks.Classes.TaskStatus>();
+
+            if (cbxStatusOpen.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Open);
+            if (cbxStatusInProgress.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.In_Progress);
+            if (cbxStatusCompleted.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Completed);
+            if (cbxStatusBlocked.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Blocked);
+            if (cbxStatusCancelled.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Cancelled);
+
+            return checkedStatuses;
+        }
+
     }
 }

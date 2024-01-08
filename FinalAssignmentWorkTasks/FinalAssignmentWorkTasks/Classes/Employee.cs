@@ -4,20 +4,29 @@ using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FinalAssignmentWorkTasks
 {
+    [DataContract]
     public class Employee
     {
+        [DataMember]
         public string Id { get; set; } // will be "password" for login
+        [DataMember]
         public string Email { get; set; } // will be "username" for login
+        [DataMember]
         public string FirstName { get; set; }
+        [DataMember]
         public string LastName { get; set; }
+        [DataMember]
         public Department Department { get; set; }
+        [DataMember]
         public string DisplayData => $"{FirstName} {LastName} (Department: {Department})\n";
+        [DataMember]
         public string FullName => $"{FirstName} {LastName}";
 
         public Employee()
