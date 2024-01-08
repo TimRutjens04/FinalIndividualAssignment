@@ -160,12 +160,14 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void tbxTitle_TextChanged(object sender, EventArgs e)
         {
-            
+            string filterField = "TaskName";
+            tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxTitle.Text);
         }
 
         private void tbxId_TextChanged(object sender, EventArgs e)
         {
-
+            string filterField = "TaskId";
+            tasksDataTable.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", filterField, tbxId.Text);
         }
     }
 }
