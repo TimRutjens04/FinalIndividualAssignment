@@ -75,14 +75,14 @@
             // 
             // tbxTaskName
             // 
-            tbxTaskName.Location = new Point(151, 76);
+            tbxTaskName.Location = new Point(148, 42);
             tbxTaskName.Name = "tbxTaskName";
             tbxTaskName.Size = new Size(249, 27);
             tbxTaskName.TabIndex = 5;
             // 
             // tbxTaskDescription
             // 
-            tbxTaskDescription.Location = new Point(151, 110);
+            tbxTaskDescription.Location = new Point(148, 76);
             tbxTaskDescription.Multiline = true;
             tbxTaskDescription.Name = "tbxTaskDescription";
             tbxTaskDescription.ScrollBars = ScrollBars.Vertical;
@@ -187,7 +187,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(60, 332);
+            label4.Location = new Point(57, 298);
             label4.Name = "label4";
             label4.Size = new Size(58, 19);
             label4.TabIndex = 13;
@@ -205,7 +205,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(21, 171);
+            label2.Location = new Point(18, 137);
             label2.Name = "label2";
             label2.Size = new Size(97, 19);
             label2.TabIndex = 11;
@@ -214,7 +214,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(49, 79);
+            label1.Location = new Point(46, 45);
             label1.Name = "label1";
             label1.Size = new Size(69, 19);
             label1.TabIndex = 10;
@@ -222,7 +222,7 @@
             // 
             // monthCalendarDueTime
             // 
-            monthCalendarDueTime.Location = new Point(151, 268);
+            monthCalendarDueTime.Location = new Point(148, 234);
             monthCalendarDueTime.Name = "monthCalendarDueTime";
             monthCalendarDueTime.ShowToday = false;
             monthCalendarDueTime.ShowWeekNumbers = true;
