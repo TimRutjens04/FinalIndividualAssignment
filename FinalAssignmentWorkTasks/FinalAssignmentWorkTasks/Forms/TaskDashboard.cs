@@ -99,7 +99,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void dataGridViewTasks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0) 
+            if (e.RowIndex >= 0)
             {
                 Task selectedTask = dataGridViewTasks.Rows[e.RowIndex].DataBoundItem as Task;
 
@@ -116,8 +116,13 @@ namespace FinalAssignmentWorkTasks.Forms
 
                     MessageBox.Show($"Selected task:\nID: {taskId}\nTitle: {taskTitle}\nDescription: {taskDescription}\nTime due: {taskTimeDue}\nStatus: {taskStatus}\nAssigned employees: {taskAssignedEmployees}\nAssigned departments: {taskAssignedDepartments}");
                 }
-                else { MessageBox.Show($"There is an error with the task selection.\nPlease try again.");}
+                else { MessageBox.Show($"There is an error with the task selection.\nPlease try again."); }
             }
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
