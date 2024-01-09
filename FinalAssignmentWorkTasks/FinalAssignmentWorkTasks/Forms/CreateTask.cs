@@ -56,7 +56,7 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void CreateTask_Load(object sender, EventArgs e)
         {
-            //LoadEmployeeDataFromCsv();
+            LoadEmployeeDataFromCsv();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -80,7 +80,15 @@ namespace FinalAssignmentWorkTasks.Forms
 
             foreach (var employee in selectedEmployeeList)
             {
-                Employee.displayDataToEmployeeObject.Add(employee.DisplayData, employee);
+                if (Employee.displayDataToEmployeeObject.ContainsKey(employee.DisplayData))
+                {
+                    //update
+                    Employee.displayDataToEmployeeObject[employee.DisplayData] = employee;
+                }
+                else
+                {
+                    Employee.displayDataToEmployeeObject.Add(employee.DisplayData, employee);
+                }
             }
         }
 
@@ -154,6 +162,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
+            //CreateTask.LoadEmployeeDataFromCsv();
             var checkedDepartments = GetCheckedDepartments();
 
             var filteredEmployees = selectedEmployeeList.Where(employee => checkedDepartments.Contains(employee.Department)).ToList();
