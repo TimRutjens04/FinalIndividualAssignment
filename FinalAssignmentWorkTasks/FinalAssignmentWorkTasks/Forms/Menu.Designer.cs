@@ -166,18 +166,6 @@
             btnAdminSettings.UseVisualStyleBackColor = true;
             btnAdminSettings.Click += btnAdminSettings_Click;
             // 
-            // button1
-            // 
-            button1.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ControlText;
-            button1.Location = new Point(759, 236);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 73);
-            button1.TabIndex = 8;
-            button1.Text = "Test Dictionaries";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

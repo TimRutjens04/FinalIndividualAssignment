@@ -126,13 +126,5 @@ namespace FinalAssignmentWorkTasks
                 user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
                 user.Id == id);
         }
-        private static void AddEmployee(string fullName, Employee employee)
-        {
-            if (!addedEmployees.Contains(fullName))
-            {
-                fullNameToEmployeeObject.Add(fullName, employee);
-                addedEmployees.Add(fullName);
-            }
-        }
     }
 }

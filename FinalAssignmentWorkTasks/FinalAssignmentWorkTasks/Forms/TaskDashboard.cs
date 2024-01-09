@@ -199,7 +199,6 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxDepartmentSupport.CheckedChanged += CheckBox_CheckedChanged;
             cbxDepartmentRd.CheckedChanged += CheckBox_CheckedChanged;
 
-            // Assuming you have checkboxes for task statuses as well
             cbxStatusOpen.CheckedChanged += CheckBox_CheckedChanged;
             cbxStatusInProgress.CheckedChanged += CheckBox_CheckedChanged;
             cbxStatusCompleted.CheckedChanged += CheckBox_CheckedChanged;

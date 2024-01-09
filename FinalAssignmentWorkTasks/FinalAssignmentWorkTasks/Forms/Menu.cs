@@ -83,17 +83,5 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new SettingsAdmin(_loggedInEmployee);
             temp.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string displayData = string.Join(Environment.NewLine,
-                Employee.displayDataToEmployeeObject.Select(kv => $"{kv.Key}: {kv.Value}"));
-
-            string fullName = string.Join(Environment.NewLine,
-                Employee.fullNameToEmployeeObject.Select(kv => $"{kv.Key}: {kv.Value}"));
-
-            MessageBox.Show($"Display data:{Environment.NewLine}{displayData}");
-            MessageBox.Show($"Full name:{Environment.NewLine}{fullName}");
-        }
     }
 }

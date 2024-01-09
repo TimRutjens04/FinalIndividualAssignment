@@ -57,7 +57,7 @@
             tbxUsername.Location = new Point(418, 166);
             tbxUsername.Name = "tbxUsername";
             tbxUsername.Size = new Size(200, 15);
-            tbxUsername.TabIndex = 2;
+            tbxUsername.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -66,7 +66,7 @@
             btnLogin.Location = new Point(428, 343);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(114, 54);
-            btnLogin.TabIndex = 3;
+            btnLogin.TabIndex = 4;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
@@ -78,7 +78,7 @@
             cbxRememberMe.Location = new Point(429, 295);
             cbxRememberMe.Name = "cbxRememberMe";
             cbxRememberMe.Size = new Size(130, 29);
-            cbxRememberMe.TabIndex = 4;
+            cbxRememberMe.TabIndex = 3;
             cbxRememberMe.Text = "Remember me";
             cbxRememberMe.UseVisualStyleBackColor = true;
             // 
@@ -110,7 +110,7 @@
             tbxPassword.Location = new Point(418, 229);
             tbxPassword.Name = "tbxPassword";
             tbxPassword.Size = new Size(200, 22);
-            tbxPassword.TabIndex = 8;
+            tbxPassword.TabIndex = 2;
             tbxPassword.UseSystemPasswordChar = true;
             // 
             // Login
