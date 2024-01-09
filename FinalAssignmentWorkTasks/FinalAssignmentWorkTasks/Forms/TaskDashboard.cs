@@ -66,7 +66,9 @@ namespace FinalAssignmentWorkTasks.Forms
             if (dataGridViewTasks.SelectedRows.Count > 0)
             {
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
-                _selectedTask = Task.CreateTaskFromDataRow(selectedRow);
+                //_selectedTask = Task.CreateTaskFromDataRow(selectedRow);
+                int taskId = Convert.ToInt32(selectedRow["TaskId"]);
+                _selectedTask = CreateTask.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
                 if (_selectedTask != null)
                 {
                     this.Hide();

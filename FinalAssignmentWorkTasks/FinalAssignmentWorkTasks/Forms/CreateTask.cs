@@ -72,6 +72,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 lblStatus.Visible = true;
                 comStatus.Visible = true;
+                btnCreateTask.Text = "Update task";
             }
             tbxTaskName.Text = task.TaskName;
             tbxTaskDescription.Text = task.TaskDescription;
@@ -161,47 +162,54 @@ namespace FinalAssignmentWorkTasks.Forms
         /// <param name="e"></param>
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            selectedEmployeeList.Clear();
-            selectedDepartmentList.Clear();
-            string taskTitle = tbxTaskName.Text;
-            string taskDescription = tbxTaskDescription.Text;
-            string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
-            List<Department> checkedDepartments = GetCheckedDepartments();
-            DateTime taskDate = monthCalendarDueTime.SelectionStart;
-            string assignedEmployees = "";
-            FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
-
-            foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
+            if (btnCreateTask.Text != "Update task")
             {
-                if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
+                selectedEmployeeList.Clear();
+                selectedDepartmentList.Clear();
+                string taskTitle = tbxTaskName.Text;
+                string taskDescription = tbxTaskDescription.Text;
+                string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
+                List<Department> checkedDepartments = GetCheckedDepartments();
+                DateTime taskDate = monthCalendarDueTime.SelectionStart;
+                string assignedEmployees = "";
+                FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
+
+                foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
                 {
-                    selectedEmployeeList.Add(employee);
-                    assignedEmployees += employee.DisplayData + "\n";
+                    if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
+                    {
+                        selectedEmployeeList.Add(employee);
+                        assignedEmployees += employee.DisplayData + "\n";
+                    }
+                }
+
+                int taskId = TaskID.GetNextID();
+                Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
+                MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
+
+                tasks.Add(createdTask);
+
+                string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
+                string directoryPath = Path.Combine(projectRoot, "Tasks");
+                string fileName = $"{taskTitle}_{taskId.ToString()}.xml";
+                string fullPath = Path.Combine(directoryPath, fileName);
+
+                using (FileStream fs = new(fullPath, FileMode.Create, FileAccess.Write))
+                {
+                    try
+                    {
+                        serializer.Serialize(fs, createdTask);
+                        MessageBox.Show($"Task succesfully saved at {fullPath}");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error saving data \n" + ex.Message);
+                    }
                 }
             }
-
-            int taskId = TaskID.GetNextID();
-            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
-            MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
-
-            tasks.Add(createdTask);
-
-            string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
-            string directoryPath = Path.Combine(projectRoot, "Tasks");
-            string fileName = $"{taskTitle}_{taskId.ToString()}.xml";
-            string fullPath = Path.Combine(directoryPath, fileName);
-
-            using (FileStream fs = new(fullPath, FileMode.Create, FileAccess.Write))
+            else 
             {
-                try
-                {
-                    serializer.Serialize(fs, createdTask);
-                    MessageBox.Show($"Task succesfully saved at {fullPath}");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error saving data \n" + ex.Message);
-                }
+                UpdateSavedTaskToXml(_task);
             }
         }
 
@@ -238,6 +246,11 @@ namespace FinalAssignmentWorkTasks.Forms
         private void tbxTaskDescription_TextChanged(object sender, EventArgs e)
         {
             UpdateCreateButtonState();
+        }
+        private static void UpdateSavedTaskToXml(Task task) 
+        {
+            MessageBox.Show("Test");
+            //this enters over here when task was selected from taskdashboard so works fine
         }
     }
 }
