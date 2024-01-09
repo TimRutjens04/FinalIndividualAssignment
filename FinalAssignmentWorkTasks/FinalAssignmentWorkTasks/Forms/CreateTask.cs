@@ -264,7 +264,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     existingTask.TaskName = tbxTaskName.Text; 
                     existingTask.TaskDescription = tbxTaskDescription.Text;
                     existingTask.TimeDue = monthCalendarDueTime.SelectionStart;
-                    existingTask.Status = Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(comStatus.SelectedValue.ToString());
+                    existingTask.Status = Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(comStatus.SelectedItem.ToString());
                     existingTask.AssignedDepartments = GetCheckedDepartments();
                     existingTask.AssignedEmployees.Clear();
                     foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)

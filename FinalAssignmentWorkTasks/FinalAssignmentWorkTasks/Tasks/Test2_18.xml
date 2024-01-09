@@ -5,11 +5,34 @@
   <TaskDescription>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare lectus sit amet est placerat. Iaculis nunc sed augue lacus viverra vitae congue eu consequat. Consectetur lorem donec massa sapien. Malesuada nunc vel risus commodo viverra maecenas accumsan. Viverra adipiscing at in tellus integer. Nisi vitae suscipit tellus mauris. Faucibus ornare suspendisse sed nisi lacus sed viverra tellus. Odio morbi quis commodo odio aenean sed adipiscing. Donec et odio pellentesque diam volutpat commodo sed. Id eu nisl nunc mi. Eu feugiat pretium nibh ipsum consequat nisl vel pretium. Pellentesque diam volutpat commodo sed. Mi ipsum faucibus vitae aliquet nec ullamcorper sit.</TaskDescription>
   <TimeDue>2024-02-28T00:00:00</TimeDue>
   <Tasks />
-  <AssignedEmployees />
+  <AssignedEmployees>
+    <Employee>
+      <Id>6</Id>
+      <Email>snewarte5@flavors.me</Email>
+      <FirstName>Joséphine</FirstName>
+      <LastName>Newarte</LastName>
+      <Department>Research_and_Development</Department>
+      <AssignedTasks />
+    </Employee>
+    <Employee>
+      <Id>81</Id>
+      <Email>amawby28@jalbum.net</Email>
+      <FirstName>Marie-noël</FirstName>
+      <LastName>Mawby</LastName>
+      <Department>Research_and_Development</Department>
+      <AssignedTasks />
+    </Employee>
+    <Employee>
+      <Id>140</Id>
+      <Email>kscripps3v@berkeley.edu</Email>
+      <FirstName>Audréanne</FirstName>
+      <LastName>Scripps</LastName>
+      <Department>Research_and_Development</Department>
+      <AssignedTasks />
+    </Employee>
+  </AssignedEmployees>
   <AssignedDepartments>
-    <Department>Marketing</Department>
-    <Department>Sales</Department>
-    <Department>Support</Department>
+    <Department>Research_and_Development</Department>
   </AssignedDepartments>
-  <Status>Open</Status>
+  <Status>Completed</Status>
 </Task>
