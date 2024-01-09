@@ -70,7 +70,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 if (_selectedTask != null)
                 {
                     this.Hide();
-                    var temp = new CreateTask(_selectedTask);
+                    var temp = new CreateTask(_selectedTask, _loggedInEmployee);
                     temp.Show();
                 }
             }

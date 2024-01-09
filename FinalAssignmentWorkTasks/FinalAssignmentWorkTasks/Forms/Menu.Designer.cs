@@ -40,7 +40,6 @@
             lblUserLastname = new Label();
             lblUserEmail = new Label();
             btnAdminSettings = new Button();
-            button1 = new Button();
             gbxLoggedInUser.SuspendLayout();
             SuspendLayout();
             // 
@@ -172,7 +171,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(984, 561);
-            Controls.Add(button1);
             Controls.Add(btnAdminSettings);
             Controls.Add(gbxLoggedInUser);
             Controls.Add(btnSettings);
@@ -204,6 +202,5 @@
         private Label lblUserLastname;
         private Label lblUserEmail;
         private Button btnAdminSettings;
-        private Button button1;
     }
 }

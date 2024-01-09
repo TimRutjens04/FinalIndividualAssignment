@@ -37,7 +37,7 @@ namespace FinalAssignmentWorkTasks.Forms
             monthCalendarDueTime.MaxSelectionCount = 1;
             InitializeCheckboxes();
             _showAdditionalControls = false;
-            if (_showAdditionalControls == false)
+            if (!_showAdditionalControls)
             {
                 lblStatus.Visible = false;
                 comStatus.Visible = false;
@@ -48,11 +48,17 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             _loggedInEmployee = employee;
         }
-        public CreateTask(Task task, bool showAdditionalControls = true) : this()
+        public CreateTask(Task task, Employee employee, bool showAdditionalControls = true) : this()
         {
-            //_loggedInEmployee = employee;
+            _loggedInEmployee = employee;
             _task = task;
             _showAdditionalControls = showAdditionalControls;
+            if (_showAdditionalControls) 
+            {
+                lblStatus.Visible = true;
+                comStatus.Visible = true;
+            }
+
         }
         private void CreateTask_Load(object sender, EventArgs e)
         {
@@ -104,7 +110,11 @@ namespace FinalAssignmentWorkTasks.Forms
 
             return checkedDepartments;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
             selectedEmployeeList.Clear();
