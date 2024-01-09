@@ -28,6 +28,12 @@ namespace FinalAssignmentWorkTasks
         public string DisplayData => $"{FirstName} {LastName} (Department: {Department})\n";
         [DataMember]
         public string FullName => $"{FirstName} {LastName}";
+        [DataMember]
+        public static Dictionary<string, Employee> displayDataToEmployeeObject = new Dictionary<string, Employee>();
+        [DataMember]
+        public static Dictionary<string, Employee> fullNameToEmployeeObject = new Dictionary<string, Employee>();
+        [DataMember]
+        public List<Task> AssignedTasks { get; set; } = new List<Task>(); //to display tasks assigned to user
 
         public Employee()
         {

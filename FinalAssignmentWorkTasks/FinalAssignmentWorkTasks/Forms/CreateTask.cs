@@ -17,6 +17,7 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class CreateTask : Form
     {
+        bool _showAdditionalControls;
         Task _task;
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
@@ -29,7 +30,6 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private int initialTask = 1;
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
-        private Dictionary<string, Employee> displayDataToEmployeeObject = new Dictionary<string, Employee>();
         public CreateTask()
         {
             InitializeComponent();
@@ -43,10 +43,11 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             _loggedInEmployee = employee;
         }
-        public CreateTask(Employee employee, Task task) : this()
+        public CreateTask(Task task, bool showAdditionalControls = true) : this()
         {
-            _loggedInEmployee = employee;
+            //_loggedInEmployee = employee;
             _task = task;
+            _showAdditionalControls = showAdditionalControls;
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -70,7 +71,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
             foreach (var employee in selectedEmployeeList) 
             {
-                displayDataToEmployeeObject.Add(employee.DisplayData, employee);
+                Employee.displayDataToEmployeeObject.Add(employee.DisplayData, employee);
             }
         }
 
@@ -101,7 +102,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
             foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
             {  
-                if (checkedItem is string employeeDisplayData && displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
+                if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
                 {
                     selectedEmployeeList.Add(employee);
                     assignedEmployees += employee.DisplayData + "\n";

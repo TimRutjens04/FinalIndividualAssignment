@@ -46,6 +46,8 @@
             label2 = new Label();
             label1 = new Label();
             monthCalendarDueTime = new MonthCalendar();
+            label5 = new Label();
+            comStatus = new ComboBox();
             gbxTaskInfo.SuspendLayout();
             SuspendLayout();
             // 
@@ -91,6 +93,8 @@
             // 
             // gbxTaskInfo
             // 
+            gbxTaskInfo.Controls.Add(comStatus);
+            gbxTaskInfo.Controls.Add(label5);
             gbxTaskInfo.Controls.Add(clbxAssignedEmployees);
             gbxTaskInfo.Controls.Add(cbxRD);
             gbxTaskInfo.Controls.Add(cbxSupport);
@@ -228,6 +232,24 @@
             monthCalendarDueTime.ShowWeekNumbers = true;
             monthCalendarDueTime.TabIndex = 9;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(57, 420);
+            label5.Name = "label5";
+            label5.Size = new Size(47, 19);
+            label5.TabIndex = 21;
+            label5.Text = "Status:";
+            // 
+            // comStatus
+            // 
+            comStatus.FormattingEnabled = true;
+            comStatus.Items.AddRange(new object[] { "Open", "In_Progress", "Completed", "Blocked", "Cancelled" });
+            comStatus.Location = new Point(148, 420);
+            comStatus.Name = "comStatus";
+            comStatus.Size = new Size(249, 27);
+            comStatus.TabIndex = 22;
+            // 
             // CreateTask
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -265,5 +287,7 @@
         private CheckBox cbxMarketing;
         private CheckBox cbxHR;
         private CheckedListBox clbxAssignedEmployees;
+        private ComboBox comStatus;
+        private Label label5;
     }
 }

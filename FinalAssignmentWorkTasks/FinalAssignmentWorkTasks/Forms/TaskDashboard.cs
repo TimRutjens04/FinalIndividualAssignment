@@ -63,11 +63,16 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void btnChangeSelectedTask_Click(object sender, EventArgs e)
         {
-            if (_selectedTask != null)
+            if (dataGridViewTasks.SelectedRows.Count > 0)
             {
-                this.Hide();
-                var temp = new CreateTask(_loggedInEmployee, _selectedTask);
-                temp.Show();
+                DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
+                _selectedTask = Task.CreateTaskFromDataRow(selectedRow);
+                if (_selectedTask != null)
+                {
+                    this.Hide();
+                    var temp = new CreateTask(_selectedTask);
+                    temp.Show();
+                }
             }
             else { MessageBox.Show("Please select a task"); }
         }
@@ -194,29 +199,46 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxDepartmentSupport.CheckedChanged += CheckBox_CheckedChanged;
             cbxDepartmentRd.CheckedChanged += CheckBox_CheckedChanged;
 
+            // Assuming you have checkboxes for task statuses as well
             cbxStatusOpen.CheckedChanged += CheckBox_CheckedChanged;
+            cbxStatusInProgress.CheckedChanged += CheckBox_CheckedChanged;
+            cbxStatusCompleted.CheckedChanged += CheckBox_CheckedChanged;
+            cbxStatusBlocked.CheckedChanged += CheckBox_CheckedChanged;
+            cbxStatusCancelled.CheckedChanged += CheckBox_CheckedChanged;
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            /// This does not work yet, breaks when selecting any Department checkbox
             var checkedDepartments = GetCheckedDepartments();
             var checkedStatuses = GetCheckedStatuses();
 
-            // Assuming dtTasks is your DataTable
-            var dataTable = ConvertToDataTable(Tasks);
-            var filteredRows = dataTable.AsEnumerable()
-                .Where(row =>
-                    {
-                        var assignedDepartments = row.Field<string>("Department");
-                        var departmentsList = assignedDepartments.Split(',').Select(s => s.Trim());
+            //MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
+            //MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
 
-                        return checkedDepartments.Any(dep => departmentsList.Contains(dep.ToString())) &&
-                               checkedStatuses.Contains(row.Field<FinalAssignmentWorkTasks.Classes.TaskStatus>("Status"));
-                    })
-                .CopyToDataTable();
+            var filteredTasks = tasksDataTable.AsEnumerable()
+                .Where(task =>
+                {
+                    var departmentValues = task.Field<string>("Department").Split(',').Select(dep => dep.Trim());
+                    var statusValue = task.Field<int>("Status").ToString().Replace("_", ""); //System.InvalidCastException: 'Unable to cast object of type 'System.Int32' to type 'System.String'.' so made it int and then used ToString()
 
-            dataGridViewTasks.DataSource = filteredRows;
+                    //MessageBox.Show($"Checking Task: Department={string.Join(", ", departmentValues)}, Status={statusValue}");
+
+                    return departmentValues.Any(dep => checkedDepartments.Contains(Enum.Parse<Department>(dep))) &&
+                           checkedStatuses.Contains(Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(statusValue));
+                })
+                .ToList();
+
+            if (filteredTasks.Any())
+            {
+                var filteredDataTable = filteredTasks.CopyToDataTable();
+                UpdateFilteredTasks(filteredDataTable);
+                MessageBox.Show($"Does it even enter this block?\nFilteredTask: {filteredTasks.ToString()}");
+            }
+            else
+            {
+                UpdateFilteredTasks(new DataTable());
+                //MessageBox.Show("No matching rows found.");
+            }
         }
 
 
@@ -233,7 +255,6 @@ namespace FinalAssignmentWorkTasks.Forms
             return checkedDepartments;
         }
 
-        // Similar method for statuses
         private List<FinalAssignmentWorkTasks.Classes.TaskStatus> GetCheckedStatuses()
         {
             var checkedStatuses = new List<FinalAssignmentWorkTasks.Classes.TaskStatus>();
@@ -245,6 +266,10 @@ namespace FinalAssignmentWorkTasks.Forms
             if (cbxStatusCancelled.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Cancelled);
 
             return checkedStatuses;
+        }
+        private void UpdateFilteredTasks(DataTable filteredTasks)
+        {
+            dataGridViewTasks.DataSource = filteredTasks;
         }
     }
 }
