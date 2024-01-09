@@ -21,11 +21,11 @@ namespace FinalAssignmentWorkTasks.Forms
         Task _task;
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
-        private List<Employee> selectedEmployeeList;
-        private List<Department> selectedDepartmentList;
-        private static List<Task> tasks = new List<Task>(); 
+        public static List<Employee> selectedEmployeeList;
+        public static  List<Department> selectedDepartmentList;
+        private static List<Task> tasks = new List<Task>();
         public static List<Task> GetTasks
-        { 
+        {
             get { return tasks; }
         }
         private int initialTask = 1;
@@ -36,7 +36,12 @@ namespace FinalAssignmentWorkTasks.Forms
             monthCalendarDueTime.MinDate = DateTime.Today;
             monthCalendarDueTime.MaxSelectionCount = 1;
             InitializeCheckboxes();
-            LoadEmployeeDataFromCsv();
+            _showAdditionalControls = false;
+            if (_showAdditionalControls == false)
+            {
+                lblStatus.Visible = false;
+                comStatus.Visible = false;
+            }
         }
 
         public CreateTask(Employee employee) : this()
@@ -48,6 +53,10 @@ namespace FinalAssignmentWorkTasks.Forms
             //_loggedInEmployee = employee;
             _task = task;
             _showAdditionalControls = showAdditionalControls;
+        }
+        private void CreateTask_Load(object sender, EventArgs e)
+        {
+            //LoadEmployeeDataFromCsv();
         }
 
         private void btnMenu_Click(object sender, EventArgs e)
@@ -63,13 +72,13 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
-        private void LoadEmployeeDataFromCsv()
+        public static void LoadEmployeeDataFromCsv() 
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
+            CreateTask.selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
             selectedDepartmentList = departments;
 
-            foreach (var employee in selectedEmployeeList) 
+            foreach (var employee in selectedEmployeeList)
             {
                 Employee.displayDataToEmployeeObject.Add(employee.DisplayData, employee);
             }
@@ -101,7 +110,7 @@ namespace FinalAssignmentWorkTasks.Forms
             FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
 
             foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
-            {  
+            {
                 if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
                 {
                     selectedEmployeeList.Add(employee);
@@ -122,12 +131,12 @@ namespace FinalAssignmentWorkTasks.Forms
 
             using (FileStream fs = new(fullPath, FileMode.Create, FileAccess.Write))
             {
-                try 
+                try
                 {
                     serializer.Serialize(fs, createdTask);
                     MessageBox.Show($"Task succesfully saved at {fullPath}");
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     MessageBox.Show("Error saving data \n" + ex.Message);
                 }
@@ -141,7 +150,7 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxSales.CheckedChanged += CheckBox_CheckedChanged;
             cbxSupport.CheckedChanged += CheckBox_CheckedChanged;
             cbxRD.CheckedChanged += CheckBox_CheckedChanged;
-        }        
+        }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -150,8 +159,6 @@ namespace FinalAssignmentWorkTasks.Forms
             var filteredEmployees = selectedEmployeeList.Where(employee => checkedDepartments.Contains(employee.Department)).ToList();
             UpdateCheckedListBox(filteredEmployees);
         }
-
-        
 
         private void UpdateCheckedListBox(List<Employee> employees)
         {

@@ -1,3 +1,5 @@
+using FinalAssignmentWorkTasks.Forms;
+
 namespace FinalAssignmentWorkTasks
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace FinalAssignmentWorkTasks
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
+            CreateTask.LoadEmployeeDataFromCsv();
         }
     }
 }

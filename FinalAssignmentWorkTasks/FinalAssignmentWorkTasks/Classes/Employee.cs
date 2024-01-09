@@ -33,6 +33,8 @@ namespace FinalAssignmentWorkTasks
         [DataMember]
         public static Dictionary<string, Employee> fullNameToEmployeeObject = new Dictionary<string, Employee>();
         [DataMember]
+        public static HashSet<string> addedEmployees = new HashSet<string>(); //to keep track of added employees so there are no errors resulting from an attempt to add duplicates
+        [DataMember]
         public List<Task> AssignedTasks { get; set; } = new List<Task>(); //to display tasks assigned to user
 
         public Employee()
@@ -123,6 +125,14 @@ namespace FinalAssignmentWorkTasks
             return employees.FirstOrDefault(user =>
                 user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
                 user.Id == id);
+        }
+        private static void AddEmployee(string fullName, Employee employee)
+        {
+            if (!addedEmployees.Contains(fullName))
+            {
+                fullNameToEmployeeObject.Add(fullName, employee);
+                addedEmployees.Add(fullName);
+            }
         }
     }
 }
