@@ -22,7 +22,7 @@ namespace FinalAssignmentWorkTasks.Forms
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList;
-        public static List<Department> selectedDepartmentList;
+        public static List<Department> selectedDepartmentList = new List<Department>();
         private static List<Task> tasks = new List<Task>();
         public static List<Task> GetTasks
         {
@@ -56,12 +56,12 @@ namespace FinalAssignmentWorkTasks.Forms
                 lblStatus.Visible = false;
                 comStatus.Visible = false;
             }
-            UpdateCreateButtonState();
         }
 
         public CreateTask(Employee employee) : this()
         {
             _loggedInEmployee = employee;
+            UpdateCreateButtonState();
         }
         public CreateTask(Task task, Employee employee, bool showAdditionalControls = true) : this()
         {
@@ -102,18 +102,26 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void UpdateCreateButtonState()
         {
-            if (string.IsNullOrEmpty(tbxTaskName.Text)
-                || string.IsNullOrEmpty(tbxTaskDescription.Text)
-                || monthCalendarDueTime.SelectionStart == DateTime.MinValue
-                || CreateTask.selectedDepartmentList.Count <= 0)
+            if (tbxTaskName != null && tbxTaskDescription != null && monthCalendarDueTime != null && CreateTask.selectedDepartmentList != null)
             {
-                btnCreateTask.Enabled = false;
+                if (string.IsNullOrEmpty(tbxTaskName.Text)
+                    || string.IsNullOrEmpty(tbxTaskDescription.Text)
+                    || monthCalendarDueTime.SelectionStart == DateTime.MinValue
+                    || CreateTask.selectedDepartmentList.Count <= 0)
+                {
+                    btnCreateTask.Enabled = false;
+                }
+                else
+                {
+                    btnCreateTask.Enabled = true;
+                }
             }
             else
             {
-                btnCreateTask.Enabled = true;
+                MessageBox.Show($"Title: {tbxTaskName.Text}\nDescription: {tbxTaskDescription.Text}\nTime: {monthCalendarDueTime.SelectionStart.ToString()}\nDepartments: {string.Join(',', CreateTask.selectedDepartmentList)}");
             }
         }
+
         public static void LoadEmployeeDataFromCsv()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");

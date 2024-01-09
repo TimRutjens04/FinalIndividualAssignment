@@ -18,7 +18,7 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
-        private XmlSerializer serializer = new XmlSerializer(typeof(Task));
+        private static XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
 
         public TaskDashboard()
@@ -96,7 +96,7 @@ namespace FinalAssignmentWorkTasks.Forms
         /// Needs exception handling for file-related errors/parsing issues
         /// </summary>
         /// <returns></returns>
-        private List<Task> LoadTasksFromXmlFiles()
+        private static List<Task> LoadTasksFromXmlFiles()
         {
             List<Task> tasks = new List<Task>();
             string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");

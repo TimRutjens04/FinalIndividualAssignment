@@ -40,6 +40,7 @@
             lblUserLastname = new Label();
             lblUserEmail = new Label();
             btnAdminSettings = new Button();
+            button1 = new Button();
             gbxLoggedInUser.SuspendLayout();
             SuspendLayout();
             // 
@@ -165,12 +166,25 @@
             btnAdminSettings.UseVisualStyleBackColor = true;
             btnAdminSettings.Click += btnAdminSettings_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlText;
+            button1.Location = new Point(759, 236);
+            button1.Name = "button1";
+            button1.RightToLeft = RightToLeft.No;
+            button1.Size = new Size(150, 47);
+            button1.TabIndex = 8;
+            button1.Text = "Test ";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(984, 561);
+            Controls.Add(button1);
             Controls.Add(btnAdminSettings);
             Controls.Add(gbxLoggedInUser);
             Controls.Add(btnSettings);
@@ -202,5 +216,6 @@
         private Label lblUserLastname;
         private Label lblUserEmail;
         private Button btnAdminSettings;
+        private Button button1;
     }
 }
