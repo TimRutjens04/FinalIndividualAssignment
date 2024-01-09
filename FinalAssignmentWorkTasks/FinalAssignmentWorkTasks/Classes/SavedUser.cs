@@ -10,8 +10,12 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public class SavedUser
     {
+        /// <summary>
+        /// This class is supposed to have a single instance during the runtime of the application, except when logout occurs.
+        /// </summary>
         private static SavedUser instance;
         public static List<Employee> Employees = new List<Employee>();
+        
 
         public static SavedUser Instance 
         {
@@ -31,6 +35,14 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             savedEmployee = employee;
         }
+        /// <summary>
+        /// This method attempts to login based on user input and checks against the list of employees from the given MOCK_EMPLOYEE_DATA.csv file
+        /// Returns a boolean as success/fail value and sets the users Department 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="userpassword"></param>
+        /// <param name="userDepartment"></param>
+        /// <returns></returns>
         public bool EmployeeLogin(string username, string userpassword, out Department userDepartment)
         {
             userDepartment = Department.Unassigned;

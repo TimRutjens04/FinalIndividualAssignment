@@ -8,10 +8,15 @@ using System.Threading.Tasks;
 namespace FinalAssignmentWorkTasks.Classes
 {
     [DataContract]
+    
     public enum Department
     {
+        /// <summary>
+        /// An enum for Departments
+        /// Keep comboboxes/mentioning of departments in same order for structured work
+        /// </summary>
         [EnumMember]
-        Unassigned,
+        Unassigned, //This is the users department on creation, will be able to be changed by the admin.
         [EnumMember]
         Human_Resources,
         [EnumMember]

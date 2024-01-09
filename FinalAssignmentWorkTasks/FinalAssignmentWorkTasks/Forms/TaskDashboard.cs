@@ -91,7 +91,11 @@ namespace FinalAssignmentWorkTasks.Forms
             tasksDataTable = ConvertToDataTable(Tasks);
             dataGridViewTasks.DataSource = tasksDataTable;
         }
-
+        /// <summary>
+        /// Just a method to load the serialized tasks created in the CreateTask form
+        /// Needs exception handling for file-related errors/parsing issues
+        /// </summary>
+        /// <returns></returns>
         private List<Task> LoadTasksFromXmlFiles()
         {
             List<Task> tasks = new List<Task>();
@@ -120,7 +124,12 @@ namespace FinalAssignmentWorkTasks.Forms
             }
             return tasks;
         }
-
+        /// <summary>
+        /// This is used to display the full Task when a cell in the Task row is selected,
+        /// mostly since the list of departments and employees is not entirely visible when directly looking in the table.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewTasks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -157,7 +166,12 @@ namespace FinalAssignmentWorkTasks.Forms
                 }
             }
         }
-
+        /// <summary>
+        /// This method is used to create a DataTable as a source for the DataGridView, 
+        /// I'm using this since a DataGridView does not allow for filtering, and a DataTable does.
+        /// </summary>
+        /// <param name="tasks"></param>
+        /// <returns></returns>
         private DataTable ConvertToDataTable(List<Task> tasks)
         {
             DataTable dataTable = new DataTable();
@@ -179,18 +193,29 @@ namespace FinalAssignmentWorkTasks.Forms
 
             return dataTable;
         }
-
+        /// <summary>
+        /// Filtering mechanism for title
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxTitle_TextChanged(object sender, EventArgs e)
         {
             string filterField = "TaskName";
             tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxTitle.Text);
         }
-
+        /// <summary>
+        /// Filtering mechanism for ID
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tbxId_TextChanged(object sender, EventArgs e)
         {
             string filterField = "TaskId";
             tasksDataTable.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", filterField, tbxId.Text);
         }
+        /// <summary>
+        /// Allows for filtering mechanism of checkboxes by adding a CheckedChanged event to all checkboxes so they will update each time the event occurs
+        /// </summary>
         private void InitializeCheckboxes()
         {
             cbxDepartmentHr.CheckedChanged += CheckBox_CheckedChanged;
@@ -205,7 +230,12 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxStatusBlocked.CheckedChanged += CheckBox_CheckedChanged;
             cbxStatusCancelled.CheckedChanged += CheckBox_CheckedChanged;
         }
-
+        /// <summary>
+        /// This method handles checkbox changes for both Department and Status
+        /// Might need some breakdown of the logic to allow for better readability/maintainability
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             var checkedDepartments = GetCheckedDepartments();
@@ -240,7 +270,10 @@ namespace FinalAssignmentWorkTasks.Forms
             }
         }
 
-
+        /// <summary>
+        /// Gets the checked departments and adds them to a list of checkedDepartments, so allows for filtering.
+        /// </summary>
+        /// <returns></returns>
         private List<Department> GetCheckedDepartments()
         {
             var checkedDepartments = new List<Department>();
@@ -253,7 +286,10 @@ namespace FinalAssignmentWorkTasks.Forms
 
             return checkedDepartments;
         }
-
+        /// <summary>
+        /// Gets the checked statuses and adds them to a list of checkedStatuses, so allows for filtering
+        /// </summary>
+        /// <returns></returns>
         private List<FinalAssignmentWorkTasks.Classes.TaskStatus> GetCheckedStatuses()
         {
             var checkedStatuses = new List<FinalAssignmentWorkTasks.Classes.TaskStatus>();
@@ -266,6 +302,10 @@ namespace FinalAssignmentWorkTasks.Forms
 
             return checkedStatuses;
         }
+        /// <summary>
+        /// A very simple method to update the dataGridViewTasks to display the filtered data
+        /// </summary>
+        /// <param name="filteredTasks"></param>
         private void UpdateFilteredTasks(DataTable filteredTasks)
         {
             dataGridViewTasks.DataSource = filteredTasks;

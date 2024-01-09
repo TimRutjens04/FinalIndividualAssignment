@@ -22,6 +22,7 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         public Menu(Employee employee) : this()
         {
+            ///This sets the labels based on the loggedInEmployee
             _loggedInEmployee = employee;
             if (_loggedInEmployee != null)
             {
@@ -44,6 +45,10 @@ namespace FinalAssignmentWorkTasks.Forms
             }
         }
 
+        /// <summary>
+        /// Below are all navigation buttons
+        /// </summary>
+        
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -62,6 +67,12 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Settings(_loggedInEmployee);
             temp.Show();
         }
+        private void btnAdminSettings_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new SettingsAdmin(_loggedInEmployee);
+            temp.Show();
+        }
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
@@ -77,11 +88,6 @@ namespace FinalAssignmentWorkTasks.Forms
             temp.Show();
         }
 
-        private void btnAdminSettings_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var temp = new SettingsAdmin(_loggedInEmployee);
-            temp.Show();
-        }
+        
     }
 }

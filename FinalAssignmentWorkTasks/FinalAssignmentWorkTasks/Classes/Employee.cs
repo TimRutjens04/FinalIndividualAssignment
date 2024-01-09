@@ -36,6 +36,7 @@ namespace FinalAssignmentWorkTasks
         public static HashSet<string> addedEmployees = new HashSet<string>(); //to keep track of added employees so there are no errors resulting from an attempt to add duplicates
         [DataMember]
         public List<Task> AssignedTasks { get; set; } = new List<Task>(); //to display tasks assigned to user
+        //Might use a .Where() in the Tasks list instead of assigning tasks to the user object
 
         public Employee()
         {
@@ -53,6 +54,12 @@ namespace FinalAssignmentWorkTasks
         {
             return FullName;
         }
+        /// <summary>
+        /// A method for loading the users from the given MOCK_EMPLOYEE_DATA.csv file, and passing a department list out since this is needed for Task creation.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="departments"></param>
+        /// <returns></returns>
         public static List<Employee> LoadUserFromCsv(string filePath, out List<Department> departments)
         {
             List<Employee> employees = new List<Employee>();
@@ -87,6 +94,11 @@ namespace FinalAssignmentWorkTasks
             }
             return employees;
         }
+        /// <summary>
+        /// Almost the same method, however this one was needed for logins since departments haven't been "set" there yet.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static List<Employee> LoadUserFromCsv(string filePath)
         {
             List<Employee> employees = new List<Employee>();
@@ -119,7 +131,13 @@ namespace FinalAssignmentWorkTasks
             }
             return employees;
         }
-
+        /// <summary>
+        /// This method gets the user from the list of users/employees and allows for usage of the logged-in employee object.
+        /// </summary>
+        /// <param name="employees"></param>
+        /// <param name="email"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static Employee GetUserFromCredentials(List<Employee> employees, string email, string id)
         {
             return employees.FirstOrDefault(user =>

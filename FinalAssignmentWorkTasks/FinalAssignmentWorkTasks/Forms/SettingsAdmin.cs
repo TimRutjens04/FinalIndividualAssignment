@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalAssignmentWorkTasks.Forms
 {
+    /// <summary>
+    /// Will eventually allow for the admin to change/add/remove users from the list of users and thus make changes to the CSV file.
+    /// </summary>
     public partial class SettingsAdmin : Form
     {
         SavedUser savedUser = SavedUser.Instance;

@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace FinalAssignmentWorkTasks.Forms
 {
+    /// <summary>
+    /// Will eventually allow all kinds of customization, think of dark mode and password changes
+    /// </summary>
     public partial class Settings : Form
     {
         SavedUser savedUser = SavedUser.Instance;

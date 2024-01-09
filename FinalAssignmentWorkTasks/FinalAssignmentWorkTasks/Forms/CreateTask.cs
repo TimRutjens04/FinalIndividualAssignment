@@ -22,7 +22,7 @@ namespace FinalAssignmentWorkTasks.Forms
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList;
-        public static  List<Department> selectedDepartmentList;
+        public static List<Department> selectedDepartmentList;
         private static List<Task> tasks = new List<Task>();
         public static List<Task> GetTasks
         {
@@ -36,12 +36,27 @@ namespace FinalAssignmentWorkTasks.Forms
             monthCalendarDueTime.MinDate = DateTime.Today;
             monthCalendarDueTime.MaxSelectionCount = 1;
             InitializeCheckboxes();
+            //check for every input if its entered, if everything is entered only then allow task creation
+            if (string.IsNullOrEmpty(tbxTaskName.Text)
+                || string.IsNullOrEmpty(tbxTaskDescription.Text)
+                //|| monthCalendarDueTime.SelectionStart == DateTime.MinValue
+                //|| CreateTask.selectedDepartmentList.Count <= 0 
+                //|| CreateTask.selectedEmployeeList.Count <= 0
+                )
+            {
+                btnCreateTask.Enabled = false;
+            }
+            else
+            {
+                btnCreateTask.Enabled = true;
+            }
             _showAdditionalControls = false;
             if (!_showAdditionalControls)
             {
                 lblStatus.Visible = false;
                 comStatus.Visible = false;
             }
+            UpdateCreateButtonState();
         }
 
         public CreateTask(Employee employee) : this()
@@ -53,11 +68,18 @@ namespace FinalAssignmentWorkTasks.Forms
             _loggedInEmployee = employee;
             _task = task;
             _showAdditionalControls = showAdditionalControls;
-            if (_showAdditionalControls) 
+            if (_showAdditionalControls)
             {
                 lblStatus.Visible = true;
                 comStatus.Visible = true;
             }
+            tbxTaskName.Text = task.TaskName;
+            tbxTaskDescription.Text = task.TaskDescription;
+            monthCalendarDueTime.SetDate(task.TimeDue);
+            //comStatus.ValueMember = Enum.TryParse(FinalAssignmentWorkTasks.Classes.TaskStatus, task.Status);
+            //clbxAssignedEmployees.CheckedItems = task.AssignedEmployees;
+
+
 
         }
         private void CreateTask_Load(object sender, EventArgs e)
@@ -78,7 +100,21 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
-        public static void LoadEmployeeDataFromCsv() 
+        private void UpdateCreateButtonState()
+        {
+            if (string.IsNullOrEmpty(tbxTaskName.Text)
+                || string.IsNullOrEmpty(tbxTaskDescription.Text)
+                || monthCalendarDueTime.SelectionStart == DateTime.MinValue
+                || CreateTask.selectedDepartmentList.Count <= 0)
+            {
+                btnCreateTask.Enabled = false;
+            }
+            else
+            {
+                btnCreateTask.Enabled = true;
+            }
+        }
+        public static void LoadEmployeeDataFromCsv()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
             CreateTask.selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
@@ -168,6 +204,7 @@ namespace FinalAssignmentWorkTasks.Forms
             cbxSales.CheckedChanged += CheckBox_CheckedChanged;
             cbxSupport.CheckedChanged += CheckBox_CheckedChanged;
             cbxRD.CheckedChanged += CheckBox_CheckedChanged;
+            UpdateCreateButtonState();
         }
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
@@ -183,6 +220,16 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             clbxAssignedEmployees.Items.Clear();
             clbxAssignedEmployees.Items.AddRange(employees.Select(employee => employee.DisplayData).ToArray());
+        }
+
+        private void tbxTaskName_TextChanged(object sender, EventArgs e)
+        {
+            UpdateCreateButtonState();
+        }
+
+        private void tbxTaskDescription_TextChanged(object sender, EventArgs e)
+        {
+            UpdateCreateButtonState();
         }
     }
 }

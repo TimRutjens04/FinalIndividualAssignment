@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace FinalAssignmentWorkTasks.Classes
 {
+    /// <summary>
+    /// A class to keep track of a TaskID, which is used in the fileName of the XML file on creation.
+    /// This allows for files to have the same title and give no errors due to their fileName being different, because the ID will always be different.
+    /// </summary>
     public class TaskID
     {
         public const string TaskIDFileName = "TaskID.txt";

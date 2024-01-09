@@ -63,6 +63,12 @@ namespace FinalAssignmentWorkTasks
         {
             return Tasks.Where(t => t.Status == status).ToList();
         }
+        /// <summary>
+        /// A method to create a task when selecting one from the TaskDashboard form, which can then be used to be edited again in the CreateTask form
+        /// </summary>
+        /// <param name="dataRow"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static Task CreateTaskFromDataRow(DataRow dataRow) 
         {
             if (dataRow == null) 

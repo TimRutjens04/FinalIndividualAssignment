@@ -81,6 +81,7 @@
             tbxTaskName.Name = "tbxTaskName";
             tbxTaskName.Size = new Size(249, 27);
             tbxTaskName.TabIndex = 5;
+            tbxTaskName.TextChanged += tbxTaskName_TextChanged;
             // 
             // tbxTaskDescription
             // 
@@ -90,6 +91,7 @@
             tbxTaskDescription.ScrollBars = ScrollBars.Vertical;
             tbxTaskDescription.Size = new Size(249, 146);
             tbxTaskDescription.TabIndex = 6;
+            tbxTaskDescription.TextChanged += tbxTaskDescription_TextChanged;
             // 
             // gbxTaskInfo
             // 

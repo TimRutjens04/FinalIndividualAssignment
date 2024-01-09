@@ -11,7 +11,12 @@ namespace FinalAssignmentWorkTasks
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Attempts to login the user and checks their credentials against the provided MOCK_EMPLOYEE_DATA.csv file
+        /// Also sets the savedUser instance if login is successfull
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = tbxUsername.Text.Trim();
@@ -50,7 +55,11 @@ namespace FinalAssignmentWorkTasks
                 MessageBox.Show($"Error logging in {username}, {password}, {department}");
             }
         }
-
+        /// <summary>
+        /// Closes the application on closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Login_FormClosed(object sender, FormClosedEventArgs e)
         {
             System.Windows.Forms.Application.Exit();

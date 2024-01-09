@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Task xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <TaskId>11</TaskId>
+  <TaskName>Test for deserializing unsassigned department</TaskName>
+  <TaskDescription>fjklsdajflh</TaskDescription>
+  <TimeDue>2024-01-25T00:00:00</TimeDue>
+  <Tasks />
+  <AssignedEmployees>
+    <Employee>
+      <Id>33</Id>
+      <Email>vmaxtedw@meetup.com</Email>
+      <FirstName>Maëlys</FirstName>
+      <LastName>Maxted</LastName>
+      <Department>Human_Resources</Department>
+      <AssignedTasks />
+    </Employee>
+    <Employee>
+      <Id>62</Id>
+      <Email>rmellers1p@dailymotion.com</Email>
+      <FirstName>Céline</FirstName>
+      <LastName>Mellers</LastName>
+      <Department>Support</Department>
+      <AssignedTasks />
+    </Employee>
+    <Employee>
+      <Id>149</Id>
+      <Email>ezanettini44@themeforest.net</Email>
+      <FirstName>Joséphine</FirstName>
+      <LastName>Zanettini</LastName>
+      <Department>Human_Resources</Department>
+      <AssignedTasks />
+    </Employee>
+  </AssignedEmployees>
+  <AssignedDepartments>
+    <Department>Human_Resources</Department>
+    <Department>Support</Department>
+  </AssignedDepartments>
+  <Status>Open</Status>
+</Task>

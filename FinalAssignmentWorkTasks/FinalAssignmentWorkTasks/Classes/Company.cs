@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace FinalAssignmentWorkTasks
 {
-    internal class Company
+    /// <summary>
+    /// Will be used to filter the list of assigned tasks based on the logged in employee by either their department or their own assigned tasks.
+    /// Will also be used to allow the admin to see all created tasks.
+    /// </summary>
+    public class Company
     {
         public List<Employee> Employees;
         public List<Task> Tasks;
