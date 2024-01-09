@@ -98,7 +98,7 @@ namespace FinalAssignmentWorkTasks.Forms
         /// Needs exception handling for file-related errors/parsing issues
         /// </summary>
         /// <returns></returns>
-        private static List<Task> LoadTasksFromXmlFiles()
+        public static List<Task> LoadTasksFromXmlFiles()
         {
             List<Task> tasks = new List<Task>();
             string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");

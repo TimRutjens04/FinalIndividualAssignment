@@ -176,7 +176,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
                 foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
                 {
-                    if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee)) //need fix this
+                    if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee))
                     {
                         selectedEmployeeList.Add(employee);
                         assignedEmployees += employee.DisplayData + "\n";
@@ -207,7 +207,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     }
                 }
             }
-            else 
+            else
             {
                 UpdateSavedTaskToXml(_task);
             }
@@ -247,10 +247,64 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             UpdateCreateButtonState();
         }
-        private static void UpdateSavedTaskToXml(Task task) 
+
+        private void UpdateSavedTaskToXml(Task taskToUpdate)
         {
-            MessageBox.Show("Test");
-            //this enters over here when task was selected from taskdashboard so works fine
+            try
+            {
+                string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
+                string directoryPath = Path.Combine(projectRoot, "Tasks");
+                string fileName = $"{taskToUpdate.TaskName}_{taskToUpdate.TaskId.ToString()}.xml";
+                string fullPath = Path.Combine(directoryPath, fileName);
+
+                if (File.Exists(fullPath))
+                {                    
+                    Task existingTask = LoadTaskFromXml(fullPath);
+                    
+                    existingTask.TaskName = tbxTaskName.Text; 
+                    existingTask.TaskDescription = tbxTaskDescription.Text;
+                    existingTask.TimeDue = monthCalendarDueTime.SelectionStart;
+                    existingTask.Status = Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(comStatus.SelectedValue.ToString());
+                    existingTask.AssignedDepartments = GetCheckedDepartments();
+                    existingTask.AssignedEmployees.Clear();
+                    foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
+                    {
+                        if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee))
+                        {
+                            existingTask.AssignedEmployees.Add(employee);
+                        }
+                    }
+
+                    using (FileStream fs = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
+                    {
+                        serializer.Serialize(fs, existingTask);
+                        MessageBox.Show($"Task successfully updated and saved at {fullPath}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Task XML file not found: {fullPath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating task data: {ex.Message}");
+            }
+        }
+        private Task LoadTaskFromXml(string filePath)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    return (Task)serializer.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error loading task from {filePath}: {ex.Message}");
+            }
         }
     }
 }
+
