@@ -266,11 +266,11 @@ namespace FinalAssignmentWorkTasks.Forms
 
             foreach (Employee employee in selectedEmployeeList)
             {
-                string itemText = employee.ToString();
+                string itemText = employee.DisplayData.ToString();
 
                 if (itemText.Contains(filterText))
                 {
-                    clbxAssignedEmployees.Items.Add(employee);
+                    clbxAssignedEmployees.Items.Add(employee.DisplayData);
                 }
             }
         }
