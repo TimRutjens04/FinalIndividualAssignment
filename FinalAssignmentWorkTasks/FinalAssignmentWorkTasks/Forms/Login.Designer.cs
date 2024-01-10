@@ -42,7 +42,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(429, 41);
+            label1.Location = new Point(490, 63);
             label1.Name = "label1";
             label1.Size = new Size(114, 58);
             label1.TabIndex = 0;
@@ -53,19 +53,21 @@
             tbxUsername.BackColor = SystemColors.Info;
             tbxUsername.BorderStyle = BorderStyle.None;
             tbxUsername.Cursor = Cursors.IBeam;
-            tbxUsername.Font = new Font("Bahnschrift Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tbxUsername.Location = new Point(418, 166);
+            tbxUsername.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            tbxUsername.Location = new Point(477, 247);
+            tbxUsername.Margin = new Padding(3, 5, 3, 5);
             tbxUsername.Name = "tbxUsername";
-            tbxUsername.Size = new Size(200, 15);
+            tbxUsername.Size = new Size(229, 23);
             tbxUsername.TabIndex = 1;
             // 
             // btnLogin
             // 
             btnLogin.Font = new Font("Bahnschrift Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
             btnLogin.ForeColor = SystemColors.ControlText;
-            btnLogin.Location = new Point(428, 343);
+            btnLogin.Location = new Point(489, 526);
+            btnLogin.Margin = new Padding(3, 5, 3, 5);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(114, 54);
+            btnLogin.Size = new Size(130, 83);
             btnLogin.TabIndex = 4;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
@@ -75,7 +77,8 @@
             // 
             cbxRememberMe.AutoSize = true;
             cbxRememberMe.Font = new Font("Bahnschrift Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            cbxRememberMe.Location = new Point(429, 295);
+            cbxRememberMe.Location = new Point(490, 452);
+            cbxRememberMe.Margin = new Padding(3, 5, 3, 5);
             cbxRememberMe.Name = "cbxRememberMe";
             cbxRememberMe.Size = new Size(130, 29);
             cbxRememberMe.TabIndex = 3;
@@ -86,7 +89,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Bahnschrift Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(304, 156);
+            label3.Location = new Point(347, 239);
             label3.Name = "label3";
             label3.Size = new Size(109, 33);
             label3.TabIndex = 6;
@@ -96,7 +99,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Bahnschrift Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(304, 219);
+            label2.Location = new Point(347, 336);
             label2.Name = "label2";
             label2.Size = new Size(106, 33);
             label2.TabIndex = 7;
@@ -106,21 +109,22 @@
             // 
             tbxPassword.BackColor = SystemColors.Info;
             tbxPassword.Cursor = Cursors.IBeam;
-            tbxPassword.Font = new Font("Bahnschrift Condensed", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            tbxPassword.Location = new Point(418, 229);
+            tbxPassword.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            tbxPassword.Location = new Point(477, 341);
+            tbxPassword.Margin = new Padding(3, 5, 3, 5);
             tbxPassword.Name = "tbxPassword";
-            tbxPassword.Size = new Size(200, 22);
+            tbxPassword.Size = new Size(228, 30);
             tbxPassword.TabIndex = 2;
             tbxPassword.UseSystemPasswordChar = true;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
             BackColor = Color.Silver;
-            ClientSize = new Size(980, 557);
+            ClientSize = new Size(1120, 854);
             Controls.Add(tbxPassword);
             Controls.Add(label2);
             Controls.Add(label3);
@@ -129,11 +133,13 @@
             Controls.Add(tbxUsername);
             Controls.Add(label1);
             DoubleBuffered = true;
+            Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = SystemColors.ControlText;
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 5, 3, 5);
             Name = "Login";
-            Padding = new Padding(1);
+            Padding = new Padding(1, 2, 1, 2);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main";
             FormClosed += Login_FormClosed;

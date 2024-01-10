@@ -13,7 +13,7 @@ namespace FinalAssignmentWorkTasks
         }
         /// <summary>
         /// Attempts to login the user and checks their credentials against the provided MOCK_EMPLOYEE_DATA.csv file
-        /// Also sets the savedUser instance if login is successfull
+        /// Also sets the savedUser instance if login is successful
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

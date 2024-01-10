@@ -20,6 +20,7 @@ namespace FinalAssignmentWorkTasks.Forms
         public Settings()
         {
             InitializeComponent();
+            InitializeLabels();
         }
         public Settings(Employee employee) : this()
         {
@@ -36,6 +37,33 @@ namespace FinalAssignmentWorkTasks.Forms
             this.Hide();
             var temp = new Menu(_loggedInEmployee);
             temp.Show();
+        }
+        
+        public void InitializeLabels() 
+        {
+            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+            List<Employee> allEmployees = Employee.LoadUserFromCsvForSettings(relativePath);
+            if(allEmployees == null) 
+            {
+                MessageBox.Show("Error parsing data from CSV");
+                return;
+            }
+
+            Employee loggedInEmployee = allEmployees.FirstOrDefault(emp => emp.Id == SavedUser.Instance.savedEmployee.Id);
+            if(loggedInEmployee == null) 
+            {
+                MessageBox.Show("Error finding logged in user");
+                return;
+            }
+
+            lblFirstName.Text = $"First name: {loggedInEmployee.FirstName}";
+            lblLastName.Text = $"Last name: {loggedInEmployee.LastName}";
+            lblEmail.Text = $"Email: {loggedInEmployee.Email}";
+            lblGender.Text = $"Gender: {loggedInEmployee.Gender}";
+            lblStreetName.Text = $"Street name: {loggedInEmployee.StreetName}";
+            lblStreetNumber.Text = $"Street number: {loggedInEmployee.StreetNumber}";
+            lblZipcode.Text = $"Zip code: {loggedInEmployee.Zipcode}";
+            lblCity.Text = $"City: {loggedInEmployee.City}";
         }
     }
 }

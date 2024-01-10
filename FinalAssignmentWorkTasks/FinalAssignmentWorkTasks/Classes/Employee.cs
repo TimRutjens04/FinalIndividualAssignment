@@ -4,6 +4,7 @@ using Microsoft.VisualBasic.FileIO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.Serialization;
 using System.Security.AccessControl;
 using System.Text;
@@ -32,11 +33,21 @@ namespace FinalAssignmentWorkTasks
         public static Dictionary<string, Employee> displayDataToEmployeeObject = new Dictionary<string, Employee>();
         [DataMember]
         public static Dictionary<string, Employee> fullNameToEmployeeObject = new Dictionary<string, Employee>();
+        /// <summary>
+        /// The next few are just for the settings page
+        /// </summary>
         [DataMember]
-        public static HashSet<string> addedEmployees = new HashSet<string>(); //to keep track of added employees so there are no errors resulting from an attempt to add duplicates
+        public string Ssc { get; set; }
         [DataMember]
-        public List<Task> AssignedTasks { get; set; } = new List<Task>(); //to display tasks assigned to user
-        //Might use a .Where() in the Tasks list instead of assigning tasks to the user object
+        public string Gender { get; set; }
+        [DataMember]
+        public string StreetName { get; set; }
+        [DataMember]
+        public string StreetNumber { get; set; }
+        [DataMember]
+        public string Zipcode { get; set; }
+        [DataMember]
+        public string City { get; set; }
 
         public Employee()
         {
@@ -48,6 +59,19 @@ namespace FinalAssignmentWorkTasks
             Id = id;
             FirstName = firstName;
             LastName = lastName;
+            Department = department;
+        }
+        public Employee(string email, string id, string ssc, string firstName, string lastName, string gender, string streetName, string streetNumber, string zipcode, string city, Department department) 
+        {
+            Email =email; 
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Gender = gender;            
+            StreetName = streetName;
+            StreetNumber = streetNumber;
+            Zipcode = zipcode;
+            City = city;
             Department = department;
         }
         public override string ToString()
@@ -122,6 +146,45 @@ namespace FinalAssignmentWorkTasks
                                 Id = fields[0],
                                 FirstName = fields[2],
                                 LastName = fields[3],
+
+                                Department = department
+                            };
+                            employees.Add(newEmployee);
+                        }
+                    }
+                }
+            }
+            return employees;
+        }
+        public static List<Employee> LoadUserFromCsvForSettings(string filePath)
+        {
+            List<Employee> employees = new List<Employee>();
+
+            using (TextFieldParser parser = new TextFieldParser(filePath))
+            {
+                parser.TextFieldType = FieldType.Delimited;
+                parser.SetDelimiters(",");
+
+                while (!parser.EndOfData)
+                {
+                    string[] fields = parser.ReadFields();
+                    if (fields.Length == 11)
+                    {
+                        string departmentString = fields[10].Replace(" ", "_");
+                        if (Enum.TryParse(departmentString, out Department department))
+                        {
+                            Employee newEmployee = new Employee()
+                            {
+                                Email = fields[9],
+                                Id = fields[0],
+                                Ssc = fields[1],
+                                FirstName = fields[2],
+                                LastName = fields[3],
+                                Gender = fields[4],
+                                StreetName = fields[5],
+                                StreetNumber = fields[6],
+                                Zipcode = fields[7],
+                                City = fields[8],
                                 Department = department
                             };
                             employees.Add(newEmployee);
