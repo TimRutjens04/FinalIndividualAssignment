@@ -194,6 +194,20 @@ namespace FinalAssignmentWorkTasks
             }
             return employees;
         }
+        public static void SaveUserToCsvForSettings(List<Employee> employees, string filePath)
+        {
+            List<string> lines = new List<string>();
+
+            foreach (Employee employee in employees)
+            {
+                string departmentString = employee.Department.ToString().Replace("_", " ");
+
+                string csvLine = $"{employee.Id},{employee.Ssc},{employee.FirstName},{employee.LastName},{employee.Gender},{employee.StreetName},{employee.StreetNumber},{employee.Zipcode},{employee.City},{employee.Email},{departmentString}";
+
+                lines.Add(csvLine);
+            }
+            File.WriteAllLines(filePath, lines);
+        }
         /// <summary>
         /// This method gets the user from the list of users/employees and allows for usage of the logged-in employee object.
         /// </summary>

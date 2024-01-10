@@ -32,6 +32,8 @@
             btnMenu = new Button();
             lblFirstName = new Label();
             groupBox1 = new GroupBox();
+            tbxPasswordShow = new TextBox();
+            cbxShowPassword = new CheckBox();
             label10 = new Label();
             lblStreetNumber = new Label();
             lblZipcode = new Label();
@@ -41,30 +43,28 @@
             lblEmail = new Label();
             lblLastName = new Label();
             groupBox2 = new GroupBox();
-            cbxShowPassword = new CheckBox();
-            tbxPasswordShow = new TextBox();
-            rbGenderMale = new RadioButton();
-            rbGenderFemale = new RadioButton();
-            rbGenderOther = new RadioButton();
-            tbxChangePassword = new TextBox();
-            label1 = new Label();
-            label2 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            tbxChangeCity = new TextBox();
-            tbxChangeZipcode = new TextBox();
-            tbxChangeStreetnumber = new TextBox();
-            tbxChangeStreetname = new TextBox();
-            tbxChangeEmail = new TextBox();
-            tbxChangeLastname = new TextBox();
-            tbxChangeFirstname = new TextBox();
-            btnSaveChanges = new Button();
             cbxChangePasswordShow = new CheckBox();
+            btnSaveChanges = new Button();
+            tbxChangeFirstname = new TextBox();
+            tbxChangeLastname = new TextBox();
+            tbxChangeEmail = new TextBox();
+            tbxChangeStreetname = new TextBox();
+            tbxChangeStreetnumber = new TextBox();
+            tbxChangeZipcode = new TextBox();
+            tbxChangeCity = new TextBox();
+            rbGenderOther = new RadioButton();
+            label2 = new Label();
+            rbGenderFemale = new RadioButton();
+            rbGenderMale = new RadioButton();
+            label9 = new Label();
+            label8 = new Label();
+            tbxChangePassword = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
+            label1 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             SuspendLayout();
@@ -77,7 +77,7 @@
             btnMenu.Margin = new Padding(4, 5, 4, 5);
             btnMenu.Name = "btnMenu";
             btnMenu.Size = new Size(159, 48);
-            btnMenu.TabIndex = 8;
+            btnMenu.TabIndex = 16;
             btnMenu.Text = "Menu";
             btnMenu.UseVisualStyleBackColor = true;
             btnMenu.Click += btnSettings_Click;
@@ -110,6 +110,24 @@
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Current employee information";
+            // 
+            // tbxPasswordShow
+            // 
+            tbxPasswordShow.Location = new Point(156, 426);
+            tbxPasswordShow.Name = "tbxPasswordShow";
+            tbxPasswordShow.ReadOnly = true;
+            tbxPasswordShow.Size = new Size(501, 30);
+            tbxPasswordShow.TabIndex = 15;
+            // 
+            // cbxShowPassword
+            // 
+            cbxShowPassword.AutoSize = true;
+            cbxShowPassword.Location = new Point(87, 426);
+            cbxShowPassword.Name = "cbxShowPassword";
+            cbxShowPassword.Size = new Size(63, 27);
+            cbxShowPassword.TabIndex = 14;
+            cbxShowPassword.Text = "Show";
+            cbxShowPassword.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
@@ -214,45 +232,77 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Changes ";
             // 
-            // cbxShowPassword
+            // cbxChangePasswordShow
             // 
-            cbxShowPassword.AutoSize = true;
-            cbxShowPassword.Location = new Point(87, 426);
-            cbxShowPassword.Name = "cbxShowPassword";
-            cbxShowPassword.Size = new Size(63, 27);
-            cbxShowPassword.TabIndex = 14;
-            cbxShowPassword.Text = "Show";
-            cbxShowPassword.UseVisualStyleBackColor = true;
+            cbxChangePasswordShow.AutoSize = true;
+            cbxChangePasswordShow.Location = new Point(87, 426);
+            cbxChangePasswordShow.Name = "cbxChangePasswordShow";
+            cbxChangePasswordShow.Size = new Size(63, 27);
+            cbxChangePasswordShow.TabIndex = 11;
+            cbxChangePasswordShow.Text = "Show";
+            cbxChangePasswordShow.UseVisualStyleBackColor = true;
             // 
-            // tbxPasswordShow
+            // btnSaveChanges
             // 
-            tbxPasswordShow.Location = new Point(156, 426);
-            tbxPasswordShow.Name = "tbxPasswordShow";
-            tbxPasswordShow.ReadOnly = true;
-            tbxPasswordShow.Size = new Size(501, 30);
-            tbxPasswordShow.TabIndex = 15;
+            btnSaveChanges.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSaveChanges.ForeColor = SystemColors.ControlText;
+            btnSaveChanges.Location = new Point(101, 483);
+            btnSaveChanges.Margin = new Padding(4, 5, 4, 5);
+            btnSaveChanges.Name = "btnSaveChanges";
+            btnSaveChanges.Size = new Size(457, 48);
+            btnSaveChanges.TabIndex = 13;
+            btnSaveChanges.Text = "Save changes";
+            btnSaveChanges.UseVisualStyleBackColor = true;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
-            // rbGenderMale
+            // tbxChangeFirstname
             // 
-            rbGenderMale.AutoSize = true;
-            rbGenderMale.Location = new Point(71, 200);
-            rbGenderMale.Name = "rbGenderMale";
-            rbGenderMale.Size = new Size(58, 27);
-            rbGenderMale.TabIndex = 16;
-            rbGenderMale.TabStop = true;
-            rbGenderMale.Text = "Male";
-            rbGenderMale.UseVisualStyleBackColor = true;
+            tbxChangeFirstname.Location = new Point(91, 46);
+            tbxChangeFirstname.Name = "tbxChangeFirstname";
+            tbxChangeFirstname.Size = new Size(564, 30);
+            tbxChangeFirstname.TabIndex = 1;
             // 
-            // rbGenderFemale
+            // tbxChangeLastname
             // 
-            rbGenderFemale.AutoSize = true;
-            rbGenderFemale.Location = new Point(135, 200);
-            rbGenderFemale.Name = "rbGenderFemale";
-            rbGenderFemale.Size = new Size(73, 27);
-            rbGenderFemale.TabIndex = 17;
-            rbGenderFemale.TabStop = true;
-            rbGenderFemale.Text = "Female";
-            rbGenderFemale.UseVisualStyleBackColor = true;
+            tbxChangeLastname.Location = new Point(91, 98);
+            tbxChangeLastname.Name = "tbxChangeLastname";
+            tbxChangeLastname.Size = new Size(564, 30);
+            tbxChangeLastname.TabIndex = 2;
+            // 
+            // tbxChangeEmail
+            // 
+            tbxChangeEmail.Location = new Point(60, 149);
+            tbxChangeEmail.Name = "tbxChangeEmail";
+            tbxChangeEmail.Size = new Size(595, 30);
+            tbxChangeEmail.TabIndex = 3;
+            // 
+            // tbxChangeStreetname
+            // 
+            tbxChangeStreetname.Location = new Point(101, 248);
+            tbxChangeStreetname.Name = "tbxChangeStreetname";
+            tbxChangeStreetname.Size = new Size(554, 30);
+            tbxChangeStreetname.TabIndex = 7;
+            // 
+            // tbxChangeStreetnumber
+            // 
+            tbxChangeStreetnumber.Location = new Point(115, 294);
+            tbxChangeStreetnumber.Name = "tbxChangeStreetnumber";
+            tbxChangeStreetnumber.Size = new Size(540, 30);
+            tbxChangeStreetnumber.TabIndex = 8;
+            // 
+            // tbxChangeZipcode
+            // 
+            tbxChangeZipcode.Location = new Point(77, 337);
+            tbxChangeZipcode.Name = "tbxChangeZipcode";
+            tbxChangeZipcode.Size = new Size(578, 30);
+            tbxChangeZipcode.TabIndex = 9;
+            // 
+            // tbxChangeCity
+            // 
+            tbxChangeCity.Location = new Point(48, 379);
+            tbxChangeCity.Name = "tbxChangeCity";
+            tbxChangeCity.Size = new Size(607, 30);
+            tbxChangeCity.TabIndex = 10;
             // 
             // rbGenderOther
             // 
@@ -260,26 +310,10 @@
             rbGenderOther.Location = new Point(214, 200);
             rbGenderOther.Name = "rbGenderOther";
             rbGenderOther.Size = new Size(63, 27);
-            rbGenderOther.TabIndex = 18;
+            rbGenderOther.TabIndex = 6;
             rbGenderOther.TabStop = true;
             rbGenderOther.Text = "Other";
             rbGenderOther.UseVisualStyleBackColor = true;
-            // 
-            // tbxChangePassword
-            // 
-            tbxChangePassword.Location = new Point(156, 424);
-            tbxChangePassword.Name = "tbxChangePassword";
-            tbxChangePassword.Size = new Size(499, 30);
-            tbxChangePassword.TabIndex = 29;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(6, 426);
-            label1.Name = "label1";
-            label1.Size = new Size(75, 23);
-            label1.TabIndex = 27;
-            label1.Text = "Password:";
             // 
             // label2
             // 
@@ -290,59 +324,27 @@
             label2.TabIndex = 26;
             label2.Text = "Street number:";
             // 
-            // label3
+            // rbGenderFemale
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(6, 337);
-            label3.Name = "label3";
-            label3.Size = new Size(65, 23);
-            label3.TabIndex = 25;
-            label3.Text = "Zip code:";
+            rbGenderFemale.AutoSize = true;
+            rbGenderFemale.Location = new Point(135, 200);
+            rbGenderFemale.Name = "rbGenderFemale";
+            rbGenderFemale.Size = new Size(73, 27);
+            rbGenderFemale.TabIndex = 5;
+            rbGenderFemale.TabStop = true;
+            rbGenderFemale.Text = "Female";
+            rbGenderFemale.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // rbGenderMale
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 382);
-            label4.Name = "label4";
-            label4.Size = new Size(36, 23);
-            label4.TabIndex = 24;
-            label4.Text = "City:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(6, 248);
-            label5.Name = "label5";
-            label5.Size = new Size(90, 23);
-            label5.TabIndex = 23;
-            label5.Text = "Street name:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(6, 200);
-            label6.Name = "label6";
-            label6.Size = new Size(56, 23);
-            label6.TabIndex = 22;
-            label6.Text = "Gender:";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(6, 149);
-            label7.Name = "label7";
-            label7.Size = new Size(48, 23);
-            label7.TabIndex = 21;
-            label7.Text = "Email:";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(6, 98);
-            label8.Name = "label8";
-            label8.Size = new Size(79, 23);
-            label8.TabIndex = 20;
-            label8.Text = "Last name:";
+            rbGenderMale.AutoSize = true;
+            rbGenderMale.Location = new Point(71, 200);
+            rbGenderMale.Name = "rbGenderMale";
+            rbGenderMale.Size = new Size(58, 27);
+            rbGenderMale.TabIndex = 4;
+            rbGenderMale.TabStop = true;
+            rbGenderMale.Text = "Male";
+            rbGenderMale.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -353,76 +355,76 @@
             label9.TabIndex = 19;
             label9.Text = "First name:";
             // 
-            // tbxChangeCity
+            // label8
             // 
-            tbxChangeCity.Location = new Point(48, 379);
-            tbxChangeCity.Name = "tbxChangeCity";
-            tbxChangeCity.Size = new Size(607, 30);
-            tbxChangeCity.TabIndex = 30;
+            label8.AutoSize = true;
+            label8.Location = new Point(6, 98);
+            label8.Name = "label8";
+            label8.Size = new Size(79, 23);
+            label8.TabIndex = 20;
+            label8.Text = "Last name:";
             // 
-            // tbxChangeZipcode
+            // tbxChangePassword
             // 
-            tbxChangeZipcode.Location = new Point(77, 337);
-            tbxChangeZipcode.Name = "tbxChangeZipcode";
-            tbxChangeZipcode.Size = new Size(578, 30);
-            tbxChangeZipcode.TabIndex = 31;
+            tbxChangePassword.HideSelection = false;
+            tbxChangePassword.Location = new Point(156, 424);
+            tbxChangePassword.Name = "tbxChangePassword";
+            tbxChangePassword.Size = new Size(499, 30);
+            tbxChangePassword.TabIndex = 12;
             // 
-            // tbxChangeStreetnumber
+            // label7
             // 
-            tbxChangeStreetnumber.Location = new Point(115, 294);
-            tbxChangeStreetnumber.Name = "tbxChangeStreetnumber";
-            tbxChangeStreetnumber.Size = new Size(540, 30);
-            tbxChangeStreetnumber.TabIndex = 32;
+            label7.AutoSize = true;
+            label7.Location = new Point(6, 149);
+            label7.Name = "label7";
+            label7.Size = new Size(48, 23);
+            label7.TabIndex = 21;
+            label7.Text = "Email:";
             // 
-            // tbxChangeStreetname
+            // label6
             // 
-            tbxChangeStreetname.Location = new Point(101, 248);
-            tbxChangeStreetname.Name = "tbxChangeStreetname";
-            tbxChangeStreetname.Size = new Size(554, 30);
-            tbxChangeStreetname.TabIndex = 33;
+            label6.AutoSize = true;
+            label6.Location = new Point(6, 200);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 23);
+            label6.TabIndex = 22;
+            label6.Text = "Gender:";
             // 
-            // tbxChangeEmail
+            // label1
             // 
-            tbxChangeEmail.Location = new Point(60, 149);
-            tbxChangeEmail.Name = "tbxChangeEmail";
-            tbxChangeEmail.Size = new Size(595, 30);
-            tbxChangeEmail.TabIndex = 34;
+            label1.AutoSize = true;
+            label1.Location = new Point(6, 426);
+            label1.Name = "label1";
+            label1.Size = new Size(75, 23);
+            label1.TabIndex = 27;
+            label1.Text = "Password:";
             // 
-            // tbxChangeLastname
+            // label5
             // 
-            tbxChangeLastname.Location = new Point(91, 98);
-            tbxChangeLastname.Name = "tbxChangeLastname";
-            tbxChangeLastname.Size = new Size(564, 30);
-            tbxChangeLastname.TabIndex = 35;
+            label5.AutoSize = true;
+            label5.Location = new Point(6, 248);
+            label5.Name = "label5";
+            label5.Size = new Size(90, 23);
+            label5.TabIndex = 23;
+            label5.Text = "Street name:";
             // 
-            // tbxChangeFirstname
+            // label4
             // 
-            tbxChangeFirstname.Location = new Point(91, 46);
-            tbxChangeFirstname.Name = "tbxChangeFirstname";
-            tbxChangeFirstname.Size = new Size(564, 30);
-            tbxChangeFirstname.TabIndex = 36;
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 382);
+            label4.Name = "label4";
+            label4.Size = new Size(36, 23);
+            label4.TabIndex = 24;
+            label4.Text = "City:";
             // 
-            // btnSaveChanges
+            // label3
             // 
-            btnSaveChanges.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSaveChanges.ForeColor = SystemColors.ControlText;
-            btnSaveChanges.Location = new Point(101, 483);
-            btnSaveChanges.Margin = new Padding(4, 5, 4, 5);
-            btnSaveChanges.Name = "btnSaveChanges";
-            btnSaveChanges.Size = new Size(457, 48);
-            btnSaveChanges.TabIndex = 9;
-            btnSaveChanges.Text = "Save changes";
-            btnSaveChanges.UseVisualStyleBackColor = true;
-            // 
-            // cbxChangePasswordShow
-            // 
-            cbxChangePasswordShow.AutoSize = true;
-            cbxChangePasswordShow.Location = new Point(87, 426);
-            cbxChangePasswordShow.Name = "cbxChangePasswordShow";
-            cbxChangePasswordShow.Size = new Size(63, 27);
-            cbxChangePasswordShow.TabIndex = 16;
-            cbxChangePasswordShow.Text = "Show";
-            cbxChangePasswordShow.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Location = new Point(6, 337);
+            label3.Name = "label3";
+            label3.Size = new Size(65, 23);
+            label3.TabIndex = 25;
+            label3.Text = "Zip code:";
             // 
             // Settings
             // 

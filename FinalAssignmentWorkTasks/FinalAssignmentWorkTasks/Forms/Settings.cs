@@ -21,6 +21,10 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             InitializeComponent();
             InitializeLabels();
+            /*
+            if (cbxShowPassword.Checked) { tbxPasswordShow.UseSystemPasswordChar = false; }
+            if (cbxChangePasswordShow.Checked) { tbxChangePassword.UseSystemPasswordChar = false; }
+            */
         }
         public Settings(Employee employee) : this()
         {
@@ -38,19 +42,19 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
-        
-        public void InitializeLabels() 
+
+        public void InitializeLabels()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
             List<Employee> allEmployees = Employee.LoadUserFromCsvForSettings(relativePath);
-            if(allEmployees == null) 
+            if (allEmployees == null)
             {
                 MessageBox.Show("Error parsing data from CSV");
                 return;
             }
 
             Employee loggedInEmployee = allEmployees.FirstOrDefault(emp => emp.Id == SavedUser.Instance.savedEmployee.Id);
-            if(loggedInEmployee == null) 
+            if (loggedInEmployee == null)
             {
                 MessageBox.Show("Error finding logged in user");
                 return;
@@ -64,6 +68,46 @@ namespace FinalAssignmentWorkTasks.Forms
             lblStreetNumber.Text = $"Street number: {loggedInEmployee.StreetNumber}";
             lblZipcode.Text = $"Zip code: {loggedInEmployee.Zipcode}";
             lblCity.Text = $"City: {loggedInEmployee.City}";
+        }
+
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {
+            string changedFirstname = tbxChangeFirstname.Text;
+            string changedLastname = tbxChangeLastname.Text;
+            string changedEmail = tbxChangeEmail.Text;
+            string changedGender = "";
+            if (rbGenderMale.Checked) { changedGender = "Male"; }
+            else if (rbGenderFemale.Checked) { changedGender = "Female"; } 
+            else if(rbGenderOther.Checked) { changedGender = "Other"; }
+            string changedStreetname = tbxChangeStreetname.Text;
+            string changedStreetnumber = tbxChangeStreetnumber.Text;
+            string changedZipcode = tbxChangeZipcode.Text;
+            string changedCity = tbxChangeCity.Text;
+
+            string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
+            List<Employee> allEmployees = Employee.LoadUserFromCsvForSettings(relativePath);
+            Employee loggedInEmployee = allEmployees.FirstOrDefault(emp => emp.Id == SavedUser.Instance.savedEmployee.Id);
+
+            if (loggedInEmployee != null)
+            {
+                loggedInEmployee.FirstName = changedFirstname;
+                loggedInEmployee.LastName = changedLastname;
+                loggedInEmployee.Email = changedEmail;
+                loggedInEmployee.Gender = changedGender;
+                loggedInEmployee.StreetName = changedStreetname;
+                loggedInEmployee.StreetNumber = changedStreetnumber;
+                loggedInEmployee.Zipcode = changedZipcode;
+                loggedInEmployee.City = changedCity;
+
+                Employee.SaveUserToCsvForSettings(allEmployees, relativePath);
+                MessageBox.Show("Changes saved successfully.");
+            }
+            else
+            {
+                MessageBox.Show("Error: Logged-in user not found in the loaded data.");
+            }
+
+
         }
     }
 }

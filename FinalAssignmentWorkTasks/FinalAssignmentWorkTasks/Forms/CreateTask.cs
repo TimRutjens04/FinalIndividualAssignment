@@ -1,5 +1,7 @@
 ﻿using FinalAssignmentWorkTasks.Classes;
+using Microsoft.VisualBasic.ApplicationServices;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +14,7 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace FinalAssignmentWorkTasks.Forms
 {
@@ -280,7 +283,8 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void tbxEmployeeFilter_TextChanged(object sender, EventArgs e)
         {
-            string filterText = tbxEmployeeFilter.Text;
+            string filterText = tbxEmployeeFilter.Text; //this is given as an error but it exists??????? (Error CS0103  The name 'tbxEmployeeFilter' does not exist in the current context FinalAssignmentWorkTasks)
+
             FilterCheckedListBox(filterText);
         }
 
