@@ -23,7 +23,7 @@ namespace FinalAssignmentWorkTasks
         [DataMember]
         public DateTime TimeDue { get; set; }
         [DataMember]
-        public List<Task> Tasks { get; set; } = new List<Task>();
+        public static List<Task> Tasks { get; set; } = new List<Task>();
         [DataMember]
         public List<Employee> AssignedEmployees { get; set; } = new List<Employee>();
         [DataMember]

@@ -19,9 +19,9 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
+        private List<Task> tasksForLoggedInEmployee = new List<Task>();
         private static XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
-
         public TaskDashboard()
         {
             InitializeComponent();
@@ -112,7 +112,17 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             Tasks.Clear();
             Tasks.AddRange(LoadTasksFromXmlFiles());
-            tasksDataTable = ConvertToDataTable(Tasks);
+
+            if (_loggedInEmployee.Department != Department.Admin)
+            {
+                tasksForLoggedInEmployee = Tasks.Where(task => task.AssignedEmployees.Any(employee => employee.FullName == _loggedInEmployee.FullName)).ToList();
+
+                tasksDataTable = ConvertToDataTable(tasksForLoggedInEmployee);                
+            }
+            else 
+            {
+                tasksDataTable = ConvertToDataTable(Tasks);
+            }
             dataGridViewTasks.DataSource = tasksDataTable;
         }
         /// <summary>
@@ -289,8 +299,8 @@ namespace FinalAssignmentWorkTasks.Forms
             }
             else
             {
-                UpdateFilteredTasks(new DataTable());
-                //MessageBox.Show("No matching rows found.");
+                //UpdateFilteredTasks(new DataTable());
+                MessageBox.Show("No matching rows found.");
                 //always enters here meaning filteredTasks is null
             }
         }
