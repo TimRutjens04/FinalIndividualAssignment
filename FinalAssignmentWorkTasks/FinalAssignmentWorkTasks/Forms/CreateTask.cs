@@ -78,7 +78,7 @@ namespace FinalAssignmentWorkTasks.Forms
             tbxTaskDescription.Text = task.TaskDescription;
             monthCalendarDueTime.SetDate(task.TimeDue);
 
-            if (_task.Status != Classes.TaskStatus.Open) 
+            if (_task.Status != Classes.TaskStatus.Open)
             {
                 tbxTaskName.Enabled = false;
                 tbxTaskDescription.Enabled = false;
@@ -260,6 +260,25 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             UpdateCreateButtonState();
         }
+        private void FilterCheckedListBox(string filterText)
+        {
+            clbxAssignedEmployees.Items.Clear();
+
+            foreach (Employee employee in selectedEmployeeList)
+            {
+                string itemText = employee.ToString();
+
+                if (itemText.Contains(filterText))
+                {
+                    clbxAssignedEmployees.Items.Add(employee);
+                }
+            }
+        }
+        private void tbxEmployeeFilter_TextChanged(object sender, EventArgs e)
+        {
+            string filterText = tbxEmployeeFilter.Text;
+            FilterCheckedListBox(filterText);
+        }
 
         private void UpdateSavedTaskToXml(Task taskToUpdate)
         {
@@ -271,11 +290,11 @@ namespace FinalAssignmentWorkTasks.Forms
                 string fullPath = Path.Combine(directoryPath, fileName);
 
                 if (File.Exists(fullPath))
-                {                    
+                {
                     Task existingTask = LoadTaskFromXml(fullPath);
                     File.Delete(fullPath);
-                    
-                    existingTask.TaskName = tbxTaskName.Text; 
+
+                    existingTask.TaskName = tbxTaskName.Text;
                     existingTask.TaskDescription = tbxTaskDescription.Text;
                     existingTask.TimeDue = monthCalendarDueTime.SelectionStart;
                     existingTask.Status = Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(comStatus.SelectedItem.ToString());
@@ -322,6 +341,8 @@ namespace FinalAssignmentWorkTasks.Forms
                 throw new Exception($"Error loading task from {filePath}: {ex.Message}");
             }
         }
+
+        
     }
 }
 
