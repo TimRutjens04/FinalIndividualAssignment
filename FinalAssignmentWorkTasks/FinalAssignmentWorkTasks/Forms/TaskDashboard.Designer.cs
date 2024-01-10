@@ -32,6 +32,10 @@
             btnMenu = new Button();
             dataGridViewTasks = new DataGridView();
             groupBox1 = new GroupBox();
+            tbxStatus = new TextBox();
+            tbxDepartment = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
             tbxId = new TextBox();
             tbxTitle = new TextBox();
             cbxStatusInProgress = new CheckBox();
@@ -89,6 +93,10 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.White;
+            groupBox1.Controls.Add(tbxStatus);
+            groupBox1.Controls.Add(tbxDepartment);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(tbxId);
             groupBox1.Controls.Add(tbxTitle);
             groupBox1.Controls.Add(cbxStatusInProgress);
@@ -113,21 +121,57 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Controls";
             // 
+            // tbxStatus
+            // 
+            tbxStatus.BackColor = SystemColors.Info;
+            tbxStatus.Location = new Point(71, 212);
+            tbxStatus.Name = "tbxStatus";
+            tbxStatus.Size = new Size(238, 34);
+            tbxStatus.TabIndex = 21;
+            tbxStatus.TextChanged += tbxStatus_TextChanged;
+            // 
+            // tbxDepartment
+            // 
+            tbxDepartment.BackColor = SystemColors.Info;
+            tbxDepartment.Location = new Point(114, 146);
+            tbxDepartment.Name = "tbxDepartment";
+            tbxDepartment.Size = new Size(195, 34);
+            tbxDepartment.TabIndex = 20;
+            tbxDepartment.TextChanged += tbxDepartment_TextChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(2, 212);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 27);
+            label3.TabIndex = 19;
+            label3.Text = "Status:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(2, 149);
+            label4.Name = "label4";
+            label4.Size = new Size(103, 27);
+            label4.TabIndex = 18;
+            label4.Text = "Department:";
+            // 
             // tbxId
             // 
             tbxId.BackColor = SystemColors.Info;
-            tbxId.Location = new Point(61, 135);
+            tbxId.Location = new Point(56, 95);
             tbxId.Name = "tbxId";
-            tbxId.Size = new Size(238, 34);
+            tbxId.Size = new Size(253, 34);
             tbxId.TabIndex = 17;
             tbxId.TextChanged += tbxId_TextChanged;
             // 
             // tbxTitle
             // 
             tbxTitle.BackColor = SystemColors.Info;
-            tbxTitle.Location = new Point(61, 72);
+            tbxTitle.Location = new Point(56, 35);
             tbxTitle.Name = "tbxTitle";
-            tbxTitle.Size = new Size(238, 34);
+            tbxTitle.Size = new Size(253, 34);
             tbxTitle.TabIndex = 16;
             tbxTitle.TextChanged += tbxTitle_TextChanged;
             // 
@@ -234,7 +278,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(7, 135);
+            label2.Location = new Point(2, 98);
             label2.Name = "label2";
             label2.Size = new Size(33, 27);
             label2.TabIndex = 1;
@@ -243,7 +287,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(7, 72);
+            label1.Location = new Point(2, 35);
             label1.Name = "label1";
             label1.Size = new Size(48, 27);
             label1.TabIndex = 0;
@@ -385,5 +429,9 @@
         private TextBox tbxTitle;
         private Button btnChangeSelectedTask;
         private Button btnRemoveTask;
+        private TextBox tbxStatus;
+        private TextBox tbxDepartment;
+        private Label label3;
+        private Label label4;
     }
 }

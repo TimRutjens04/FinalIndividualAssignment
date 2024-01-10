@@ -81,12 +81,12 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void btnRemoveTask_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTasks.SelectedRows.Count > 0) 
+            if (dataGridViewTasks.SelectedRows.Count > 0)
             {
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
                 int taskId = Convert.ToInt32(selectedRow["TaskId"]);
                 _selectedTask = CreateTask.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
-                if ( _selectedTask != null && _selectedTask.Status == Classes.TaskStatus.Open)
+                if (_selectedTask != null && _selectedTask.Status == Classes.TaskStatus.Open)
                 {
                     string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
                     string directoryPath = Path.Combine(projectRoot, "Tasks");
@@ -96,7 +96,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     tasksDataTable.Rows.Remove(selectedRow);
                     File.Delete(fullPath);
                 }
-                else { MessageBox.Show($"Cannot delete class with status {_selectedTask.Status}\nRequired status for removal is Open.");}
+                else { MessageBox.Show($"Cannot delete class with status {_selectedTask.Status}\nRequired status for removal is Open."); }
             }
             else { MessageBox.Show("Please select a task"); }
         }
@@ -204,38 +204,44 @@ namespace FinalAssignmentWorkTasks.Forms
             dataTable.Columns.Add("TaskName", typeof(string));
             dataTable.Columns.Add("TaskDescription", typeof(string));
             dataTable.Columns.Add("TimeDue", typeof(DateTime));
-            dataTable.Columns.Add("Status", typeof(FinalAssignmentWorkTasks.Classes.TaskStatus));
+            dataTable.Columns.Add("Status", typeof(string));
             dataTable.Columns.Add("Department", typeof(string));
             dataTable.Columns.Add("Assigned employees", typeof(string));
 
             foreach (var task in tasks)
             {
+                string statusString = string.Join (", ", task.Status.ToString());
                 string assignedDepartments = string.Join(", ", task.AssignedDepartments.Select(dep => dep.ToString()));
                 string assignedEmployees = string.Join(", ", task.AssignedEmployees.Select(emp => emp.ToString()));
-                dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, task.Status, assignedDepartments, assignedEmployees);
+                dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, statusString, assignedDepartments, assignedEmployees);
             }
 
             return dataTable;
         }
         /// <summary>
-        /// Filtering mechanism for title
+        /// Filtering mechanisms for Title, ID, Department, Status
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void tbxTitle_TextChanged(object sender, EventArgs e)
         {
             string filterField = "TaskName";
             tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxTitle.Text);
         }
-        /// <summary>
-        /// Filtering mechanism for ID
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void tbxId_TextChanged(object sender, EventArgs e)
         {
             string filterField = "TaskId";
             tasksDataTable.DefaultView.RowFilter = string.Format("Convert([{0}], 'System.String') LIKE '%{1}%'", filterField, tbxId.Text);
+        }
+        private void tbxDepartment_TextChanged(object sender, EventArgs e)
+        {
+            string filterField = "Department";
+            tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxDepartment.Text);
+        }
+
+        private void tbxStatus_TextChanged(object sender, EventArgs e)
+        {
+            string filterField = "Status";
+
+            tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxStatus.Text.ToString());
         }
         /// <summary>
         /// Allows for filtering mechanism of checkboxes by adding a CheckedChanged event to all checkboxes so they will update each time the event occurs
@@ -265,8 +271,8 @@ namespace FinalAssignmentWorkTasks.Forms
             var checkedDepartments = GetCheckedDepartments();
             var checkedStatuses = GetCheckedStatuses();
 
-            MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
-            MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
+            //MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
+            //MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
 
             var filteredTasks = Tasks.Where(task =>
             {
@@ -329,7 +335,5 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             dataGridViewTasks.DataSource = filteredTasks;
         }
-
-        
     }
 }
