@@ -12,8 +12,8 @@ namespace FinalAssignmentWorkTasks
     /// </summary>
     public class Company
     {
-        public List<Employee> Employees;
-        public List<Task> Tasks;
+        public static List<Employee> CompanyEmployees;
+        public static List<Task> CompanyTasks;
         public Company() { }
     }
 }

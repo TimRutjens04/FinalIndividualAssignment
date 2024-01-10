@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace FinalAssignmentWorkTasks.Forms
 {
@@ -74,6 +75,26 @@ namespace FinalAssignmentWorkTasks.Forms
                     this.Hide();
                     var temp = new CreateTask(_selectedTask, _loggedInEmployee);
                     temp.Show();
+                }
+            }
+            else { MessageBox.Show("Please select a task"); }
+        }
+        private void btnRemoveTask_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTasks.SelectedRows.Count > 0) 
+            {
+                DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
+                int taskId = Convert.ToInt32(selectedRow["TaskId"]);
+                _selectedTask = CreateTask.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
+                if ( _selectedTask != null && _selectedTask.Status == Classes.TaskStatus.Open)
+                {
+                    string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
+                    string directoryPath = Path.Combine(projectRoot, "Tasks");
+                    string fileName = $"{_selectedTask.TaskName}_{taskId.ToString()}.xml";
+                    string fullPath = Path.Combine(directoryPath, fileName);
+                    Tasks.Remove(_selectedTask);
+                    tasksDataTable.Rows.Remove(selectedRow);
+                    File.Delete(fullPath);
                 }
             }
             else { MessageBox.Show("Please select a task"); }
@@ -243,25 +264,19 @@ namespace FinalAssignmentWorkTasks.Forms
             var checkedDepartments = GetCheckedDepartments();
             var checkedStatuses = GetCheckedStatuses();
 
-            //MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
-            //MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
+            MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
+            MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
 
-            var filteredTasks = tasksDataTable.AsEnumerable()
-                .Where(task =>
-                {
-                    var departmentValues = task.Field<string>("Department").Split(',').Select(dep => dep.Trim());
-                    var statusValue = task.Field<int>("Status").ToString().Replace("_", ""); //System.InvalidCastException: 'Unable to cast object of type 'System.Int32' to type 'System.String'.' so made it int and then used ToString()
+            var filteredTasks = Tasks.Where(task =>
+            {
+                return task.AssignedDepartments.Any(department => checkedDepartments.Contains(department)) &&
+                       checkedStatuses.Contains(task.Status);
+            }).ToList();
 
-                    //MessageBox.Show($"Checking Task: Department={string.Join(", ", departmentValues)}, Status={statusValue}");
-
-                    return departmentValues.Any(dep => checkedDepartments.Contains(Enum.Parse<Department>(dep))) &&
-                           checkedStatuses.Contains(Enum.Parse<FinalAssignmentWorkTasks.Classes.TaskStatus>(statusValue));
-                })
-                .ToList();
 
             if (filteredTasks.Any())
             {
-                var filteredDataTable = filteredTasks.CopyToDataTable();
+                var filteredDataTable = ConvertToDataTable(filteredTasks);
                 UpdateFilteredTasks(filteredDataTable);
                 MessageBox.Show($"Does it even enter this block?\nFilteredTask: {filteredTasks.ToString()}");
             }
@@ -269,6 +284,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 UpdateFilteredTasks(new DataTable());
                 //MessageBox.Show("No matching rows found.");
+                //always enters here meaning filteredTasks is null
             }
         }
 
@@ -312,5 +328,7 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             dataGridViewTasks.DataSource = filteredTasks;
         }
+
+        
     }
 }
