@@ -77,6 +77,19 @@ namespace FinalAssignmentWorkTasks.Forms
             tbxTaskName.Text = task.TaskName;
             tbxTaskDescription.Text = task.TaskDescription;
             monthCalendarDueTime.SetDate(task.TimeDue);
+
+            if (_task.Status != Classes.TaskStatus.Open) 
+            {
+                tbxTaskName.Enabled = false;
+                tbxTaskDescription.Enabled = false;
+                monthCalendarDueTime.Enabled = false;
+                clbxAssignedEmployees.Enabled = false;
+                cbxHR.Enabled = false;
+                cbxMarketing.Enabled = false;
+                cbxRD.Enabled = false;
+                cbxSales.Enabled = false;
+                cbxSupport.Enabled = false;
+            }
             //comStatus.ValueMember = Enum.TryParse(FinalAssignmentWorkTasks.Classes.TaskStatus, task.Status);
             //clbxAssignedEmployees.CheckedItems = task.AssignedEmployees;
 
@@ -260,6 +273,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 if (File.Exists(fullPath))
                 {                    
                     Task existingTask = LoadTaskFromXml(fullPath);
+                    File.Delete(fullPath);
                     
                     existingTask.TaskName = tbxTaskName.Text; 
                     existingTask.TaskDescription = tbxTaskDescription.Text;
@@ -274,6 +288,9 @@ namespace FinalAssignmentWorkTasks.Forms
                             existingTask.AssignedEmployees.Add(employee);
                         }
                     }
+
+                    fileName = $"{existingTask.TaskName}_{existingTask.TaskId.ToString()}.xml";
+                    fullPath = Path.Combine(directoryPath, fileName);
 
                     using (FileStream fs = new FileStream(fullPath, FileMode.Create, FileAccess.Write))
                     {

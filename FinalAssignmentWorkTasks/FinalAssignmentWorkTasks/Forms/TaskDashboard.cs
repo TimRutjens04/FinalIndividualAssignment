@@ -96,6 +96,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     tasksDataTable.Rows.Remove(selectedRow);
                     File.Delete(fullPath);
                 }
+                else { MessageBox.Show($"Cannot delete class with status {_selectedTask.Status}\nRequired status for removal is Open.");}
             }
             else { MessageBox.Show("Please select a task"); }
         }

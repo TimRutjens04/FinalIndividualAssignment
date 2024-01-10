@@ -6,10 +6,6 @@
   <TimeDue>2024-02-14T00:00:00</TimeDue>
   <Tasks />
   <AssignedEmployees />
-  <AssignedDepartments>
-    <Department>Human_Resources</Department>
-    <Department>Sales</Department>
-    <Department>Research_and_Development</Department>
-  </AssignedDepartments>
-  <Status>Open</Status>
+  <AssignedDepartments />
+  <Status>Completed</Status>
 </Task>
