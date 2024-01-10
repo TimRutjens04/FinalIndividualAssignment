@@ -25,18 +25,16 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             _loggedInEmployee = employee;
         }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var temp = new Menu(_loggedInEmployee);
-            temp.Show();
-        }
-
         private void Settings_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Hide();
             var temp = new Login();
+            temp.Show();
+        }
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
     }

@@ -77,6 +77,7 @@ namespace FinalAssignmentWorkTasks.Forms
             tbxTaskName.Text = task.TaskName;
             tbxTaskDescription.Text = task.TaskDescription;
             monthCalendarDueTime.SetDate(task.TimeDue);
+            comStatus.SelectedValue = task.Status;
 
             if (_task.Status != Classes.TaskStatus.Open)
             {
