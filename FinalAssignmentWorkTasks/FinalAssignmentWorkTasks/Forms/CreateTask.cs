@@ -267,10 +267,13 @@ namespace FinalAssignmentWorkTasks.Forms
             foreach (Employee employee in selectedEmployeeList)
             {
                 string itemText = employee.DisplayData.ToString();
-
-                if (itemText.Contains(filterText))
+                List<Department> departmentList = GetCheckedDepartments();
+                if (departmentList.Contains(employee.Department))
                 {
-                    clbxAssignedEmployees.Items.Add(employee.DisplayData);
+                    if (itemText.Contains(filterText))
+                    {
+                        clbxAssignedEmployees.Items.Add(employee.DisplayData);
+                    }
                 }
             }
         }
