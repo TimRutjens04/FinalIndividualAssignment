@@ -48,7 +48,7 @@ namespace FinalAssignmentWorkTasks.Forms
         /// <summary>
         /// Below are all navigation buttons
         /// </summary>
-        
+
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -88,6 +88,6 @@ namespace FinalAssignmentWorkTasks.Forms
             temp.Show();
         }
 
-        
+
     }
 }
