@@ -229,7 +229,9 @@ namespace FinalAssignmentWorkTasks.Forms
                 UpdateSavedTaskToXml(_task);
             }
         }
-
+        /// <summary>
+        /// Subscribes to CheckedChanged event 
+        /// </summary>
         private void InitializeCheckboxes()
         {
             cbxHR.CheckedChanged += CheckBox_CheckedChanged;
@@ -251,8 +253,20 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void UpdateCheckedListBox(List<Employee> employees)
         {
+            var previouslySelectedItems = clbxAssignedEmployees.CheckedItems.Cast<string>().ToList();
+
             clbxAssignedEmployees.Items.Clear();
+
             clbxAssignedEmployees.Items.AddRange(employees.Select(employee => employee.DisplayData).ToArray());
+
+            foreach (var item in previouslySelectedItems)
+            {
+                int index = clbxAssignedEmployees.Items.IndexOf(item);
+                if (index >= 0)
+                {
+                    clbxAssignedEmployees.SetItemChecked(index, true);
+                }
+            }
         }
 
         private void tbxTaskName_TextChanged(object sender, EventArgs e)

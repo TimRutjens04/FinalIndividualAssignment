@@ -255,6 +255,7 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         /// <summary>
         /// Allows for filtering mechanism of checkboxes by adding a CheckedChanged event to all checkboxes so they will update each time the event occurs
+        /// 
         /// </summary>
         private void InitializeCheckboxes()
         {
