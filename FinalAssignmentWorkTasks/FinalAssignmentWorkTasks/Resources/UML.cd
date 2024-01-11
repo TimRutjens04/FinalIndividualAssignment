@@ -1,31 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="FinalAssignmentWorkTasks.Company">
-    <Position X="3.25" Y="0.75" Width="2" />
+    <Position X="3.25" Y="1.25" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQEAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Company.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinalAssignmentWorkTasks.Employee">
-    <Position X="8" Y="0.75" Width="2.5" />
+    <Position X="8" Y="1" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAiEEAAAKAAAICMAAAIAAAAEBAwAQAAAAAAAQBAAAg=</HashCode>
       <FileName>Classes\Employee.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Department" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="FinalAssignmentWorkTasks.Task">
     <Position X="3.25" Y="4" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAMAACAAAAABAAAAEAAABgAAAAAAAAIAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAMAICAABAAhAAAAkAAABgAAAAAAAAIAAAAAAA=</HashCode>
       <FileName>Classes\Task.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Status" />
+    </ShowAsAssociation>
   </Class>
-  <Class Name="FinalAssignmentWorkTasks.Classes.TaskID">
-    <Position X="3.5" Y="7.5" Width="1.5" />
+  <Class Name="FinalAssignmentWorkTasks.Classes.TaskId">
+    <Position X="3.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAADAAAAAAAAAAAAAAAAACAAAAgAAAAAA=</HashCode>
-      <FileName>Classes\TaskID.cs</FileName>
+      <FileName>Classes\TaskId.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FinalAssignmentWorkTasks.Forms.SavedUser">
