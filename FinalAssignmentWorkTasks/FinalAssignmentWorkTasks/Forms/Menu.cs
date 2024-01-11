@@ -88,9 +88,19 @@ namespace FinalAssignmentWorkTasks.Forms
             temp.Show();
         }
 
+        /// <summary>
+        /// Loading the lists here might fix the initial problem with TaskID,
+        /// and allows to not use the TaskID class but just the simple method in the Task class itself
+        /// However since it works and its Thursday already I'm not gonna mess with it any longer.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Menu_Load(object sender, EventArgs e)
         {
-             
+            /*
+            List<Task> loadedTasks = Task.LoadTasksFromXmlFiles();
+            Company.CompanyTasks = loadedTasks;
+            */
         }
     }
 }
