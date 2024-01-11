@@ -73,7 +73,7 @@
             // 
             btnMenu.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btnMenu.ForeColor = SystemColors.ControlText;
-            btnMenu.Location = new Point(13, 495);
+            btnMenu.Location = new Point(12, 539);
             btnMenu.Margin = new Padding(4, 5, 4, 5);
             btnMenu.Name = "btnMenu";
             btnMenu.Size = new Size(159, 48);
@@ -87,7 +87,7 @@
             lblFirstName.AutoSize = true;
             lblFirstName.Location = new Point(6, 49);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(81, 23);
+            lblFirstName.Size = new Size(119, 34);
             lblFirstName.TabIndex = 4;
             lblFirstName.Text = "First name:";
             // 
@@ -113,28 +113,29 @@
             // 
             // tbxPasswordShow
             // 
-            tbxPasswordShow.Location = new Point(156, 426);
+            tbxPasswordShow.Location = new Point(205, 426);
             tbxPasswordShow.Name = "tbxPasswordShow";
             tbxPasswordShow.ReadOnly = true;
-            tbxPasswordShow.Size = new Size(501, 30);
+            tbxPasswordShow.Size = new Size(452, 41);
             tbxPasswordShow.TabIndex = 15;
             // 
             // cbxShowPassword
             // 
             cbxShowPassword.AutoSize = true;
-            cbxShowPassword.Location = new Point(87, 426);
+            cbxShowPassword.Location = new Point(121, 427);
             cbxShowPassword.Name = "cbxShowPassword";
-            cbxShowPassword.Size = new Size(63, 27);
+            cbxShowPassword.Size = new Size(91, 38);
             cbxShowPassword.TabIndex = 14;
             cbxShowPassword.Text = "Show";
             cbxShowPassword.UseVisualStyleBackColor = true;
+            cbxShowPassword.CheckedChanged += cbxShowPassword_CheckedChanged;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Location = new Point(6, 426);
             label10.Name = "label10";
-            label10.Size = new Size(75, 23);
+            label10.Size = new Size(109, 34);
             label10.TabIndex = 13;
             label10.Text = "Password:";
             // 
@@ -143,7 +144,7 @@
             lblStreetNumber.AutoSize = true;
             lblStreetNumber.Location = new Point(6, 294);
             lblStreetNumber.Name = "lblStreetNumber";
-            lblStreetNumber.Size = new Size(103, 23);
+            lblStreetNumber.Size = new Size(153, 34);
             lblStreetNumber.TabIndex = 11;
             lblStreetNumber.Text = "Street number:";
             // 
@@ -152,7 +153,7 @@
             lblZipcode.AutoSize = true;
             lblZipcode.Location = new Point(6, 337);
             lblZipcode.Name = "lblZipcode";
-            lblZipcode.Size = new Size(65, 23);
+            lblZipcode.Size = new Size(96, 34);
             lblZipcode.TabIndex = 10;
             lblZipcode.Text = "Zip code:";
             // 
@@ -161,7 +162,7 @@
             lblCity.AutoSize = true;
             lblCity.Location = new Point(6, 382);
             lblCity.Name = "lblCity";
-            lblCity.Size = new Size(36, 23);
+            lblCity.Size = new Size(54, 34);
             lblCity.TabIndex = 9;
             lblCity.Text = "City:";
             // 
@@ -170,7 +171,7 @@
             lblStreetName.AutoSize = true;
             lblStreetName.Location = new Point(6, 248);
             lblStreetName.Name = "lblStreetName";
-            lblStreetName.Size = new Size(90, 23);
+            lblStreetName.Size = new Size(134, 34);
             lblStreetName.TabIndex = 8;
             lblStreetName.Text = "Street name:";
             // 
@@ -179,7 +180,7 @@
             lblGender.AutoSize = true;
             lblGender.Location = new Point(6, 200);
             lblGender.Name = "lblGender";
-            lblGender.Size = new Size(56, 23);
+            lblGender.Size = new Size(84, 34);
             lblGender.TabIndex = 7;
             lblGender.Text = "Gender:";
             // 
@@ -188,7 +189,7 @@
             lblEmail.AutoSize = true;
             lblEmail.Location = new Point(6, 149);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(48, 23);
+            lblEmail.Size = new Size(72, 34);
             lblEmail.TabIndex = 6;
             lblEmail.Text = "Email:";
             // 
@@ -197,7 +198,7 @@
             lblLastName.AutoSize = true;
             lblLastName.Location = new Point(6, 98);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(79, 23);
+            lblLastName.Size = new Size(115, 34);
             lblLastName.TabIndex = 5;
             lblLastName.Text = "Last name:";
             // 
@@ -227,7 +228,7 @@
             groupBox2.Controls.Add(label3);
             groupBox2.Location = new Point(719, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(675, 542);
+            groupBox2.Size = new Size(712, 583);
             groupBox2.TabIndex = 7;
             groupBox2.TabStop = false;
             groupBox2.Text = "Changes ";
@@ -235,18 +236,19 @@
             // cbxChangePasswordShow
             // 
             cbxChangePasswordShow.AutoSize = true;
-            cbxChangePasswordShow.Location = new Point(87, 426);
+            cbxChangePasswordShow.Location = new Point(117, 426);
             cbxChangePasswordShow.Name = "cbxChangePasswordShow";
-            cbxChangePasswordShow.Size = new Size(63, 27);
+            cbxChangePasswordShow.Size = new Size(91, 38);
             cbxChangePasswordShow.TabIndex = 11;
             cbxChangePasswordShow.Text = "Show";
             cbxChangePasswordShow.UseVisualStyleBackColor = true;
+            cbxChangePasswordShow.CheckedChanged += cbxChangePasswordShow_CheckedChanged;
             // 
             // btnSaveChanges
             // 
             btnSaveChanges.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
             btnSaveChanges.ForeColor = SystemColors.ControlText;
-            btnSaveChanges.Location = new Point(101, 483);
+            btnSaveChanges.Location = new Point(101, 527);
             btnSaveChanges.Margin = new Padding(4, 5, 4, 5);
             btnSaveChanges.Name = "btnSaveChanges";
             btnSaveChanges.Size = new Size(457, 48);
@@ -257,59 +259,59 @@
             // 
             // tbxChangeFirstname
             // 
-            tbxChangeFirstname.Location = new Point(91, 46);
+            tbxChangeFirstname.Location = new Point(131, 46);
             tbxChangeFirstname.Name = "tbxChangeFirstname";
-            tbxChangeFirstname.Size = new Size(564, 30);
+            tbxChangeFirstname.Size = new Size(564, 41);
             tbxChangeFirstname.TabIndex = 1;
             // 
             // tbxChangeLastname
             // 
-            tbxChangeLastname.Location = new Point(91, 98);
+            tbxChangeLastname.Location = new Point(131, 95);
             tbxChangeLastname.Name = "tbxChangeLastname";
-            tbxChangeLastname.Size = new Size(564, 30);
+            tbxChangeLastname.Size = new Size(564, 41);
             tbxChangeLastname.TabIndex = 2;
             // 
             // tbxChangeEmail
             // 
-            tbxChangeEmail.Location = new Point(60, 149);
+            tbxChangeEmail.Location = new Point(100, 146);
             tbxChangeEmail.Name = "tbxChangeEmail";
-            tbxChangeEmail.Size = new Size(595, 30);
+            tbxChangeEmail.Size = new Size(595, 41);
             tbxChangeEmail.TabIndex = 3;
             // 
             // tbxChangeStreetname
             // 
-            tbxChangeStreetname.Location = new Point(101, 248);
+            tbxChangeStreetname.Location = new Point(141, 248);
             tbxChangeStreetname.Name = "tbxChangeStreetname";
-            tbxChangeStreetname.Size = new Size(554, 30);
+            tbxChangeStreetname.Size = new Size(554, 41);
             tbxChangeStreetname.TabIndex = 7;
             // 
             // tbxChangeStreetnumber
             // 
-            tbxChangeStreetnumber.Location = new Point(115, 294);
+            tbxChangeStreetnumber.Location = new Point(155, 294);
             tbxChangeStreetnumber.Name = "tbxChangeStreetnumber";
-            tbxChangeStreetnumber.Size = new Size(540, 30);
+            tbxChangeStreetnumber.Size = new Size(540, 41);
             tbxChangeStreetnumber.TabIndex = 8;
             // 
             // tbxChangeZipcode
             // 
-            tbxChangeZipcode.Location = new Point(77, 337);
+            tbxChangeZipcode.Location = new Point(117, 337);
             tbxChangeZipcode.Name = "tbxChangeZipcode";
-            tbxChangeZipcode.Size = new Size(578, 30);
+            tbxChangeZipcode.Size = new Size(578, 41);
             tbxChangeZipcode.TabIndex = 9;
             // 
             // tbxChangeCity
             // 
-            tbxChangeCity.Location = new Point(48, 379);
+            tbxChangeCity.Location = new Point(88, 379);
             tbxChangeCity.Name = "tbxChangeCity";
-            tbxChangeCity.Size = new Size(607, 30);
+            tbxChangeCity.Size = new Size(607, 41);
             tbxChangeCity.TabIndex = 10;
             // 
             // rbGenderOther
             // 
             rbGenderOther.AutoSize = true;
-            rbGenderOther.Location = new Point(214, 200);
+            rbGenderOther.Location = new Point(298, 200);
             rbGenderOther.Name = "rbGenderOther";
-            rbGenderOther.Size = new Size(63, 27);
+            rbGenderOther.Size = new Size(92, 38);
             rbGenderOther.TabIndex = 6;
             rbGenderOther.TabStop = true;
             rbGenderOther.Text = "Other";
@@ -320,16 +322,16 @@
             label2.AutoSize = true;
             label2.Location = new Point(6, 294);
             label2.Name = "label2";
-            label2.Size = new Size(103, 23);
+            label2.Size = new Size(153, 34);
             label2.TabIndex = 26;
             label2.Text = "Street number:";
             // 
             // rbGenderFemale
             // 
             rbGenderFemale.AutoSize = true;
-            rbGenderFemale.Location = new Point(135, 200);
+            rbGenderFemale.Location = new Point(185, 200);
             rbGenderFemale.Name = "rbGenderFemale";
-            rbGenderFemale.Size = new Size(73, 27);
+            rbGenderFemale.Size = new Size(107, 38);
             rbGenderFemale.TabIndex = 5;
             rbGenderFemale.TabStop = true;
             rbGenderFemale.Text = "Female";
@@ -338,9 +340,9 @@
             // rbGenderMale
             // 
             rbGenderMale.AutoSize = true;
-            rbGenderMale.Location = new Point(71, 200);
+            rbGenderMale.Location = new Point(100, 200);
             rbGenderMale.Name = "rbGenderMale";
-            rbGenderMale.Size = new Size(58, 27);
+            rbGenderMale.Size = new Size(84, 38);
             rbGenderMale.TabIndex = 4;
             rbGenderMale.TabStop = true;
             rbGenderMale.Text = "Male";
@@ -351,7 +353,7 @@
             label9.AutoSize = true;
             label9.Location = new Point(6, 49);
             label9.Name = "label9";
-            label9.Size = new Size(81, 23);
+            label9.Size = new Size(119, 34);
             label9.TabIndex = 19;
             label9.Text = "First name:";
             // 
@@ -360,16 +362,16 @@
             label8.AutoSize = true;
             label8.Location = new Point(6, 98);
             label8.Name = "label8";
-            label8.Size = new Size(79, 23);
+            label8.Size = new Size(115, 34);
             label8.TabIndex = 20;
             label8.Text = "Last name:";
             // 
             // tbxChangePassword
             // 
             tbxChangePassword.HideSelection = false;
-            tbxChangePassword.Location = new Point(156, 424);
+            tbxChangePassword.Location = new Point(214, 424);
             tbxChangePassword.Name = "tbxChangePassword";
-            tbxChangePassword.Size = new Size(499, 30);
+            tbxChangePassword.Size = new Size(481, 41);
             tbxChangePassword.TabIndex = 12;
             // 
             // label7
@@ -377,7 +379,7 @@
             label7.AutoSize = true;
             label7.Location = new Point(6, 149);
             label7.Name = "label7";
-            label7.Size = new Size(48, 23);
+            label7.Size = new Size(72, 34);
             label7.TabIndex = 21;
             label7.Text = "Email:";
             // 
@@ -386,7 +388,7 @@
             label6.AutoSize = true;
             label6.Location = new Point(6, 200);
             label6.Name = "label6";
-            label6.Size = new Size(56, 23);
+            label6.Size = new Size(84, 34);
             label6.TabIndex = 22;
             label6.Text = "Gender:";
             // 
@@ -395,7 +397,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(6, 426);
             label1.Name = "label1";
-            label1.Size = new Size(75, 23);
+            label1.Size = new Size(109, 34);
             label1.TabIndex = 27;
             label1.Text = "Password:";
             // 
@@ -404,7 +406,7 @@
             label5.AutoSize = true;
             label5.Location = new Point(6, 248);
             label5.Name = "label5";
-            label5.Size = new Size(90, 23);
+            label5.Size = new Size(134, 34);
             label5.TabIndex = 23;
             label5.Text = "Street name:";
             // 
@@ -413,7 +415,7 @@
             label4.AutoSize = true;
             label4.Location = new Point(6, 382);
             label4.Name = "label4";
-            label4.Size = new Size(36, 23);
+            label4.Size = new Size(54, 34);
             label4.TabIndex = 24;
             label4.Text = "City:";
             // 
@@ -422,16 +424,16 @@
             label3.AutoSize = true;
             label3.Location = new Point(6, 337);
             label3.Name = "label3";
-            label3.Size = new Size(65, 23);
+            label3.Size = new Size(96, 34);
             label3.TabIndex = 25;
             label3.Text = "Zip code:";
             // 
             // Settings
             // 
-            AutoScaleDimensions = new SizeF(8F, 23F);
+            AutoScaleDimensions = new SizeF(11F, 34F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
-            ClientSize = new Size(1406, 566);
+            ClientSize = new Size(1443, 607);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Controls.Add(btnMenu);

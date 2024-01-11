@@ -21,10 +21,6 @@ namespace FinalAssignmentWorkTasks.Forms
         {
             InitializeComponent();
             InitializeLabels();
-            /*
-            if (cbxShowPassword.Checked) { tbxPasswordShow.UseSystemPasswordChar = false; }
-            if (cbxChangePasswordShow.Checked) { tbxChangePassword.UseSystemPasswordChar = false; }
-            */
         }
         public Settings(Employee employee) : this()
         {
@@ -77,8 +73,8 @@ namespace FinalAssignmentWorkTasks.Forms
             string changedEmail = tbxChangeEmail.Text;
             string changedGender = "";
             if (rbGenderMale.Checked) { changedGender = "Male"; }
-            else if (rbGenderFemale.Checked) { changedGender = "Female"; } 
-            else if(rbGenderOther.Checked) { changedGender = "Other"; }
+            else if (rbGenderFemale.Checked) { changedGender = "Female"; }
+            else if (rbGenderOther.Checked) { changedGender = "Other"; }
             string changedStreetname = tbxChangeStreetname.Text;
             string changedStreetnumber = tbxChangeStreetnumber.Text;
             string changedZipcode = tbxChangeZipcode.Text;
@@ -90,17 +86,32 @@ namespace FinalAssignmentWorkTasks.Forms
 
             if (loggedInEmployee != null)
             {
-                loggedInEmployee.FirstName = changedFirstname;
-                loggedInEmployee.LastName = changedLastname;
-                loggedInEmployee.Email = changedEmail;
-                loggedInEmployee.Gender = changedGender;
-                loggedInEmployee.StreetName = changedStreetname;
-                loggedInEmployee.StreetNumber = changedStreetnumber;
-                loggedInEmployee.Zipcode = changedZipcode;
-                loggedInEmployee.City = changedCity;
+                if (string.IsNullOrEmpty(tbxChangeFirstname.Text)) { changedFirstname = loggedInEmployee.FirstName; }
+                else { loggedInEmployee.FirstName = changedFirstname; }
+
+                if (string.IsNullOrEmpty(tbxChangeLastname.Text)) { changedLastname = loggedInEmployee.LastName; }
+                else { loggedInEmployee.LastName= changedLastname; }
+
+                if (string.IsNullOrEmpty(tbxChangeEmail.Text)) { changedEmail = loggedInEmployee.Email; }
+                else { loggedInEmployee.Email= changedEmail; }
+
+                if (!rbGenderMale.Checked && !rbGenderFemale.Checked && !rbGenderOther.Checked) { changedGender = loggedInEmployee.Gender; }
+                else { loggedInEmployee.Gender = changedGender; }
+
+                if (string.IsNullOrEmpty(tbxChangeStreetname.Text)) { changedStreetname = loggedInEmployee.FirstName; }
+                else { loggedInEmployee.StreetName =  changedStreetname; }
+
+                if (string.IsNullOrEmpty(tbxChangeStreetnumber.Text)) { changedStreetnumber = loggedInEmployee.StreetNumber; }
+                else { loggedInEmployee.StreetNumber = changedStreetnumber; }
+
+                if (string.IsNullOrEmpty(tbxChangeZipcode.Text)) { changedZipcode = loggedInEmployee.Zipcode; }
+                else { loggedInEmployee.Zipcode = changedZipcode; }
+
+                if (string.IsNullOrEmpty(tbxChangeCity.Text)) { changedCity = loggedInEmployee.City; }
+                else { loggedInEmployee.City = changedCity; }
 
                 Employee.SaveUserToCsvForSettings(allEmployees, relativePath);
-                MessageBox.Show("Changes saved successfully.");
+                MessageBox.Show("Changes saved successfully." + relativePath.ToString());
             }
             else
             {
@@ -108,6 +119,24 @@ namespace FinalAssignmentWorkTasks.Forms
             }
 
 
+        }
+
+        private void cbxShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxShowPassword.Checked == true) 
+            { 
+                tbxPasswordShow.UseSystemPasswordChar = false; 
+            }
+            else { tbxChangePassword.UseSystemPasswordChar = true; }
+        }
+
+        private void cbxChangePasswordShow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxChangePasswordShow.Checked == true) 
+            {
+                tbxChangePassword.UseSystemPasswordChar = false;
+            }
+            else { tbxChangePassword.UseSystemPasswordChar = true; }
         }
     }
 }
