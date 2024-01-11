@@ -34,6 +34,8 @@
             tbxTaskName = new TextBox();
             tbxTaskDescription = new TextBox();
             gbxTaskInfo = new GroupBox();
+            label5 = new Label();
+            tbxEmployeeFilter = new TextBox();
             comStatus = new ComboBox();
             lblStatus = new Label();
             clbxAssignedEmployees = new CheckedListBox();
@@ -48,8 +50,7 @@
             label2 = new Label();
             label1 = new Label();
             monthCalendarDueTime = new MonthCalendar();
-            label5 = new Label();
-            tbxEmployeeFilter = new TextBox();
+            btnAddToDatabase = new Button();
             gbxTaskInfo.SuspendLayout();
             SuspendLayout();
             // 
@@ -129,6 +130,25 @@
             gbxTaskInfo.TabIndex = 8;
             gbxTaskInfo.TabStop = false;
             gbxTaskInfo.Text = "Task info";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(587, 704);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(182, 29);
+            label5.TabIndex = 24;
+            label5.Text = "Search for employee:";
+            // 
+            // tbxEmployeeFilter
+            // 
+            tbxEmployeeFilter.Location = new Point(777, 701);
+            tbxEmployeeFilter.Margin = new Padding(4, 5, 4, 5);
+            tbxEmployeeFilter.Name = "tbxEmployeeFilter";
+            tbxEmployeeFilter.Size = new Size(348, 36);
+            tbxEmployeeFilter.TabIndex = 23;
+            tbxEmployeeFilter.TextChanged += tbxEmployeeFilter_TextChanged;
             // 
             // comStatus
             // 
@@ -276,24 +296,18 @@
             monthCalendarDueTime.ShowWeekNumbers = true;
             monthCalendarDueTime.TabIndex = 9;
             // 
-            // label5
+            // btnAddToDatabase
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(587, 704);
-            label5.Margin = new Padding(4, 0, 4, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(182, 29);
-            label5.TabIndex = 24;
-            label5.Text = "Search for employee:";
-            // 
-            // tbxEmployeeFilter
-            // 
-            tbxEmployeeFilter.Location = new Point(777, 701);
-            tbxEmployeeFilter.Margin = new Padding(4, 5, 4, 5);
-            tbxEmployeeFilter.Name = "tbxEmployeeFilter";
-            tbxEmployeeFilter.Size = new Size(348, 36);
-            tbxEmployeeFilter.TabIndex = 23;
-            tbxEmployeeFilter.TextChanged += tbxEmployeeFilter_TextChanged;
+            btnAddToDatabase.Font = new Font("Bahnschrift Condensed", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddToDatabase.ForeColor = SystemColors.ControlText;
+            btnAddToDatabase.Location = new Point(17, 739);
+            btnAddToDatabase.Margin = new Padding(4, 5, 4, 5);
+            btnAddToDatabase.Name = "btnAddToDatabase";
+            btnAddToDatabase.Size = new Size(159, 78);
+            btnAddToDatabase.TabIndex = 9;
+            btnAddToDatabase.Text = "Add to DB";
+            btnAddToDatabase.UseVisualStyleBackColor = true;
+            btnAddToDatabase.Click += btnAddToDatabase_Click;
             // 
             // CreateTask
             // 
@@ -301,6 +315,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(1406, 935);
+            Controls.Add(btnAddToDatabase);
             Controls.Add(gbxTaskInfo);
             Controls.Add(btnMenu);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -338,5 +353,6 @@
         private Label lblStatus;
         private Label label5;
         private TextBox tbxEmployeeFilter;
+        private Button btnAddToDatabase;
     }
 }

@@ -364,7 +364,34 @@ namespace FinalAssignmentWorkTasks.Forms
             }
         }
 
-        
+        private void btnAddToDatabase_Click(object sender, EventArgs e)
+        {
+            selectedEmployeeList.Clear();
+            selectedDepartmentList.Clear();
+            string taskTitle = tbxTaskName.Text;
+            string taskDescription = tbxTaskDescription.Text;
+            string date = monthCalendarDueTime.SelectionStart.ToShortDateString();
+            List<Department> checkedDepartments = GetCheckedDepartments();
+            DateTime taskDate = monthCalendarDueTime.SelectionStart;
+            string assignedEmployees = "";
+            FinalAssignmentWorkTasks.Classes.TaskStatus statusOnCreate = FinalAssignmentWorkTasks.Classes.TaskStatus.Open;
+
+            foreach (object checkedItem in clbxAssignedEmployees.CheckedItems)
+            {
+                if (checkedItem is string employeeDisplayData && Employee.displayDataToEmployeeObject.TryGetValue(employeeDisplayData, out var employee))
+                {
+                    selectedEmployeeList.Add(employee);
+                    assignedEmployees += employee.DisplayData + "\n";
+                }
+            }
+            int taskId = Task.GetNextId(InitialId);            
+            Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
+            
+            Company.CompanyTasks.Add(createdTask);
+            Task.AddTaskToDatabase(createdTask);
+
+            MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
+        }
     }
 }
 
