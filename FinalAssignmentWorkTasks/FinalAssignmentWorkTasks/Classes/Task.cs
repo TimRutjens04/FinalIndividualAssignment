@@ -45,6 +45,12 @@ namespace FinalAssignmentWorkTasks
             AssignedDepartments = assignedDepartments ?? new List<Department>();
             Status = status;
         }
+        /// <summary>
+        /// I was hoping this would work instead of the TaskId class,
+        /// however this seems to always reset to 1 when the application is loaded
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static int GetNextId(int id)
         {
             while (Company.CompanyTasks.Find(task => task.TaskId == id) != null) id++;

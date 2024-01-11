@@ -200,7 +200,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     }
                 }
 
-                int taskId = Task.GetNextId(InitialId);
+                int taskId = TaskId.GetNextID();
                 Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
                 MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 
@@ -384,7 +384,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     assignedEmployees += employee.DisplayData + "\n";
                 }
             }
-            int taskId = Task.GetNextId(InitialId);            
+            int taskId = TaskId.GetNextID();            
             Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
             
             Company.CompanyTasks.Add(createdTask);
