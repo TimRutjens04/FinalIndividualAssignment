@@ -18,9 +18,12 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
+        private static List<Task> DatabaseTasks = new List<Task>();
         private List<Task> tasksForLoggedInEmployee = new List<Task>();
+        private List<Task> databaseTasksForLoggedInEmployee = new List<Task>();
         private static XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
+        private DataTable databaseTasksDataTable = new DataTable();
 
         public TaskDashboard()
         {
@@ -112,16 +115,24 @@ namespace FinalAssignmentWorkTasks.Forms
             Tasks.Clear();
             Tasks.AddRange(Task.LoadTasksFromXmlFiles());
 
+            DatabaseTasks.Clear();
+            DatabaseTasks.AddRange(Task.LoadTasksFromDatabase());
+
             if (_loggedInEmployee.Department != Department.Admin)
             {
                 tasksForLoggedInEmployee = Tasks.Where(task => task.AssignedEmployees.Any(employee => employee.FullName == _loggedInEmployee.FullName)).ToList();
-                tasksDataTable = ConvertToDataTable(tasksForLoggedInEmployee);                
+                tasksDataTable = ConvertToDataTable(tasksForLoggedInEmployee);       
+                
+                databaseTasksForLoggedInEmployee = DatabaseTasks.Where(task => task.AssignedEmployees.Any(employee => employee.FullName == _loggedInEmployee.FullName)).ToList();
+                databaseTasksDataTable = ConvertToDataTable(databaseTasksForLoggedInEmployee);
             }
             else 
             {
                 tasksDataTable = ConvertToDataTable(Tasks);
+                databaseTasksDataTable = ConvertToDataTable(DatabaseTasks);
             }
             dataGridViewTasks.DataSource = tasksDataTable;
+            dataGridViewDatabaseTasks.DataSource = databaseTasksDataTable;
         }
        
         /// <summary>

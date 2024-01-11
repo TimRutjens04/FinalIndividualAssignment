@@ -135,9 +135,78 @@ namespace FinalAssignmentWorkTasks
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                throw new Exception(ex.Message);                
+                throw new Exception(ex.Message);
             }
 
+        }
+        public static List<Task> LoadTasksFromDatabase()
+        {
+            List<Task> tasks = new List<Task>();
+            Employee employee = new Employee();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection("server=mssqlstud.fhict.local;" +
+                              "database =dbi535094_worktasks;" +
+                              "user id =dbi535094_worktasks;" +
+                              "password =worktasks;"))
+                {
+                    conn.Open();
+                    string extractQuery = "SELECT TaskId, TaskName, TaskDescription, TimeDue, Status, Department, [Assigned employees] FROM Task";
+                    using SqlCommand cmd = new SqlCommand(extractQuery, conn);
+                    { 
+                        using (SqlDataReader reader = cmd.ExecuteReader()) 
+                        {
+                            while (reader.Read()) 
+                            {
+                                Task task = new Task();
+
+                                task.TaskId = reader.GetInt32(0);
+                                task.TaskName = reader.GetString(1);
+                                task.TaskDescription = reader.GetString(2);
+                                task.TimeDue = reader.GetDateTime(3);
+
+                                string statusString = reader.GetString(4);
+                                if (Enum.TryParse<Classes.TaskStatus>(statusString, out var status)) 
+                                {
+                                    task.Status = status;
+                                }
+                                else 
+                                {
+                                    throw new InvalidOperationException($"Status {statusString} not found.");
+                                }
+                                
+                                string assignedDepartments = reader.GetString(5);
+                                string assignedEmployees = reader.GetString(6);
+
+                                Department[] departmentArray = assignedDepartments.Split(',').Select(Enum.Parse<Department>).ToArray();
+                                task.AssignedDepartments = departmentArray.ToList();
+
+                                List<string> employeeFullNames = assignedEmployees.Split(',').ToList();
+                                task.AssignedEmployees = employeeFullNames.Select(employeeFullName => {
+                                    if (Employee.fullNameToEmployeeObject.TryGetValue(employeeFullName, out var employee))
+                                    {
+                                        return employee;
+                                    }
+                                    else
+                                    {
+                                        throw new InvalidOperationException($"Employee {employee.FullName} not found.");
+                                    }
+                                }).ToList();
+
+                                tasks.Add(task);
+                            }
+                        }
+                    }
+
+                }
+
+                    return tasks;
+            }
+            catch (Exception ex) 
+            {  
+                MessageBox.Show(ex.Message);
+                throw new Exception(ex.Message);
+            }
         }
     }
 

@@ -47,9 +47,11 @@
             lblUserEmail = new Label();
             btnChangeSelectedTask = new Button();
             btnRemoveTask = new Button();
+            dataGridViewDatabaseTasks = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTasks).BeginInit();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDatabaseTasks).BeginInit();
             SuspendLayout();
             // 
             // btnMenu
@@ -76,7 +78,7 @@
             dataGridViewTasks.ReadOnly = true;
             dataGridViewTasks.RowHeadersWidth = 62;
             dataGridViewTasks.RowTemplate.Height = 25;
-            dataGridViewTasks.Size = new Size(1039, 807);
+            dataGridViewTasks.Size = new Size(1039, 422);
             dataGridViewTasks.TabIndex = 3;
             dataGridViewTasks.CellClick += dataGridViewTasks_CellClick;
             // 
@@ -256,12 +258,27 @@
             btnRemoveTask.UseVisualStyleBackColor = true;
             btnRemoveTask.Click += btnRemoveTask_Click;
             // 
+            // dataGridViewDatabaseTasks
+            // 
+            dataGridViewDatabaseTasks.AllowUserToAddRows = false;
+            dataGridViewDatabaseTasks.AllowUserToDeleteRows = false;
+            dataGridViewDatabaseTasks.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDatabaseTasks.Location = new Point(17, 452);
+            dataGridViewDatabaseTasks.Margin = new Padding(4, 5, 4, 5);
+            dataGridViewDatabaseTasks.Name = "dataGridViewDatabaseTasks";
+            dataGridViewDatabaseTasks.ReadOnly = true;
+            dataGridViewDatabaseTasks.RowHeadersWidth = 62;
+            dataGridViewDatabaseTasks.RowTemplate.Height = 25;
+            dataGridViewDatabaseTasks.Size = new Size(1039, 375);
+            dataGridViewDatabaseTasks.TabIndex = 8;
+            // 
             // TaskDashboard
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(1406, 935);
+            Controls.Add(dataGridViewDatabaseTasks);
             Controls.Add(btnRemoveTask);
             Controls.Add(btnChangeSelectedTask);
             Controls.Add(groupBox2);
@@ -280,6 +297,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDatabaseTasks).EndInit();
             ResumeLayout(false);
         }
 
@@ -303,5 +321,6 @@
         private TextBox tbxDepartment;
         private Label label3;
         private Label label4;
+        private DataGridView dataGridViewDatabaseTasks;
     }
 }
