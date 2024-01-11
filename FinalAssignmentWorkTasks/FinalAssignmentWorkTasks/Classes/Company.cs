@@ -15,7 +15,7 @@ namespace FinalAssignmentWorkTasks
         public static List<Employee> CompanyEmployees = new List<Employee>();
         public static List<Task> CompanyTasks = new List<Task>();
         public Company() { }
-        public static List<Task> GetTasks
+        public static List<Task> GetTasks // can also just add { get; } behind CompanyTasks but too lazy for that now
         {
             get { return Company.CompanyTasks; }
         }
