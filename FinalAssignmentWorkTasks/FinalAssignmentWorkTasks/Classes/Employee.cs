@@ -86,7 +86,6 @@ namespace FinalAssignmentWorkTasks
         /// <returns></returns>
         public static List<Employee> LoadUserFromCsv(string filePath, out List<Department> departments)
         {
-            List<Employee> employees = new List<Employee>();
             departments = new List<Department>();
 
             using (TextFieldParser parser = new TextFieldParser(filePath))
@@ -111,12 +110,12 @@ namespace FinalAssignmentWorkTasks
                                 LastName = fields[3],
                                 Department = department
                             };
-                            employees.Add(newEmployee);
+                            Company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return employees;
+            return Company.CompanyEmployees;
         }
         /// <summary>
         /// Almost the same method, however this one was needed for logins since departments haven't been "set" there yet.
@@ -125,8 +124,6 @@ namespace FinalAssignmentWorkTasks
         /// <returns></returns>
         public static List<Employee> LoadUserFromCsv(string filePath)
         {
-            List<Employee> employees = new List<Employee>();
-
             using (TextFieldParser parser = new TextFieldParser(filePath))
             {
                 parser.TextFieldType = FieldType.Delimited;
@@ -149,17 +146,15 @@ namespace FinalAssignmentWorkTasks
 
                                 Department = department
                             };
-                            employees.Add(newEmployee);
+                            Company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return employees;
+            return Company.CompanyEmployees;
         }
         public static List<Employee> LoadUserFromCsvForSettings(string filePath)
         {
-            List<Employee> employees = new List<Employee>();
-
             using (TextFieldParser parser = new TextFieldParser(filePath))
             {
                 parser.TextFieldType = FieldType.Delimited;
@@ -187,12 +182,12 @@ namespace FinalAssignmentWorkTasks
                                 City = fields[8],
                                 Department = department
                             };
-                            employees.Add(newEmployee);
+                            Company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return employees;
+            return Company.CompanyEmployees;
         }
         public static void SaveUserToCsvForSettings(List<Employee> employees, string filePath)
         {
