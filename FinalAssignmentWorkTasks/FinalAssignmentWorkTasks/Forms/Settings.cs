@@ -15,7 +15,6 @@ namespace FinalAssignmentWorkTasks.Forms
     /// </summary>
     public partial class Settings : Form
     {
-        SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         public Settings()
         {
@@ -38,7 +37,9 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Menu(_loggedInEmployee);
             temp.Show();
         }
-
+        /// <summary>
+        /// This method sets the labels according to the currently logged in employees information
+        /// </summary>
         public void InitializeLabels()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
@@ -66,6 +67,11 @@ namespace FinalAssignmentWorkTasks.Forms
             lblCity.Text = $"City: {loggedInEmployee.City}";
         }
 
+        /// <summary>
+        /// This method writes the changes to the CSV file, and keeps the "old" values if nothing is entered.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveChanges_Click(object sender, EventArgs e)
         {
             string changedFirstname = tbxChangeFirstname.Text;

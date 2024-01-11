@@ -39,5 +39,10 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
+
+        private void SettingsAdmin_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("This will be a future update where the Admins will be able to add/remove users and see all users and their information.");
+        }
     }
 }

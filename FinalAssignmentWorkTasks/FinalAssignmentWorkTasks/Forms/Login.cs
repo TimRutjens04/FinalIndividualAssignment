@@ -5,8 +5,6 @@ namespace FinalAssignmentWorkTasks
 {
     public partial class Login : Form
     {
-        private Employee employee;
-
         public Login()
         {
             InitializeComponent();
@@ -28,8 +26,6 @@ namespace FinalAssignmentWorkTasks
                 MessageBox.Show("Please enter both username and password.");
                 return;
             }
-
-            bool rememberMe = cbxRememberMe.Checked; //doesnt work yet
 
             SavedUser user = SavedUser.Instance;
 
@@ -56,7 +52,7 @@ namespace FinalAssignmentWorkTasks
             }
         }
         /// <summary>
-        /// Closes the application on closing
+        /// Stops the application on closing login form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -22,17 +22,15 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         bool _showAdditionalControls;
         Task _task = new Task();
-        SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList;
         public static List<Department> selectedDepartmentList = new List<Department>();
-        public int InitialId = 1;
+        private XmlSerializer serializer = new XmlSerializer(typeof(Task));
         public static List<Task> GetTasks
         {
             get { return Company.CompanyTasks; }
         }
-        private int initialTask = 1;
-        private XmlSerializer serializer = new XmlSerializer(typeof(Task));
+
         public CreateTask()
         {
             InitializeComponent();
@@ -91,10 +89,6 @@ namespace FinalAssignmentWorkTasks.Forms
                 cbxSales.Enabled = false;
                 cbxSupport.Enabled = false;
             }
-            //comStatus.ValueMember = Enum.TryParse(FinalAssignmentWorkTasks.Classes.TaskStatus, task.Status);
-            //clbxAssignedEmployees.CheckedItems = task.AssignedEmployees;
-
-
 
         }
         private void CreateTask_Load(object sender, EventArgs e)
@@ -147,7 +141,6 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 if (Employee.displayDataToEmployeeObject.ContainsKey(employee.DisplayData))
                 {
-                    //update
                     Employee.displayDataToEmployeeObject[employee.DisplayData] = employee;
                 }
                 else
@@ -241,7 +234,6 @@ namespace FinalAssignmentWorkTasks.Forms
 
         private void CheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //CreateTask.LoadEmployeeDataFromCsv();
             var checkedDepartments = GetCheckedDepartments();
 
             var filteredEmployees = selectedEmployeeList.Where(employee => checkedDepartments.Contains(employee.Department)).ToList();
@@ -294,7 +286,7 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         private void tbxEmployeeFilter_TextChanged(object sender, EventArgs e)
         {
-            string filterText = tbxEmployeeFilter.Text; //this is given as an error but it exists??????? (Error CS0103  The name 'tbxEmployeeFilter' does not exist in the current context FinalAssignmentWorkTasks)
+            string filterText = tbxEmployeeFilter.Text; 
 
             FilterCheckedListBox(filterText);
         }

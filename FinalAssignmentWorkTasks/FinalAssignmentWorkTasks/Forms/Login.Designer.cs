@@ -32,7 +32,6 @@
             label1 = new Label();
             tbxUsername = new TextBox();
             btnLogin = new Button();
-            cbxRememberMe = new CheckBox();
             label3 = new Label();
             label2 = new Label();
             tbxPassword = new TextBox();
@@ -72,18 +71,6 @@
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
-            // 
-            // cbxRememberMe
-            // 
-            cbxRememberMe.AutoSize = true;
-            cbxRememberMe.Font = new Font("Bahnschrift Condensed", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
-            cbxRememberMe.Location = new Point(490, 452);
-            cbxRememberMe.Margin = new Padding(3, 5, 3, 5);
-            cbxRememberMe.Name = "cbxRememberMe";
-            cbxRememberMe.Size = new Size(197, 43);
-            cbxRememberMe.TabIndex = 3;
-            cbxRememberMe.Text = "Remember me";
-            cbxRememberMe.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -128,7 +115,6 @@
             Controls.Add(tbxPassword);
             Controls.Add(label2);
             Controls.Add(label3);
-            Controls.Add(cbxRememberMe);
             Controls.Add(btnLogin);
             Controls.Add(tbxUsername);
             Controls.Add(label1);
@@ -153,7 +139,6 @@
         private TextBox textBox1;
         private TextBox tbxUsername;
         private Button btnLogin;
-        private CheckBox cbxRememberMe;
         private Label label3;
         private Label label2;
         private TextBox tbxPassword;

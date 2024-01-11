@@ -19,7 +19,6 @@ namespace FinalAssignmentWorkTasks.Forms
         Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
         private List<Task> tasksForLoggedInEmployee = new List<Task>();
-        private static XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
 
         public TaskDashboard()
@@ -106,7 +105,11 @@ namespace FinalAssignmentWorkTasks.Forms
             var temp = new Login();
             temp.Show();
         }
-
+        /// <summary>
+        /// Adds files to dataTable/GridView on loading
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TaskDashboard_Load(object sender, EventArgs e)
         {
             Tasks.Clear();

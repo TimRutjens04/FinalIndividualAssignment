@@ -50,13 +50,14 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(12, 12);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 62;
             dataGridView1.RowTemplate.Height = 25;
             dataGridView1.Size = new Size(960, 484);
             dataGridView1.TabIndex = 5;
             // 
             // SettingsAdmin
             // 
-            AutoScaleDimensions = new SizeF(9F, 29F);
+            AutoScaleDimensions = new SizeF(14F, 43F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Silver;
             ClientSize = new Size(984, 561);
@@ -67,6 +68,7 @@
             Name = "SettingsAdmin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SettingsAdmin";
+            Load += SettingsAdmin_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }

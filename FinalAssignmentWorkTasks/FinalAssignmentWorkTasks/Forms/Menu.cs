@@ -13,9 +13,7 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class Menu : Form
     {
-        SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
-        Employee _employee = new Employee();
         public Menu()
         {
             InitializeComponent();
