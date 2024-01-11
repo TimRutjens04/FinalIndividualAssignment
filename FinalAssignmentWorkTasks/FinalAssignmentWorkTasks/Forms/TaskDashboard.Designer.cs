@@ -38,16 +38,6 @@
             label4 = new Label();
             tbxId = new TextBox();
             tbxTitle = new TextBox();
-            cbxStatusInProgress = new CheckBox();
-            cbxStatusCompleted = new CheckBox();
-            cbxStatusBlocked = new CheckBox();
-            cbxStatusCancelled = new CheckBox();
-            cbxStatusOpen = new CheckBox();
-            cbxDepartmentMarketing = new CheckBox();
-            cbxDepartmentSales = new CheckBox();
-            cbxDepartmentRd = new CheckBox();
-            cbxDepartmentSupport = new CheckBox();
-            cbxDepartmentHr = new CheckBox();
             label2 = new Label();
             label1 = new Label();
             groupBox2 = new GroupBox();
@@ -99,24 +89,14 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(tbxId);
             groupBox1.Controls.Add(tbxTitle);
-            groupBox1.Controls.Add(cbxStatusInProgress);
-            groupBox1.Controls.Add(cbxStatusCompleted);
-            groupBox1.Controls.Add(cbxStatusBlocked);
-            groupBox1.Controls.Add(cbxStatusCancelled);
-            groupBox1.Controls.Add(cbxStatusOpen);
-            groupBox1.Controls.Add(cbxDepartmentMarketing);
-            groupBox1.Controls.Add(cbxDepartmentSales);
-            groupBox1.Controls.Add(cbxDepartmentRd);
-            groupBox1.Controls.Add(cbxDepartmentSupport);
-            groupBox1.Controls.Add(cbxDepartmentHr);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Font = new Font("Bahnschrift Condensed", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox1.Location = new Point(1064, 20);
+            groupBox1.Location = new Point(1064, 101);
             groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 5, 4, 5);
-            groupBox1.Size = new Size(324, 530);
+            groupBox1.Size = new Size(324, 316);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Controls";
@@ -175,106 +155,6 @@
             tbxTitle.TabIndex = 16;
             tbxTitle.TextChanged += tbxTitle_TextChanged;
             // 
-            // cbxStatusInProgress
-            // 
-            cbxStatusInProgress.AutoSize = true;
-            cbxStatusInProgress.Location = new Point(83, 355);
-            cbxStatusInProgress.Name = "cbxStatusInProgress";
-            cbxStatusInProgress.Size = new Size(120, 31);
-            cbxStatusInProgress.TabIndex = 14;
-            cbxStatusInProgress.Text = "In progress";
-            cbxStatusInProgress.UseVisualStyleBackColor = true;
-            // 
-            // cbxStatusCompleted
-            // 
-            cbxStatusCompleted.AutoSize = true;
-            cbxStatusCompleted.Location = new Point(209, 355);
-            cbxStatusCompleted.Name = "cbxStatusCompleted";
-            cbxStatusCompleted.Size = new Size(116, 31);
-            cbxStatusCompleted.TabIndex = 13;
-            cbxStatusCompleted.Text = "Completed";
-            cbxStatusCompleted.UseVisualStyleBackColor = true;
-            // 
-            // cbxStatusBlocked
-            // 
-            cbxStatusBlocked.AutoSize = true;
-            cbxStatusBlocked.Location = new Point(49, 393);
-            cbxStatusBlocked.Name = "cbxStatusBlocked";
-            cbxStatusBlocked.Size = new Size(95, 31);
-            cbxStatusBlocked.TabIndex = 12;
-            cbxStatusBlocked.Text = "Blocked";
-            cbxStatusBlocked.UseVisualStyleBackColor = true;
-            // 
-            // cbxStatusCancelled
-            // 
-            cbxStatusCancelled.AutoSize = true;
-            cbxStatusCancelled.Location = new Point(160, 393);
-            cbxStatusCancelled.Name = "cbxStatusCancelled";
-            cbxStatusCancelled.Size = new Size(110, 31);
-            cbxStatusCancelled.TabIndex = 11;
-            cbxStatusCancelled.Text = "Cancelled";
-            cbxStatusCancelled.UseVisualStyleBackColor = true;
-            // 
-            // cbxStatusOpen
-            // 
-            cbxStatusOpen.AutoSize = true;
-            cbxStatusOpen.Location = new Point(9, 355);
-            cbxStatusOpen.Name = "cbxStatusOpen";
-            cbxStatusOpen.Size = new Size(75, 31);
-            cbxStatusOpen.TabIndex = 10;
-            cbxStatusOpen.Text = "Open";
-            cbxStatusOpen.UseVisualStyleBackColor = true;
-            // 
-            // cbxDepartmentMarketing
-            // 
-            cbxDepartmentMarketing.AutoSize = true;
-            cbxDepartmentMarketing.Location = new Point(99, 252);
-            cbxDepartmentMarketing.Name = "cbxDepartmentMarketing";
-            cbxDepartmentMarketing.Size = new Size(112, 31);
-            cbxDepartmentMarketing.TabIndex = 9;
-            cbxDepartmentMarketing.Text = "Marketing";
-            cbxDepartmentMarketing.UseVisualStyleBackColor = true;
-            // 
-            // cbxDepartmentSales
-            // 
-            cbxDepartmentSales.AutoSize = true;
-            cbxDepartmentSales.Location = new Point(216, 252);
-            cbxDepartmentSales.Name = "cbxDepartmentSales";
-            cbxDepartmentSales.Size = new Size(78, 31);
-            cbxDepartmentSales.TabIndex = 8;
-            cbxDepartmentSales.Text = "Sales";
-            cbxDepartmentSales.UseVisualStyleBackColor = true;
-            // 
-            // cbxDepartmentRd
-            // 
-            cbxDepartmentRd.AutoSize = true;
-            cbxDepartmentRd.Location = new Point(49, 288);
-            cbxDepartmentRd.Name = "cbxDepartmentRd";
-            cbxDepartmentRd.Size = new Size(92, 31);
-            cbxDepartmentRd.TabIndex = 7;
-            cbxDepartmentRd.Text = "R and D";
-            cbxDepartmentRd.UseVisualStyleBackColor = true;
-            // 
-            // cbxDepartmentSupport
-            // 
-            cbxDepartmentSupport.AutoSize = true;
-            cbxDepartmentSupport.Location = new Point(160, 288);
-            cbxDepartmentSupport.Name = "cbxDepartmentSupport";
-            cbxDepartmentSupport.Size = new Size(95, 31);
-            cbxDepartmentSupport.TabIndex = 6;
-            cbxDepartmentSupport.Text = "Support";
-            cbxDepartmentSupport.UseVisualStyleBackColor = true;
-            // 
-            // cbxDepartmentHr
-            // 
-            cbxDepartmentHr.AutoSize = true;
-            cbxDepartmentHr.Location = new Point(36, 252);
-            cbxDepartmentHr.Name = "cbxDepartmentHr";
-            cbxDepartmentHr.Size = new Size(57, 31);
-            cbxDepartmentHr.TabIndex = 2;
-            cbxDepartmentHr.Text = "HR";
-            cbxDepartmentHr.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -301,7 +181,7 @@
             groupBox2.Controls.Add(lblUserFirstname);
             groupBox2.Controls.Add(lblUserEmail);
             groupBox2.Font = new Font("Bahnschrift Condensed", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            groupBox2.Location = new Point(1064, 560);
+            groupBox2.Location = new Point(1064, 479);
             groupBox2.Margin = new Padding(4, 5, 4, 5);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(4, 5, 4, 5);
@@ -413,18 +293,8 @@
         private Label lblUserLastname;
         private Label lblUserFirstname;
         private Label lblUserEmail;
-        private CheckBox cbxDepartmentMarketing;
-        private CheckBox cbxDepartmentSales;
-        private CheckBox cbxDepartmentRd;
-        private CheckBox cbxDepartmentSupport;
-        private CheckBox cbxDepartmentHr;
         private Label label2;
         private Label label1;
-        private CheckBox cbxStatusInProgress;
-        private CheckBox cbxStatusCompleted;
-        private CheckBox cbxStatusBlocked;
-        private CheckBox cbxStatusCancelled;
-        private CheckBox cbxStatusOpen;
         private TextBox tbxId;
         private TextBox tbxTitle;
         private Button btnChangeSelectedTask;

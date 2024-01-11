@@ -21,11 +21,12 @@ namespace FinalAssignmentWorkTasks.Forms
     public partial class CreateTask : Form
     {
         bool _showAdditionalControls;
-        Task _task;
+        Task _task = new Task();
         SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList;
         public static List<Department> selectedDepartmentList = new List<Department>();
+        public int InitialId = 1;
         public static List<Task> GetTasks
         {
             get { return Company.CompanyTasks; }
@@ -199,7 +200,7 @@ namespace FinalAssignmentWorkTasks.Forms
                     }
                 }
 
-                int taskId = TaskID.GetNextID();
+                int taskId = Task.GetNextId(InitialId);
                 Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
                 MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 

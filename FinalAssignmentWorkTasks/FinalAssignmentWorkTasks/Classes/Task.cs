@@ -43,6 +43,11 @@ namespace FinalAssignmentWorkTasks
             AssignedDepartments = assignedDepartments ?? new List<Department>();
             Status = status;
         }
+        public static int GetNextId(int id) 
+        {
+            while (Company.CompanyTasks.Find(task => task.TaskId == id) != null) id++;
+            return id;
+        }
     }
 
 }

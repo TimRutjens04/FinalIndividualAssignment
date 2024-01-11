@@ -15,13 +15,13 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class TaskDashboard : Form
     {
-        SavedUser savedUser = SavedUser.Instance;
         Employee _loggedInEmployee;
         Task _selectedTask;
         private static List<Task> Tasks = new List<Task>();
         private List<Task> tasksForLoggedInEmployee = new List<Task>();
         private static XmlSerializer serializer = new XmlSerializer(typeof(Task));
         private DataTable tasksDataTable = new DataTable();
+
         public TaskDashboard()
         {
             InitializeComponent();
@@ -39,7 +39,6 @@ namespace FinalAssignmentWorkTasks.Forms
         public TaskDashboard(Employee employee) : this()
         {
             _loggedInEmployee = employee;
-            InitializeCheckboxes();
             if (_loggedInEmployee != null)
             {
                 lblUserEmail.Text = $"Email: {_loggedInEmployee.Email}";
@@ -251,98 +250,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
             tasksDataTable.DefaultView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", filterField, tbxStatus.Text.ToString());
         }
-        /// <summary>
-        /// Allows for filtering mechanism of checkboxes by adding a CheckedChanged event to all checkboxes so they will update each time the event occurs
-        /// 
-        /// </summary>
-        private void InitializeCheckboxes()
-        {
-            cbxDepartmentHr.CheckedChanged += CheckBox_CheckedChanged;
-            cbxDepartmentMarketing.CheckedChanged += CheckBox_CheckedChanged;
-            cbxDepartmentSales.CheckedChanged += CheckBox_CheckedChanged;
-            cbxDepartmentSupport.CheckedChanged += CheckBox_CheckedChanged;
-            cbxDepartmentRd.CheckedChanged += CheckBox_CheckedChanged;
-
-            cbxStatusOpen.CheckedChanged += CheckBox_CheckedChanged;
-            cbxStatusInProgress.CheckedChanged += CheckBox_CheckedChanged;
-            cbxStatusCompleted.CheckedChanged += CheckBox_CheckedChanged;
-            cbxStatusBlocked.CheckedChanged += CheckBox_CheckedChanged;
-            cbxStatusCancelled.CheckedChanged += CheckBox_CheckedChanged;
-        }
-        /// <summary>
-        /// This method handles checkbox changes for both Department and Status
-        /// Might need some breakdown of the logic to allow for better readability/maintainability
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            var checkedDepartments = GetCheckedDepartments();
-            var checkedStatuses = GetCheckedStatuses();
-
-            //MessageBox.Show("Checked Departments: " + string.Join(", ", checkedDepartments));
-            //MessageBox.Show("Checked Statuses: " + string.Join(", ", checkedStatuses));
-
-            var filteredTasks = Tasks.Where(task =>
-            {
-                return task.AssignedDepartments.Any(department => checkedDepartments.Contains(department)) &&
-                       checkedStatuses.Contains(task.Status);
-            }).ToList();
-
-
-            if (filteredTasks.Any())
-            {
-                var filteredDataTable = ConvertToDataTable(filteredTasks);
-                UpdateFilteredTasks(filteredDataTable);
-                MessageBox.Show($"Does it even enter this block?\nFilteredTask: {filteredTasks.ToString()}");
-            }
-            else
-            {
-                //UpdateFilteredTasks(new DataTable());
-                MessageBox.Show("No matching rows found.");
-                //always enters here meaning filteredTasks is null
-            }
-        }
-
-        /// <summary>
-        /// Gets the checked departments and adds them to a list of checkedDepartments, so allows for filtering.
-        /// </summary>
-        /// <returns></returns>
-        private List<Department> GetCheckedDepartments()
-        {
-            var checkedDepartments = new List<Department>();
-
-            if (cbxDepartmentHr.Checked) checkedDepartments.Add(Department.Human_Resources);
-            if (cbxDepartmentMarketing.Checked) checkedDepartments.Add(Department.Marketing);
-            if (cbxDepartmentSales.Checked) checkedDepartments.Add(Department.Sales);
-            if (cbxDepartmentSupport.Checked) checkedDepartments.Add(Department.Support);
-            if (cbxDepartmentRd.Checked) checkedDepartments.Add(Department.Research_and_Development);
-
-            return checkedDepartments;
-        }
-        /// <summary>
-        /// Gets the checked statuses and adds them to a list of checkedStatuses, so allows for filtering
-        /// </summary>
-        /// <returns></returns>
-        private List<FinalAssignmentWorkTasks.Classes.TaskStatus> GetCheckedStatuses()
-        {
-            var checkedStatuses = new List<FinalAssignmentWorkTasks.Classes.TaskStatus>();
-
-            if (cbxStatusOpen.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Open);
-            if (cbxStatusInProgress.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.In_Progress);
-            if (cbxStatusCompleted.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Completed);
-            if (cbxStatusBlocked.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Blocked);
-            if (cbxStatusCancelled.Checked) checkedStatuses.Add(FinalAssignmentWorkTasks.Classes.TaskStatus.Cancelled);
-
-            return checkedStatuses;
-        }
-        /// <summary>
-        /// A very simple method to update the dataGridViewTasks to display the filtered data
-        /// </summary>
-        /// <param name="filteredTasks"></param>
-        private void UpdateFilteredTasks(DataTable filteredTasks)
-        {
-            dataGridViewTasks.DataSource = filteredTasks;
-        }
+        
+        
     }
 }
