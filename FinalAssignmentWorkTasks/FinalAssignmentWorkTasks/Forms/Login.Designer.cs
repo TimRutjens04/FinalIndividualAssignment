@@ -44,7 +44,7 @@
             label1.Font = new Font("Bahnschrift Condensed", 36F, FontStyle.Regular, GraphicsUnit.Point);
             label1.Location = new Point(490, 63);
             label1.Name = "label1";
-            label1.Size = new Size(114, 58);
+            label1.Size = new Size(171, 87);
             label1.TabIndex = 0;
             label1.Text = "LOGIN";
             // 
@@ -54,10 +54,10 @@
             tbxUsername.BorderStyle = BorderStyle.None;
             tbxUsername.Cursor = Cursors.IBeam;
             tbxUsername.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbxUsername.Location = new Point(477, 247);
+            tbxUsername.Location = new Point(512, 252);
             tbxUsername.Margin = new Padding(3, 5, 3, 5);
             tbxUsername.Name = "tbxUsername";
-            tbxUsername.Size = new Size(229, 23);
+            tbxUsername.Size = new Size(229, 35);
             tbxUsername.TabIndex = 1;
             // 
             // btnLogin
@@ -80,7 +80,7 @@
             cbxRememberMe.Location = new Point(490, 452);
             cbxRememberMe.Margin = new Padding(3, 5, 3, 5);
             cbxRememberMe.Name = "cbxRememberMe";
-            cbxRememberMe.Size = new Size(130, 29);
+            cbxRememberMe.Size = new Size(197, 43);
             cbxRememberMe.TabIndex = 3;
             cbxRememberMe.Text = "Remember me";
             cbxRememberMe.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             label3.Font = new Font("Bahnschrift Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label3.Location = new Point(347, 239);
             label3.Name = "label3";
-            label3.Size = new Size(109, 33);
+            label3.Size = new Size(159, 48);
             label3.TabIndex = 6;
             label3.Text = "Username:";
             // 
@@ -101,7 +101,7 @@
             label2.Font = new Font("Bahnschrift Condensed", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label2.Location = new Point(347, 336);
             label2.Name = "label2";
-            label2.Size = new Size(106, 33);
+            label2.Size = new Size(153, 48);
             label2.TabIndex = 7;
             label2.Text = "Password:";
             // 
@@ -110,16 +110,16 @@
             tbxPassword.BackColor = SystemColors.Info;
             tbxPassword.Cursor = Cursors.IBeam;
             tbxPassword.Font = new Font("Bahnschrift Condensed", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            tbxPassword.Location = new Point(477, 341);
+            tbxPassword.Location = new Point(512, 342);
             tbxPassword.Margin = new Padding(3, 5, 3, 5);
             tbxPassword.Name = "tbxPassword";
-            tbxPassword.Size = new Size(228, 30);
+            tbxPassword.Size = new Size(228, 42);
             tbxPassword.TabIndex = 2;
             tbxPassword.UseSystemPasswordChar = true;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 23F);
+            AutoScaleDimensions = new SizeF(11F, 35F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             AutoSize = true;
