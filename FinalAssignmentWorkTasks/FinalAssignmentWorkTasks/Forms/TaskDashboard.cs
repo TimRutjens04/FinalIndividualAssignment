@@ -28,7 +28,7 @@ namespace FinalAssignmentWorkTasks.Forms
             CreateTask createTaskForm = new CreateTask();
             if (createTaskForm != null)
             {
-                Tasks = CreateTask.GetTasks;
+                Tasks = Company.GetTasks;
             }
             if (dataGridViewTasks.SelectedRows == null)
             {
@@ -69,7 +69,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
                 //_selectedTask = Task.CreateTaskFromDataRow(selectedRow);
                 int taskId = Convert.ToInt32(selectedRow["TaskId"]);
-                _selectedTask = CreateTask.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
+                _selectedTask = Company.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
                 if (_selectedTask != null)
                 {
                     this.Hide();
@@ -85,7 +85,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
                 int taskId = Convert.ToInt32(selectedRow["TaskId"]);
-                _selectedTask = CreateTask.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
+                _selectedTask = Company.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
                 if (_selectedTask != null && _selectedTask.Status == Classes.TaskStatus.Open)
                 {
                     string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
@@ -116,7 +116,6 @@ namespace FinalAssignmentWorkTasks.Forms
             if (_loggedInEmployee.Department != Department.Admin)
             {
                 tasksForLoggedInEmployee = Tasks.Where(task => task.AssignedEmployees.Any(employee => employee.FullName == _loggedInEmployee.FullName)).ToList();
-
                 tasksDataTable = ConvertToDataTable(tasksForLoggedInEmployee);                
             }
             else 
@@ -225,7 +224,6 @@ namespace FinalAssignmentWorkTasks.Forms
                 string assignedEmployees = string.Join(", ", task.AssignedEmployees.Select(emp => emp.ToString()));
                 dataTable.Rows.Add(task.TaskId, task.TaskName, task.TaskDescription, task.TimeDue, statusString, assignedDepartments, assignedEmployees);
             }
-
             return dataTable;
         }
         /// <summary>

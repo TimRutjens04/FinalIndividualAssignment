@@ -61,13 +61,13 @@ namespace FinalAssignmentWorkTasks
             LastName = lastName;
             Department = department;
         }
-        public Employee(string email, string id, string ssc, string firstName, string lastName, string gender, string streetName, string streetNumber, string zipcode, string city, Department department) 
+        public Employee(string email, string id, string ssc, string firstName, string lastName, string gender, string streetName, string streetNumber, string zipcode, string city, Department department)
         {
-            Email =email; 
+            Email = email;
             Id = id;
             FirstName = firstName;
             LastName = lastName;
-            Gender = gender;            
+            Gender = gender;
             StreetName = streetName;
             StreetNumber = streetNumber;
             Zipcode = zipcode;

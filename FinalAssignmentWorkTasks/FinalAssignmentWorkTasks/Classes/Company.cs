@@ -12,8 +12,12 @@ namespace FinalAssignmentWorkTasks
     /// </summary>
     public class Company
     {
-        public static List<Employee> CompanyEmployees;
-        public static List<Task> CompanyTasks;
+        public static List<Employee> CompanyEmployees = new List<Employee>();
+        public static List<Task> CompanyTasks = new List<Task>();
         public Company() { }
+        public static List<Task> GetTasks
+        {
+            get { return Company.CompanyTasks; }
+        }
     }
 }

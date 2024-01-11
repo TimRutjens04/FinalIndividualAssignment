@@ -26,10 +26,9 @@ namespace FinalAssignmentWorkTasks.Forms
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList;
         public static List<Department> selectedDepartmentList = new List<Department>();
-        private static List<Task> tasks = new List<Task>();
         public static List<Task> GetTasks
         {
-            get { return tasks; }
+            get { return Company.CompanyTasks; }
         }
         private int initialTask = 1;
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
@@ -204,7 +203,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
                 MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 
-                tasks.Add(createdTask);
+                Company.CompanyTasks.Add(createdTask);
 
                 string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
                 string directoryPath = Path.Combine(projectRoot, "Tasks");
