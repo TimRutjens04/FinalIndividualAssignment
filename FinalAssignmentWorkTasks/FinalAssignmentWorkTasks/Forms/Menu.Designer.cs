@@ -196,6 +196,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu";
             FormClosed += Menu_FormClosed;
+            Load += Menu_Load;
             gbxLoggedInUser.ResumeLayout(false);
             gbxLoggedInUser.PerformLayout();
             ResumeLayout(false);

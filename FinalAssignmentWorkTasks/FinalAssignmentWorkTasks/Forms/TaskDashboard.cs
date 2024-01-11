@@ -110,7 +110,7 @@ namespace FinalAssignmentWorkTasks.Forms
         private void TaskDashboard_Load(object sender, EventArgs e)
         {
             Tasks.Clear();
-            Tasks.AddRange(LoadTasksFromXmlFiles());
+            Tasks.AddRange(Task.LoadTasksFromXmlFiles());
 
             if (_loggedInEmployee.Department != Department.Admin)
             {
@@ -123,39 +123,7 @@ namespace FinalAssignmentWorkTasks.Forms
             }
             dataGridViewTasks.DataSource = tasksDataTable;
         }
-        /// <summary>
-        /// Just a method to load the serialized tasks created in the CreateTask form
-        /// Needs exception handling for file-related errors/parsing issues
-        /// </summary>
-        /// <returns></returns>
-        public static List<Task> LoadTasksFromXmlFiles()
-        {
-            List<Task> tasks = new List<Task>();
-            string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
-            string tasksFolderPath = Path.Combine(projectRoot, "Tasks");
-
-            if (Directory.Exists(tasksFolderPath))
-            {
-                string[] xmlFiles = Directory.GetFiles(tasksFolderPath, "*.xml");
-
-                foreach (string xmlFile in xmlFiles)
-                {
-                    using (FileStream fs = new FileStream(xmlFile, FileMode.Open))
-                    {
-                        try
-                        {
-                            Task task = (Task)serializer.Deserialize(fs);
-                            tasks.Add(task);
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show($"Error loading task from {xmlFile}: {ex.Message}");
-                        }
-                    }
-                }
-            }
-            return tasks;
-        }
+       
         /// <summary>
         /// This is used to display the full Task when a cell in the Task row is selected,
         /// mostly since the list of departments and employees is not entirely visible when directly looking in the table.

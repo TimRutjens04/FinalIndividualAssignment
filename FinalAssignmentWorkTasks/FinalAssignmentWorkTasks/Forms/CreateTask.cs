@@ -40,11 +40,8 @@ namespace FinalAssignmentWorkTasks.Forms
             monthCalendarDueTime.MaxSelectionCount = 1;
             InitializeCheckboxes();
             //check for every input if its entered, if everything is entered only then allow task creation
-            if (string.IsNullOrEmpty(tbxTaskName.Text)
+            if (   string.IsNullOrEmpty(tbxTaskName.Text)
                 || string.IsNullOrEmpty(tbxTaskDescription.Text)
-                //|| monthCalendarDueTime.SelectionStart == DateTime.MinValue
-                //|| CreateTask.selectedDepartmentList.Count <= 0 
-                //|| CreateTask.selectedEmployeeList.Count <= 0
                 )
             {
                 btnCreateTask.Enabled = false;
@@ -313,7 +310,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
                 if (File.Exists(fullPath))
                 {
-                    Task existingTask = LoadTaskFromXml(fullPath);
+                    Task existingTask = Task.LoadTaskFromXml(fullPath);
                     File.Delete(fullPath);
 
                     existingTask.TaskName = tbxTaskName.Text;
@@ -349,21 +346,6 @@ namespace FinalAssignmentWorkTasks.Forms
                 MessageBox.Show($"Error updating task data: {ex.Message}");
             }
         }
-        private Task LoadTaskFromXml(string filePath)
-        {
-            try
-            {
-                using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                {
-                    return (Task)serializer.Deserialize(fs);
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error loading task from {filePath}: {ex.Message}");
-            }
-        }
-
         private void btnAddToDatabase_Click(object sender, EventArgs e)
         {
             selectedEmployeeList.Clear();

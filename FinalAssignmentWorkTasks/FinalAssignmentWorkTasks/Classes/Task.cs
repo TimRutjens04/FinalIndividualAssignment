@@ -56,6 +56,50 @@ namespace FinalAssignmentWorkTasks
             while (Company.CompanyTasks.Find(task => task.TaskId == id) != null) id++;
             return id;
         }
+        public static List<Task> LoadTasksFromXmlFiles()
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Task));
+            List<Task> tasks = new List<Task>();
+            string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
+            string tasksFolderPath = Path.Combine(projectRoot, "Tasks");
+
+            if (Directory.Exists(tasksFolderPath))
+            {
+                string[] xmlFiles = Directory.GetFiles(tasksFolderPath, "*.xml");
+
+                foreach (string xmlFile in xmlFiles)
+                {
+                    using (FileStream fs = new FileStream(xmlFile, FileMode.Open))
+                    {
+                        try
+                        {
+                            Task task = (Task)serializer.Deserialize(fs);
+                            tasks.Add(task);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error loading task from {xmlFile}: {ex.Message}");
+                        }
+                    }
+                }
+            }
+            return tasks;
+        }
+        public static Task LoadTaskFromXml(string filePath)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Task));
+            try
+            {
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    return (Task)serializer.Deserialize(fs);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error loading task from {filePath}: {ex.Message}");
+            }
+        }
         public static Task AddTaskToDatabase(Task task)
         {
             try
