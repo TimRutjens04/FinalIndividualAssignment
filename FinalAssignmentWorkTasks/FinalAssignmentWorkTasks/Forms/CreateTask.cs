@@ -23,7 +23,7 @@ namespace FinalAssignmentWorkTasks.Forms
         bool _showAdditionalControls;
         Task _task = new Task();
         Employee _loggedInEmployee;
-        public static List<Employee> selectedEmployeeList;
+        public static List<Employee> selectedEmployeeList = new List<Employee>();
         public static List<Department> selectedDepartmentList = new List<Department>();
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
         public static List<Task> GetTasks
@@ -131,10 +131,10 @@ namespace FinalAssignmentWorkTasks.Forms
             }
         }
 
-        public static void LoadEmployeeDataFromCsv()
+        public void LoadEmployeeDataFromCsv()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            CreateTask.selectedEmployeeList = Employee.LoadUserFromCsv(relativePath, out List<Department> departments);
+            CreateTask.selectedEmployeeList = _loggedInEmployee.LoadUserFromCsv(relativePath, out List<Department> departments);
             selectedDepartmentList = departments;
 
             foreach (var employee in selectedEmployeeList)

@@ -84,7 +84,7 @@ namespace FinalAssignmentWorkTasks
         /// <param name="filePath"></param>
         /// <param name="departments"></param>
         /// <returns></returns>
-        public static List<Employee> LoadUserFromCsv(string filePath, out List<Department> departments)
+        public List<Employee> LoadUserFromCsv(string filePath, out List<Department> departments)
         {
             departments = new List<Department>();
 
@@ -122,7 +122,7 @@ namespace FinalAssignmentWorkTasks
         /// </summary>
         /// <param name="filePath"></param>
         /// <returns></returns>
-        public static List<Employee> LoadUserFromCsv(string filePath)
+        public List<Employee> LoadUserFromCsv(string filePath)
         {
             using (TextFieldParser parser = new TextFieldParser(filePath))
             {
@@ -153,7 +153,7 @@ namespace FinalAssignmentWorkTasks
             }
             return Company.CompanyEmployees;
         }
-        public static List<Employee> LoadUserFromCsvForSettings(string filePath)
+        public List<Employee> LoadUserFromCsvForSettings(string filePath)
         {
             using (TextFieldParser parser = new TextFieldParser(filePath))
             {
@@ -189,7 +189,7 @@ namespace FinalAssignmentWorkTasks
             }
             return Company.CompanyEmployees;
         }
-        public static void SaveUserToCsvForSettings(List<Employee> employees, string filePath)
+        public void SaveUserToCsvForSettings(List<Employee> employees, string filePath)
         {
             List<string> lines = new List<string>();
 
@@ -210,7 +210,7 @@ namespace FinalAssignmentWorkTasks
         /// <param name="email"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static Employee GetUserFromCredentials(List<Employee> employees, string email, string id)
+        public Employee GetUserFromCredentials(List<Employee> employees, string email, string id)
         {
             return employees.FirstOrDefault(user =>
                 user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&

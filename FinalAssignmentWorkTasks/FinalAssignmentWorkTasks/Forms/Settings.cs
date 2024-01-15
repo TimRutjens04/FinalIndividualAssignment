@@ -23,6 +23,8 @@ namespace FinalAssignmentWorkTasks.Forms
         }
         public Settings(Employee employee) : this()
         {
+            InitializeComponent();
+            InitializeLabels();
             _loggedInEmployee = employee;
         }
         private void Settings_FormClosed(object sender, FormClosedEventArgs e)
@@ -43,7 +45,7 @@ namespace FinalAssignmentWorkTasks.Forms
         public void InitializeLabels()
         {
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            List<Employee> allEmployees = Employee.LoadUserFromCsvForSettings(relativePath);
+            List<Employee> allEmployees = _loggedInEmployee.LoadUserFromCsvForSettings(relativePath);
             if (allEmployees == null)
             {
                 MessageBox.Show("Error parsing data from CSV");
@@ -87,7 +89,7 @@ namespace FinalAssignmentWorkTasks.Forms
             string changedCity = tbxChangeCity.Text;
 
             string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-            List<Employee> allEmployees = Employee.LoadUserFromCsvForSettings(relativePath);
+            List<Employee> allEmployees = _loggedInEmployee.LoadUserFromCsvForSettings(relativePath);
             Employee loggedInEmployee = allEmployees.FirstOrDefault(emp => emp.Id == SavedUser.Instance.savedEmployee.Id);
 
             if (loggedInEmployee != null)
@@ -116,7 +118,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 if (string.IsNullOrEmpty(tbxChangeCity.Text)) { changedCity = loggedInEmployee.City; }
                 else { loggedInEmployee.City = changedCity; }
 
-                Employee.SaveUserToCsvForSettings(allEmployees, relativePath);
+                _loggedInEmployee.SaveUserToCsvForSettings(allEmployees, relativePath);
                 MessageBox.Show("Changes saved successfully." + relativePath.ToString());
             }
             else

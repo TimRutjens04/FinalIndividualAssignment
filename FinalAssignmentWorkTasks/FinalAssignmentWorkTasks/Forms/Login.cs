@@ -5,9 +5,11 @@ namespace FinalAssignmentWorkTasks
 {
     public partial class Login : Form
     {
+        private Employee _employee;
         public Login()
         {
             InitializeComponent();
+            _employee = new Employee();
         }
         /// <summary>
         /// Attempts to login the user and checks their credentials against the provided MOCK_EMPLOYEE_DATA.csv file
@@ -32,12 +34,12 @@ namespace FinalAssignmentWorkTasks
             if (SavedUser.Employees.Count == 0)
             {
                 string relativePath = Path.Combine("Resources", "MOCK_EMPLOYEE_DATA.csv");
-                SavedUser.Employees = Employee.LoadUserFromCsv(relativePath);
+                SavedUser.Employees = _employee.LoadUserFromCsv(relativePath);
             }
 
             if (user.EmployeeLogin(username, password, out department))
             {
-                Employee savedEmployee = Employee.GetUserFromCredentials(SavedUser.Employees, username, password);
+                Employee savedEmployee = _employee.GetUserFromCredentials(SavedUser.Employees, username, password);
 
                 user.SetSavedEmployee(savedEmployee);
 

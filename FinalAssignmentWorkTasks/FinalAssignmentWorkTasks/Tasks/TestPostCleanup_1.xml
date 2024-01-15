@@ -6,31 +6,22 @@
   <TimeDue>2024-01-20T00:00:00</TimeDue>
   <AssignedEmployees>
     <Employee>
-      <Id>9</Id>
-      <Email>vsmallpeice8@ycombinator.com</Email>
-      <FirstName>Camélia</FirstName>
-      <LastName>Smallpeice</LastName>
-      <Department>Research_and_Development</Department>
-    </Employee>
-    <Employee>
-      <Id>16</Id>
-      <Email>rpickoverf@europa.eu</Email>
-      <FirstName>Miléna</FirstName>
-      <LastName>Pickover</LastName>
+      <Id>17</Id>
+      <Email>rmussettig@reddit.com</Email>
+      <FirstName>Laïla</FirstName>
+      <LastName>Mussetti</LastName>
       <Department>Sales</Department>
     </Employee>
     <Employee>
-      <Id>22</Id>
-      <Email>dgoslandl@meetup.com</Email>
-      <FirstName>Annotés</FirstName>
-      <LastName>Gosland</LastName>
-      <Department>Marketing</Department>
+      <Id>51</Id>
+      <Email>rbraitling1e@friendfeed.com</Email>
+      <FirstName>André</FirstName>
+      <LastName>Braitling</LastName>
+      <Department>Sales</Department>
     </Employee>
   </AssignedEmployees>
   <AssignedDepartments>
-    <Department>Marketing</Department>
     <Department>Sales</Department>
-    <Department>Research_and_Development</Department>
   </AssignedDepartments>
-  <Status>Open</Status>
+  <Status>In_Progress</Status>
 </Task>
