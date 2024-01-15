@@ -15,7 +15,7 @@ namespace FinalAssignmentWorkTasks.Forms
     /// </summary>
     public partial class Settings : Form
     {
-        Employee _loggedInEmployee;
+        Employee _loggedInEmployee = new Employee();
         public Settings()
         {
             InitializeComponent();
