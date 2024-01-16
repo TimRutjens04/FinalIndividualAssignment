@@ -56,7 +56,7 @@ namespace FinalAssignmentWorkTasks
             while (Company.CompanyTasks.Find(task => task.TaskId == id) != null) id++;
             return id;
         }
-        public static List<Task> LoadTasksFromXmlFiles()
+        public List<Task> LoadTasksFromXmlFiles()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Task));
             List<Task> tasks = new List<Task>();
@@ -85,7 +85,7 @@ namespace FinalAssignmentWorkTasks
             }
             return tasks;
         }
-        public static Task LoadTaskFromXml(string filePath)
+        public Task LoadTaskFromXml(string filePath)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Task));
             try
@@ -100,7 +100,7 @@ namespace FinalAssignmentWorkTasks
                 throw new Exception($"Error loading task from {filePath}: {ex.Message}");
             }
         }
-        public static Task AddTaskToDatabase(Task task)
+        public Task AddTaskToDatabase(Task task)
         {
             try
             {

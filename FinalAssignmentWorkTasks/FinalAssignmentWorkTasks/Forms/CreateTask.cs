@@ -302,7 +302,7 @@ namespace FinalAssignmentWorkTasks.Forms
 
                 if (File.Exists(fullPath))
                 {
-                    Task existingTask = Task.LoadTaskFromXml(fullPath);
+                    Task existingTask = _task.LoadTaskFromXml(fullPath);
                     File.Delete(fullPath);
 
                     existingTask.TaskName = tbxTaskName.Text;
@@ -362,7 +362,7 @@ namespace FinalAssignmentWorkTasks.Forms
             Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
             
             Company.CompanyTasks.Add(createdTask);
-            Task.AddTaskToDatabase(createdTask);
+            createdTask.AddTaskToDatabase(createdTask);
 
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
         }

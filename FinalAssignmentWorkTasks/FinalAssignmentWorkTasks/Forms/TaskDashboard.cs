@@ -17,6 +17,7 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         Employee _loggedInEmployee;
         Task _selectedTask;
+        Task _task = new Task();
         private static List<Task> Tasks = new List<Task>();
         private List<Task> tasksForLoggedInEmployee = new List<Task>();
         private DataTable tasksDataTable = new DataTable();
@@ -113,7 +114,7 @@ namespace FinalAssignmentWorkTasks.Forms
         private void TaskDashboard_Load(object sender, EventArgs e)
         {
             Tasks.Clear();
-            Tasks.AddRange(Task.LoadTasksFromXmlFiles());
+            Tasks.AddRange(_task.LoadTasksFromXmlFiles());
 
             if (_loggedInEmployee.Department != Department.Admin)
             {
