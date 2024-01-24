@@ -15,6 +15,7 @@ namespace FinalAssignmentWorkTasks.Forms
 {
     public partial class TaskDashboard : Form
     {
+        Company _company = new Company();
         Employee _loggedInEmployee;
         Task _selectedTask;
         Task _task = new Task();
@@ -28,7 +29,7 @@ namespace FinalAssignmentWorkTasks.Forms
             CreateTask createTaskForm = new CreateTask();
             if (createTaskForm != null)
             {
-                Tasks = Company.GetTasks;
+                Tasks = _company.CompanyTasks;
             }
             if (dataGridViewTasks.SelectedRows == null)
             {
@@ -68,7 +69,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
                 //_selectedTask = Task.CreateTaskFromDataRow(selectedRow);
                 int taskId = Convert.ToInt32(selectedRow["TaskId"]);
-                _selectedTask = Company.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
+                _selectedTask = _company.CompanyTasks.FirstOrDefault(task => task.TaskId == taskId);
                 if (_selectedTask != null)
                 {
                     this.Hide();
@@ -84,7 +85,7 @@ namespace FinalAssignmentWorkTasks.Forms
             {
                 DataRow selectedRow = ((DataRowView)dataGridViewTasks.SelectedRows[0].DataBoundItem).Row;
                 int taskId = Convert.ToInt32(selectedRow["TaskId"]);
-                _selectedTask = Company.GetTasks.FirstOrDefault(task => task.TaskId == taskId);
+                _selectedTask = _company.CompanyTasks.FirstOrDefault(task => task.TaskId == taskId);
                 if (_selectedTask != null && _selectedTask.Status == Classes.TaskStatus.Open)
                 {
                     string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");

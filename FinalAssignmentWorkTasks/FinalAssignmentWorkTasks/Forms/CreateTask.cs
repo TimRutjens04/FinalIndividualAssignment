@@ -22,14 +22,11 @@ namespace FinalAssignmentWorkTasks.Forms
     {
         bool _showAdditionalControls;
         Task _task = new Task();
+        private Company _company = new Company();
         Employee _loggedInEmployee;
         public static List<Employee> selectedEmployeeList = new List<Employee>();
         public static List<Department> selectedDepartmentList = new List<Department>();
         private XmlSerializer serializer = new XmlSerializer(typeof(Task));
-        public static List<Task> GetTasks
-        {
-            get { return Company.CompanyTasks; }
-        }
 
         public CreateTask()
         {
@@ -194,7 +191,7 @@ namespace FinalAssignmentWorkTasks.Forms
                 Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
                 MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");
 
-                Company.CompanyTasks.Add(createdTask);
+                _company.CompanyTasks.Add(createdTask);
 
                 string projectRoot = Path.Combine(Environment.CurrentDirectory, "../../../");
                 string directoryPath = Path.Combine(projectRoot, "Tasks");
@@ -361,7 +358,7 @@ namespace FinalAssignmentWorkTasks.Forms
             int taskId = TaskId.GetNextID();            
             Task createdTask = new Task(taskId, taskTitle, taskDescription, taskDate, selectedEmployeeList, checkedDepartments, statusOnCreate);
             
-            Company.CompanyTasks.Add(createdTask);
+            _company.CompanyTasks.Add(createdTask);
             createdTask.AddTaskToDatabase(createdTask);
 
             MessageBox.Show($"Task succesfully created.\nTask ID: {taskId.ToString()}\nDue date: {date}\nAssigned employees: {assignedEmployees}\nTitle: {taskTitle}\nDescription: {taskDescription}");

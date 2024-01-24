@@ -48,6 +48,7 @@ namespace FinalAssignmentWorkTasks
         public string Zipcode { get; set; }
         [DataMember]
         public string City { get; set; }
+        private Company _company = new Company();
 
         public Employee()
         {
@@ -110,12 +111,12 @@ namespace FinalAssignmentWorkTasks
                                 LastName = fields[3],
                                 Department = department
                             };
-                            Company.CompanyEmployees.Add(newEmployee);
+                            _company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return Company.CompanyEmployees;
+            return _company.CompanyEmployees;
         }
         /// <summary>
         /// Almost the same method, however this one was needed for logins since departments haven't been "set" there yet.
@@ -146,12 +147,12 @@ namespace FinalAssignmentWorkTasks
 
                                 Department = department
                             };
-                            Company.CompanyEmployees.Add(newEmployee);
+                            _company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return Company.CompanyEmployees;
+            return _company.CompanyEmployees;
         }
         public List<Employee> LoadUserFromCsvForSettings(string filePath)
         {
@@ -182,12 +183,12 @@ namespace FinalAssignmentWorkTasks
                                 City = fields[8],
                                 Department = department
                             };
-                            Company.CompanyEmployees.Add(newEmployee);
+                            _company.CompanyEmployees.Add(newEmployee);
                         }
                     }
                 }
             }
-            return Company.CompanyEmployees;
+            return _company.CompanyEmployees;
         }
         public void SaveUserToCsvForSettings(List<Employee> employees, string filePath)
         {

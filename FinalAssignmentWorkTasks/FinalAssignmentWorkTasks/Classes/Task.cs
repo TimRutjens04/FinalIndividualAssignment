@@ -51,11 +51,6 @@ namespace FinalAssignmentWorkTasks
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static int GetNextId(int id)
-        {
-            while (Company.CompanyTasks.Find(task => task.TaskId == id) != null) id++;
-            return id;
-        }
         public List<Task> LoadTasksFromXmlFiles()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Task));
